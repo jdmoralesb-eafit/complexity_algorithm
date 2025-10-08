@@ -1,0 +1,818 @@
+Análisis de performance - shpc_reconstruction
+==================================================
+
+Directorio analizado: C:/Users/drago/Desktop/complex_code/stack_try
+Parámetros originales: {'archivo': 'C:/Users/drago/Desktop/complex_code/stack_try', 'dx': 3.75, 'dy': 3.75, 'lamb': 0.633, 'G': 3, 'radio_mascara': 200, 'paso': 0.2}
+
+=== CARPETA: 128x128 ===
+--- IMAGEN: hologram_01.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1523900316      cycles:u                                                              
+        1762230742      instructions:u                   #    1.16  insn per cycle            
+         125167795      cache-references:u                                                    
+          12770080      cache-misses:u                   #   10.20% of all cache refs         
+
+       1.145384000 seconds time elapsed
+
+       0.365162000 seconds user
+       0.250056000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_02.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1497638416      cycles:u                                                              
+        1817725424      instructions:u                   #    1.21  insn per cycle            
+         129783399      cache-references:u                                                    
+          10460284      cache-misses:u                   #    8.06% of all cache refs         
+
+       0.459471200 seconds time elapsed
+
+       0.369808000 seconds user
+       0.065743000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_03.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1444411537      cycles:u                                                              
+        1762408240      instructions:u                   #    1.22  insn per cycle            
+         130865111      cache-references:u                                                    
+           9603895      cache-misses:u                   #    7.34% of all cache refs         
+
+       0.438552800 seconds time elapsed
+
+       0.349679000 seconds user
+       0.062863000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_04.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1469383389      cycles:u                                                              
+        1762645394      instructions:u                   #    1.20  insn per cycle            
+         132574133      cache-references:u                                                    
+           9475604      cache-misses:u                   #    7.15% of all cache refs         
+
+       0.442836100 seconds time elapsed
+
+       0.367350000 seconds user
+       0.052478000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_05.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1468311520      cycles:u                                                              
+        1762910032      instructions:u                   #    1.20  insn per cycle            
+         133559990      cache-references:u                                                    
+          10013624      cache-misses:u                   #    7.50% of all cache refs         
+
+       0.457686300 seconds time elapsed
+
+       0.355858000 seconds user
+       0.079079000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_06.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1475849615      cycles:u                                                              
+        1763291509      instructions:u                   #    1.19  insn per cycle            
+         137484828      cache-references:u                                                    
+          10164449      cache-misses:u                   #    7.39% of all cache refs         
+
+       0.447586600 seconds time elapsed
+
+       0.371248000 seconds user
+       0.052458000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_07.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1444628330      cycles:u                                                              
+        1818336917      instructions:u                   #    1.26  insn per cycle            
+         135868733      cache-references:u                                                    
+           9135173      cache-misses:u                   #    6.72% of all cache refs         
+
+       0.432509900 seconds time elapsed
+
+       0.338811000 seconds user
+       0.071748000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_08.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1448813462      cycles:u                                                              
+        1762954848      instructions:u                   #    1.22  insn per cycle            
+         131952778      cache-references:u                                                    
+           9067066      cache-misses:u                   #    6.87% of all cache refs         
+
+       0.459149800 seconds time elapsed
+
+       0.364431000 seconds user
+       0.070535000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_09.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1471543325      cycles:u                                                              
+        1817633279      instructions:u                   #    1.24  insn per cycle            
+         136152462      cache-references:u                                                    
+           9142392      cache-misses:u                   #    6.71% of all cache refs         
+
+       0.446701700 seconds time elapsed
+
+       0.366797000 seconds user
+       0.055817000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_10.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1462990695      cycles:u                                                              
+        1763750237      instructions:u                   #    1.21  insn per cycle            
+         128572429      cache-references:u                                                    
+           9472942      cache-misses:u                   #    7.37% of all cache refs         
+
+       0.436087800 seconds time elapsed
+
+       0.358208000 seconds user
+       0.056347000 seconds sys
+
+
+
+
+
+
+=== CARPETA: 256x256 ===
+--- IMAGEN: hologram_01.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1925949051      cycles:u                                                              
+        2771028524      instructions:u                   #    1.44  insn per cycle            
+         151844991      cache-references:u                                                    
+          13760139      cache-misses:u                   #    9.06% of all cache refs         
+
+       0.599252400 seconds time elapsed
+
+       0.441115000 seconds user
+       0.118155000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_02.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1884931501      cycles:u                                                              
+        2771066593      instructions:u                   #    1.47  insn per cycle            
+         147384499      cache-references:u                                                    
+          11615679      cache-misses:u                   #    7.88% of all cache refs         
+
+       0.565886600 seconds time elapsed
+
+       0.449873000 seconds user
+       0.078925000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_03.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1952322992      cycles:u                                                              
+        2987166839      instructions:u                   #    1.53  insn per cycle            
+         156406987      cache-references:u                                                    
+          12320547      cache-misses:u                   #    7.88% of all cache refs         
+
+       0.591761100 seconds time elapsed
+
+       0.464185000 seconds user
+       0.092036000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_04.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        2002784382      cycles:u                                                              
+        2987123987      instructions:u                   #    1.49  insn per cycle            
+         161091037      cache-references:u                                                    
+          13700385      cache-misses:u                   #    8.50% of all cache refs         
+
+       0.598863500 seconds time elapsed
+
+       0.514347000 seconds user
+       0.048220000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_05.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1902141608      cycles:u                                                              
+        2771497008      instructions:u                   #    1.46  insn per cycle            
+         151466887      cache-references:u                                                    
+          12735292      cache-misses:u                   #    8.41% of all cache refs         
+
+       0.567632800 seconds time elapsed
+
+       0.455326000 seconds user
+       0.075887000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_06.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1910401560      cycles:u                                                              
+        2771291437      instructions:u                   #    1.45  insn per cycle            
+         153238925      cache-references:u                                                    
+          13598550      cache-misses:u                   #    8.87% of all cache refs         
+
+       0.591410100 seconds time elapsed
+
+       0.451622000 seconds user
+       0.103913000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_07.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1900106692      cycles:u                                                              
+        2770821021      instructions:u                   #    1.46  insn per cycle            
+         154645176      cache-references:u                                                    
+          12813317      cache-misses:u                   #    8.29% of all cache refs         
+
+       0.570091700 seconds time elapsed
+
+       0.453474000 seconds user
+       0.080977000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_08.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        1918824580      cycles:u                                                              
+        2770569295      instructions:u                   #    1.44  insn per cycle            
+         153467447      cache-references:u                                                    
+          13487366      cache-misses:u                   #    8.79% of all cache refs         
+
+       0.595793000 seconds time elapsed
+
+       0.458372000 seconds user
+       0.100520000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_09.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        2037480385      cycles:u                                                              
+        2987229224      instructions:u                   #    1.47  insn per cycle            
+         155968682      cache-references:u                                                    
+          13882896      cache-misses:u                   #    8.90% of all cache refs         
+
+       0.606913200 seconds time elapsed
+
+       0.495815000 seconds user
+       0.071397000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_10.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        2024784110      cycles:u                                                              
+        2987386563      instructions:u                   #    1.48  insn per cycle            
+         160046542      cache-references:u                                                    
+          13292663      cache-misses:u                   #    8.31% of all cache refs         
+
+       0.601796400 seconds time elapsed
+
+       0.494691000 seconds user
+       0.072987000 seconds sys
+
+
+
+
+
+
+=== CARPETA: 512x512 ===
+--- IMAGEN: hologram_01.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3912682567      cycles:u                                                              
+        6784747807      instructions:u                   #    1.73  insn per cycle            
+         236026328      cache-references:u                                                    
+          51932604      cache-misses:u                   #   22.00% of all cache refs         
+
+       1.131990800 seconds time elapsed
+
+       0.952372000 seconds user
+       0.144056000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_02.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3576708024      cycles:u                                                              
+        6050914966      instructions:u                   #    1.69  insn per cycle            
+         225307210      cache-references:u                                                    
+          45337038      cache-misses:u                   #   20.12% of all cache refs         
+
+       1.015328000 seconds time elapsed
+
+       0.878278000 seconds user
+       0.099352000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_03.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3549298693      cycles:u                                                              
+        6050626495      instructions:u                   #    1.70  insn per cycle            
+         214900325      cache-references:u                                                    
+          46268161      cache-misses:u                   #   21.53% of all cache refs         
+
+       1.008017500 seconds time elapsed
+
+       0.852230000 seconds user
+       0.114952000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_04.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3560857955      cycles:u                                                              
+        6050465456      instructions:u                   #    1.70  insn per cycle            
+         221057996      cache-references:u                                                    
+          47306476      cache-misses:u                   #   21.40% of all cache refs         
+
+       1.046302000 seconds time elapsed
+
+       0.890550000 seconds user
+       0.120344000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_05.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3946028894      cycles:u                                                              
+        6784850875      instructions:u                   #    1.72  insn per cycle            
+         235604942      cache-references:u                                                    
+          53697918      cache-misses:u                   #   22.79% of all cache refs         
+
+       1.117884800 seconds time elapsed
+
+       0.946028000 seconds user
+       0.135146000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_06.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3924770693      cycles:u                                                              
+        6784848644      instructions:u                   #    1.73  insn per cycle            
+         239438152      cache-references:u                                                    
+          53800968      cache-misses:u                   #   22.47% of all cache refs         
+
+       1.107031200 seconds time elapsed
+
+       0.934836000 seconds user
+       0.131274000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_07.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3587608017      cycles:u                                                              
+        6050460011      instructions:u                   #    1.69  insn per cycle            
+         215855158      cache-references:u                                                    
+          47834818      cache-misses:u                   #   22.16% of all cache refs         
+
+       1.051074600 seconds time elapsed
+
+       0.856485000 seconds user
+       0.156821000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_08.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3544209645      cycles:u                                                              
+        6050530588      instructions:u                   #    1.71  insn per cycle            
+         217734226      cache-references:u                                                    
+          46402631      cache-misses:u                   #   21.31% of all cache refs         
+
+       1.003937300 seconds time elapsed
+
+       0.870635000 seconds user
+       0.095849000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_09.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3888051996      cycles:u                                                              
+        6785553229      instructions:u                   #    1.75  insn per cycle            
+         238368433      cache-references:u                                                    
+          50960688      cache-misses:u                   #   21.38% of all cache refs         
+
+       1.092003200 seconds time elapsed
+
+       0.925186000 seconds user
+       0.129283000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_10.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        4119650472      cycles:u                                                              
+        6050995039      instructions:u                   #    1.47  insn per cycle            
+         223996259      cache-references:u                                                    
+          54517185      cache-misses:u                   #   24.34% of all cache refs         
+
+       1.201130100 seconds time elapsed
+
+       1.033485000 seconds user
+       0.131679000 seconds sys
+
+
+
+
+
+
+=== CARPETA: 640x480 ===
+--- IMAGEN: hologram_01.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3835907198      cycles:u                                                              
+        6844776008      instructions:u                   #    1.78  insn per cycle            
+         230714723      cache-references:u                                                    
+          52189925      cache-misses:u                   #   22.62% of all cache refs         
+
+       1.084666900 seconds time elapsed
+
+       0.939960000 seconds user
+       0.107995000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_02.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        4282608508      cycles:u                                                              
+        7709077325      instructions:u                   #    1.80  insn per cycle            
+         247750628      cache-references:u                                                    
+          60138513      cache-misses:u                   #   24.27% of all cache refs         
+
+       1.204633300 seconds time elapsed
+
+       1.024105000 seconds user
+       0.143454000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_03.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3895200552      cycles:u                                                              
+        6844744611      instructions:u                   #    1.76  insn per cycle            
+         232050031      cache-references:u                                                    
+          53775030      cache-misses:u                   #   23.17% of all cache refs         
+
+       1.137065500 seconds time elapsed
+
+       0.950416000 seconds user
+       0.144366000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_04.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        4268328688      cycles:u                                                              
+        7709206319      instructions:u                   #    1.81  insn per cycle            
+         253220566      cache-references:u                                                    
+          60778969      cache-misses:u                   #   24.00% of all cache refs         
+
+       1.200668000 seconds time elapsed
+
+       1.008397000 seconds user
+       0.150271000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_05.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3825352511      cycles:u                                                              
+        6844879007      instructions:u                   #    1.79  insn per cycle            
+         231922039      cache-references:u                                                    
+          50115531      cache-misses:u                   #   21.61% of all cache refs         
+
+       1.087421700 seconds time elapsed
+
+       0.934755000 seconds user
+       0.115845000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_06.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        4238146090      cycles:u                                                              
+        7709457447      instructions:u                   #    1.82  insn per cycle            
+         255483171      cache-references:u                                                    
+          57644390      cache-misses:u                   #   22.56% of all cache refs         
+
+       1.221819700 seconds time elapsed
+
+       1.011195000 seconds user
+       0.171186000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_07.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3798064759      cycles:u                                                              
+        6844980110      instructions:u                   #    1.80  insn per cycle            
+         236573127      cache-references:u                                                    
+          50907606      cache-misses:u                   #   21.52% of all cache refs         
+
+       1.080398400 seconds time elapsed
+
+       0.931829000 seconds user
+       0.111026000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_08.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        4237197271      cycles:u                                                              
+        7709178123      instructions:u                   #    1.82  insn per cycle            
+         249070688      cache-references:u                                                    
+          58260904      cache-misses:u                   #   23.39% of all cache refs         
+
+       1.183861800 seconds time elapsed
+
+       1.025604000 seconds user
+       0.120187000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_09.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3875479046      cycles:u                                                              
+        6844871912      instructions:u                   #    1.77  insn per cycle            
+         236957103      cache-references:u                                                    
+          53550573      cache-misses:u                   #   22.60% of all cache refs         
+
+       1.129167600 seconds time elapsed
+
+       0.947742000 seconds user
+       0.143355000 seconds sys
+
+
+
+
+
+--- IMAGEN: hologram_10.png ---
+  Repetición 1:
+[INFO] Cuadrante detectado automÃ¡ticamente: 2
+
+ Performance counter stats for 'python3 /tmp/temp_perf_16440.py':
+
+        3872419820      cycles:u                                                              
+        6845316596      instructions:u                   #    1.77  insn per cycle            
+         239179203      cache-references:u                                                    
+          53194515      cache-misses:u                   #   22.24% of all cache refs         
+
+       1.099991400 seconds time elapsed
+
+       0.920843000 seconds user
+       0.139521000 seconds sys
+
+
+
+
+
+
+=== RESUMEN ===
+Total de ejecuciones: 40
+Errores encontrados: 0
+Tasa de éxito: 100.00%

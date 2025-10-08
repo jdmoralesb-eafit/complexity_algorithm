@@ -1,0 +1,1975 @@
+ANÁLISIS DE BYTECODES - RESULTADOS
+============================================================
+
+Función analizada: vortexLegendre
+Parámetros: [0.633, 3.75, 3.75, 100, 'Circular', None, <function spatialFilteringCF at 0x000001D88970A5C0>]
+Flags de función: {'wavelength': False, 'dx': False, 'dy': False, 'limit': False, 'filter_type': False, 'manual_coords': False, 'spatial_filtering_fn': True}
+Carpeta de imágenes: C:/Users/drago/Desktop/complex_code/stack_try
+
+
+Procesando imagen 1: C:/Users/drago/Desktop/complex_code/stack_try\128x128\hologram_01.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 2: C:/Users/drago/Desktop/complex_code/stack_try\128x128\hologram_02.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 3: C:/Users/drago/Desktop/complex_code/stack_try\128x128\hologram_03.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 4: C:/Users/drago/Desktop/complex_code/stack_try\128x128\hologram_04.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 5: C:/Users/drago/Desktop/complex_code/stack_try\128x128\hologram_05.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 6: C:/Users/drago/Desktop/complex_code/stack_try\128x128\hologram_06.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 7: C:/Users/drago/Desktop/complex_code/stack_try\128x128\hologram_07.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 8: C:/Users/drago/Desktop/complex_code/stack_try\128x128\hologram_08.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 9: C:/Users/drago/Desktop/complex_code/stack_try\128x128\hologram_09.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 10: C:/Users/drago/Desktop/complex_code/stack_try\128x128\hologram_10.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 11: C:/Users/drago/Desktop/complex_code/stack_try\256x256\hologram_01.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 12: C:/Users/drago/Desktop/complex_code/stack_try\256x256\hologram_02.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 13: C:/Users/drago/Desktop/complex_code/stack_try\256x256\hologram_03.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 14: C:/Users/drago/Desktop/complex_code/stack_try\256x256\hologram_04.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 15: C:/Users/drago/Desktop/complex_code/stack_try\256x256\hologram_05.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 16: C:/Users/drago/Desktop/complex_code/stack_try\256x256\hologram_06.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 17: C:/Users/drago/Desktop/complex_code/stack_try\256x256\hologram_07.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 18: C:/Users/drago/Desktop/complex_code/stack_try\256x256\hologram_08.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 19: C:/Users/drago/Desktop/complex_code/stack_try\256x256\hologram_09.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 20: C:/Users/drago/Desktop/complex_code/stack_try\256x256\hologram_10.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 21: C:/Users/drago/Desktop/complex_code/stack_try\512x512\hologram_01.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 22: C:/Users/drago/Desktop/complex_code/stack_try\512x512\hologram_02.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 23: C:/Users/drago/Desktop/complex_code/stack_try\512x512\hologram_03.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 24: C:/Users/drago/Desktop/complex_code/stack_try\512x512\hologram_04.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 25: C:/Users/drago/Desktop/complex_code/stack_try\512x512\hologram_05.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 26: C:/Users/drago/Desktop/complex_code/stack_try\512x512\hologram_06.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 27: C:/Users/drago/Desktop/complex_code/stack_try\512x512\hologram_07.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 28: C:/Users/drago/Desktop/complex_code/stack_try\512x512\hologram_08.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 29: C:/Users/drago/Desktop/complex_code/stack_try\512x512\hologram_09.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 30: C:/Users/drago/Desktop/complex_code/stack_try\512x512\hologram_10.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 45
+  Bytecodes estimados ejecutados: 378
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 31: C:/Users/drago/Desktop/complex_code/stack_try\640x480\hologram_01.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 49
+  Bytecodes estimados ejecutados: 410
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L398: hits=1 opcodes=10 total=10
+    L399: hits=1 opcodes=4 total=4
+    L400: hits=1 opcodes=6 total=6
+    L401: hits=1 opcodes=12 total=12
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 32: C:/Users/drago/Desktop/complex_code/stack_try\640x480\hologram_02.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 49
+  Bytecodes estimados ejecutados: 410
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L398: hits=1 opcodes=10 total=10
+    L399: hits=1 opcodes=4 total=4
+    L400: hits=1 opcodes=6 total=6
+    L401: hits=1 opcodes=12 total=12
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 33: C:/Users/drago/Desktop/complex_code/stack_try\640x480\hologram_03.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 49
+  Bytecodes estimados ejecutados: 410
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L398: hits=1 opcodes=10 total=10
+    L399: hits=1 opcodes=4 total=4
+    L400: hits=1 opcodes=6 total=6
+    L401: hits=1 opcodes=12 total=12
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 34: C:/Users/drago/Desktop/complex_code/stack_try\640x480\hologram_04.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 49
+  Bytecodes estimados ejecutados: 410
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L398: hits=1 opcodes=10 total=10
+    L399: hits=1 opcodes=4 total=4
+    L400: hits=1 opcodes=6 total=6
+    L401: hits=1 opcodes=12 total=12
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 35: C:/Users/drago/Desktop/complex_code/stack_try\640x480\hologram_05.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 49
+  Bytecodes estimados ejecutados: 410
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L398: hits=1 opcodes=10 total=10
+    L399: hits=1 opcodes=4 total=4
+    L400: hits=1 opcodes=6 total=6
+    L401: hits=1 opcodes=12 total=12
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 36: C:/Users/drago/Desktop/complex_code/stack_try\640x480\hologram_06.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 49
+  Bytecodes estimados ejecutados: 410
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L398: hits=1 opcodes=10 total=10
+    L399: hits=1 opcodes=4 total=4
+    L400: hits=1 opcodes=6 total=6
+    L401: hits=1 opcodes=12 total=12
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 37: C:/Users/drago/Desktop/complex_code/stack_try\640x480\hologram_07.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 49
+  Bytecodes estimados ejecutados: 410
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L398: hits=1 opcodes=10 total=10
+    L399: hits=1 opcodes=4 total=4
+    L400: hits=1 opcodes=6 total=6
+    L401: hits=1 opcodes=12 total=12
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 38: C:/Users/drago/Desktop/complex_code/stack_try\640x480\hologram_08.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 49
+  Bytecodes estimados ejecutados: 410
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L398: hits=1 opcodes=10 total=10
+    L399: hits=1 opcodes=4 total=4
+    L400: hits=1 opcodes=6 total=6
+    L401: hits=1 opcodes=12 total=12
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 39: C:/Users/drago/Desktop/complex_code/stack_try\640x480\hologram_09.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 49
+  Bytecodes estimados ejecutados: 410
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L398: hits=1 opcodes=10 total=10
+    L399: hits=1 opcodes=4 total=4
+    L400: hits=1 opcodes=6 total=6
+    L401: hits=1 opcodes=12 total=12
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+Procesando imagen 40: C:/Users/drago/Desktop/complex_code/stack_try\640x480\hologram_10.png
+--------------------------------------------------
+Función: vortexLegendre
+  Líneas ejecutadas (suma hits): 49
+  Bytecodes estimados ejecutados: 410
+  Detalle por línea:
+    L396: hits=1 opcodes=6 total=6
+    L397: hits=1 opcodes=10 total=10
+    L398: hits=1 opcodes=10 total=10
+    L399: hits=1 opcodes=4 total=4
+    L400: hits=1 opcodes=6 total=6
+    L401: hits=1 opcodes=12 total=12
+    L404: hits=1 opcodes=5 total=5
+    L407: hits=1 opcodes=6 total=6
+    L408: hits=1 opcodes=4 total=4
+    L409: hits=1 opcodes=4 total=4
+    L412: hits=2 opcodes=7 total=14
+    L413: hits=1 opcodes=11 total=11
+    L414: hits=1 opcodes=11 total=11
+    L418: hits=1 opcodes=2 total=2
+    L421: hits=2 opcodes=9 total=18
+    L422: hits=1 opcodes=5 total=5
+    L424: hits=1 opcodes=2 total=2
+    L429: hits=1 opcodes=2 total=2
+    L430: hits=1 opcodes=31 total=31
+    L431: hits=1 opcodes=10 total=10
+    L434: hits=1 opcodes=9 total=9
+    L437: hits=1 opcodes=16 total=16
+    L440: hits=1 opcodes=4 total=4
+    L445: hits=1 opcodes=2 total=2
+    L446: hits=1 opcodes=2 total=2
+    L447: hits=1 opcodes=2 total=2
+    L448: hits=2 opcodes=6 total=12
+    L449: hits=1 opcodes=4 total=4
+    L454: hits=1 opcodes=5 total=5
+    L455: hits=1 opcodes=12 total=12
+    L456: hits=1 opcodes=9 total=9
+    L457: hits=1 opcodes=6 total=6
+    L460: hits=1 opcodes=7 total=7
+    L461: hits=1 opcodes=7 total=7
+    L463: hits=1 opcodes=6 total=6
+    L464: hits=1 opcodes=9 total=9
+    L467: hits=1 opcodes=7 total=7
+    L468: hits=1 opcodes=12 total=12
+    L471: hits=1 opcodes=12 total=12
+    L474: hits=1 opcodes=24 total=24
+    L475: hits=1 opcodes=28 total=28
+    L478: hits=1 opcodes=7 total=7
+    L481: hits=2 opcodes=7 total=14
+    L482: hits=1 opcodes=19 total=19
+    L484: hits=1 opcodes=2 total=2
+
+RESUMEN:
+Imágenes encontradas: 40
+Imágenes procesadas exitosamente: 40
+Imágenes con error: 0
+
+ANÁLISIS COMPLETADO

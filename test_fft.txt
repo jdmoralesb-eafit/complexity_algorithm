@@ -1,0 +1,1550 @@
+Performance analysis - compute_fft
+==================================================
+
+Analyzed directory: C:/Users/drago/Desktop/complex_code/imagenes_grises
+Original parameters: {'arr': 'C:/Users/drago/Desktop/complex_code/imagenes_grises'}
+
+=== FOLDER: 1024x1024 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         482775124      cycles:u                                                              
+         635129598      instructions:u                   #    1.32  insn per cycle            
+          25901105      cache-references:u                                                    
+           4059311      cache-misses:u                   #   15.67% of all cache refs         
+
+       0.178275138 seconds time elapsed
+
+       0.121948000 seconds user
+       0.025230000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         486392999      cycles:u                                                              
+         635706807      instructions:u                   #    1.31  insn per cycle            
+          26300665      cache-references:u                                                    
+           4307307      cache-misses:u                   #   16.38% of all cache refs         
+
+       0.167921286 seconds time elapsed
+
+       0.112857000 seconds user
+       0.040306000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         486229833      cycles:u                                                              
+         618424555      instructions:u                   #    1.27  insn per cycle            
+          25815027      cache-references:u                                                    
+           4776416      cache-misses:u                   #   18.50% of all cache refs         
+
+       0.165297511 seconds time elapsed
+
+       0.126326000 seconds user
+       0.016300000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         466130826      cycles:u                                                              
+         618253548      instructions:u                   #    1.33  insn per cycle            
+          25263595      cache-references:u                                                    
+           3832192      cache-misses:u                   #   15.17% of all cache refs         
+
+       0.150628442 seconds time elapsed
+
+       0.117141000 seconds user
+       0.020196000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         482410704      cycles:u                                                              
+         618003498      instructions:u                   #    1.28  insn per cycle            
+          26034297      cache-references:u                                                    
+           4399261      cache-misses:u                   #   16.90% of all cache refs         
+
+       0.168247378 seconds time elapsed
+
+       0.122310000 seconds user
+       0.022933000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         476174813      cycles:u                                                              
+         617725487      instructions:u                   #    1.30  insn per cycle            
+          26506394      cache-references:u                                                    
+           4044378      cache-misses:u                   #   15.26% of all cache refs         
+
+       0.157938234 seconds time elapsed
+
+       0.125388000 seconds user
+       0.015673000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 1024x768 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         471292707      cycles:u                                                              
+         582210673      instructions:u                   #    1.24  insn per cycle            
+          25961141      cache-references:u                                                    
+           3973655      cache-misses:u                   #   15.31% of all cache refs         
+
+       0.166450815 seconds time elapsed
+
+       0.114890000 seconds user
+       0.028722000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         455201267      cycles:u                                                              
+         582327951      instructions:u                   #    1.28  insn per cycle            
+          25039731      cache-references:u                                                    
+           3761732      cache-misses:u                   #   15.02% of all cache refs         
+
+       0.144543693 seconds time elapsed
+
+       0.115115000 seconds user
+       0.019185000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         462519875      cycles:u                                                              
+         586836241      instructions:u                   #    1.27  insn per cycle            
+          25313307      cache-references:u                                                    
+           3909952      cache-misses:u                   #   15.45% of all cache refs         
+
+       0.156225875 seconds time elapsed
+
+       0.101636000 seconds user
+       0.035181000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         472487600      cycles:u                                                              
+         586596445      instructions:u                   #    1.24  insn per cycle            
+          25224959      cache-references:u                                                    
+           4236491      cache-misses:u                   #   16.79% of all cache refs         
+
+       0.152822010 seconds time elapsed
+
+       0.109081000 seconds user
+       0.028280000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         468324434      cycles:u                                                              
+         597390240      instructions:u                   #    1.28  insn per cycle            
+          25374706      cache-references:u                                                    
+           4036313      cache-misses:u                   #   15.91% of all cache refs         
+
+       0.160067852 seconds time elapsed
+
+       0.110598000 seconds user
+       0.027649000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         474418061      cycles:u                                                              
+         597291726      instructions:u                   #    1.26  insn per cycle            
+          25295225      cache-references:u                                                    
+           4186319      cache-misses:u                   #   16.55% of all cache refs         
+
+       0.156750271 seconds time elapsed
+
+       0.111384000 seconds user
+       0.033002000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 1280x960 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         525448763      cycles:u                                                              
+         666326162      instructions:u                   #    1.27  insn per cycle            
+          26462926      cache-references:u                                                    
+           4735709      cache-misses:u                   #   17.90% of all cache refs         
+
+       0.181327444 seconds time elapsed
+
+       0.125381000 seconds user
+       0.030395000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         516741574      cycles:u                                                              
+         666598636      instructions:u                   #    1.29  insn per cycle            
+          26665493      cache-references:u                                                    
+           5139895      cache-misses:u                   #   19.28% of all cache refs         
+
+       0.171537883 seconds time elapsed
+
+       0.133841000 seconds user
+       0.019682000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         506053730      cycles:u                                                              
+         666007746      instructions:u                   #    1.32  insn per cycle            
+          26000692      cache-references:u                                                    
+           4988865      cache-misses:u                   #   19.19% of all cache refs         
+
+       0.169502577 seconds time elapsed
+
+       0.117586000 seconds user
+       0.028382000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         583004092      cycles:u                                                              
+         665821227      instructions:u                   #    1.14  insn per cycle            
+          25194948      cache-references:u                                                    
+           5872347      cache-misses:u                   #   23.31% of all cache refs         
+
+       0.185044346 seconds time elapsed
+
+       0.132325000 seconds user
+       0.037216000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         518254347      cycles:u                                                              
+         640259170      instructions:u                   #    1.24  insn per cycle            
+          26512481      cache-references:u                                                    
+           5280561      cache-misses:u                   #   19.92% of all cache refs         
+
+       0.188226484 seconds time elapsed
+
+       0.137333000 seconds user
+       0.027466000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         477084471      cycles:u                                                              
+         640333119      instructions:u                   #    1.34  insn per cycle            
+          25726775      cache-references:u                                                    
+           4106370      cache-misses:u                   #   15.96% of all cache refs         
+
+       0.155677334 seconds time elapsed
+
+       0.113196000 seconds user
+       0.028299000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 128x128 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         421336766      cycles:u                                                              
+         490346648      instructions:u                   #    1.16  insn per cycle            
+          23687639      cache-references:u                                                    
+           3214671      cache-misses:u                   #   13.57% of all cache refs         
+
+       0.127294349 seconds time elapsed
+
+       0.096335000 seconds user
+       0.020942000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         424185476      cycles:u                                                              
+         490477107      instructions:u                   #    1.16  insn per cycle            
+          23593455      cache-references:u                                                    
+           3649212      cache-misses:u                   #   15.47% of all cache refs         
+
+       0.128599506 seconds time elapsed
+
+       0.098007000 seconds user
+       0.023521000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         546519525      cycles:u                                                              
+         490023630      instructions:u                   #    0.90  insn per cycle            
+          23560174      cache-references:u                                                    
+           6122455      cache-misses:u                   #   25.99% of all cache refs         
+
+       0.169093872 seconds time elapsed
+
+       0.142588000 seconds user
+       0.015843000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         480346152      cycles:u                                                              
+         490302193      instructions:u                   #    1.02  insn per cycle            
+          24651388      cache-references:u                                                    
+           5014309      cache-misses:u                   #   20.34% of all cache refs         
+
+       0.150609624 seconds time elapsed
+
+       0.105691000 seconds user
+       0.035230000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         443874031      cycles:u                                                              
+         490187163      instructions:u                   #    1.10  insn per cycle            
+          23919681      cache-references:u                                                    
+           3857549      cache-misses:u                   #   16.13% of all cache refs         
+
+       0.137178409 seconds time elapsed
+
+       0.112544000 seconds user
+       0.016077000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         426058088      cycles:u                                                              
+         490784826      instructions:u                   #    1.15  insn per cycle            
+          23860284      cache-references:u                                                    
+           3758967      cache-misses:u                   #   15.75% of all cache refs         
+
+       0.129642652 seconds time elapsed
+
+       0.106503000 seconds user
+       0.011833000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 1600x1200 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         533465714      cycles:u                                                              
+         718964763      instructions:u                   #    1.35  insn per cycle            
+          27127839      cache-references:u                                                    
+           5039008      cache-misses:u                   #   18.58% of all cache refs         
+
+       0.198185345 seconds time elapsed
+
+       0.138680000 seconds user
+       0.032630000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         517327079      cycles:u                                                              
+         719901245      instructions:u                   #    1.39  insn per cycle            
+          27997363      cache-references:u                                                    
+           4728229      cache-misses:u                   #   16.89% of all cache refs         
+
+       0.173701770 seconds time elapsed
+
+       0.128702000 seconds user
+       0.024131000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         516287175      cycles:u                                                              
+         723721297      instructions:u                   #    1.40  insn per cycle            
+          27717756      cache-references:u                                                    
+           4569530      cache-misses:u                   #   16.49% of all cache refs         
+
+       0.206618876 seconds time elapsed
+
+       0.133214000 seconds user
+       0.039180000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         503031196      cycles:u                                                              
+         723908212      instructions:u                   #    1.44  insn per cycle            
+          27279401      cache-references:u                                                    
+           4044250      cache-misses:u                   #   14.83% of all cache refs         
+
+       0.174401347 seconds time elapsed
+
+       0.130482000 seconds user
+       0.018640000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         535044578      cycles:u                                                              
+         771508060      instructions:u                   #    1.44  insn per cycle            
+          27152211      cache-references:u                                                    
+           4841783      cache-misses:u                   #   17.83% of all cache refs         
+
+       0.187500056 seconds time elapsed
+
+       0.140652000 seconds user
+       0.016074000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         540325975      cycles:u                                                              
+         771953421      instructions:u                   #    1.43  insn per cycle            
+          27185698      cache-references:u                                                    
+           4826931      cache-misses:u                   #   17.76% of all cache refs         
+
+       0.174793051 seconds time elapsed
+
+       0.129113000 seconds user
+       0.029154000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 1920x1440 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         577025268      cycles:u                                                              
+         913155766      instructions:u                   #    1.58  insn per cycle            
+          28669170      cache-references:u                                                    
+           4695953      cache-misses:u                   #   16.38% of all cache refs         
+
+       0.204543451 seconds time elapsed
+
+       0.144507000 seconds user
+       0.031244000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         591370551      cycles:u                                                              
+         913247902      instructions:u                   #    1.54  insn per cycle            
+          29001426      cache-references:u                                                    
+           5348168      cache-misses:u                   #   18.44% of all cache refs         
+
+       0.224204744 seconds time elapsed
+
+       0.159017000 seconds user
+       0.040773000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         613784312      cycles:u                                                              
+         899045001      instructions:u                   #    1.46  insn per cycle            
+          28929029      cache-references:u                                                    
+           6556133      cache-misses:u                   #   22.66% of all cache refs         
+
+       0.212904207 seconds time elapsed
+
+       0.153701000 seconds user
+       0.028313000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         591177600      cycles:u                                                              
+         899256726      instructions:u                   #    1.52  insn per cycle            
+          28674204      cache-references:u                                                    
+           5400852      cache-misses:u                   #   18.84% of all cache refs         
+
+       0.198258366 seconds time elapsed
+
+       0.154553000 seconds user
+       0.019319000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         559180414      cycles:u                                                              
+         840817775      instructions:u                   #    1.50  insn per cycle            
+          28681311      cache-references:u                                                    
+           5229496      cache-misses:u                   #   18.23% of all cache refs         
+
+       0.195972581 seconds time elapsed
+
+       0.121636000 seconds user
+       0.041812000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         549617753      cycles:u                                                              
+         840567437      instructions:u                   #    1.53  insn per cycle            
+          28855996      cache-references:u                                                    
+           4742940      cache-misses:u                   #   16.44% of all cache refs         
+
+       0.211862661 seconds time elapsed
+
+       0.135078000 seconds user
+       0.053212000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 2048x2048 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         651679962      cycles:u                                                              
+        1104887590      instructions:u                   #    1.70  insn per cycle            
+          30927288      cache-references:u                                                    
+           5319429      cache-misses:u                   #   17.20% of all cache refs         
+
+       0.247834170 seconds time elapsed
+
+       0.161023000 seconds user
+       0.045416000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         705567600      cycles:u                                                              
+        1105165287      instructions:u                   #    1.57  insn per cycle            
+          30946797      cache-references:u                                                    
+           7006005      cache-misses:u                   #   22.64% of all cache refs         
+
+       0.241055526 seconds time elapsed
+
+       0.156746000 seconds user
+       0.047024000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         664225335      cycles:u                                                              
+        1110189257      instructions:u                   #    1.67  insn per cycle            
+          31187012      cache-references:u                                                    
+           5553978      cache-misses:u                   #   17.81% of all cache refs         
+
+       0.234146511 seconds time elapsed
+
+       0.149732000 seconds user
+       0.045751000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         653343768      cycles:u                                                              
+        1110125999      instructions:u                   #    1.70  insn per cycle            
+          31219318      cache-references:u                                                    
+           5572673      cache-misses:u                   #   17.85% of all cache refs         
+
+       0.270996585 seconds time elapsed
+
+       0.164229000 seconds user
+       0.070384000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         656808550      cycles:u                                                              
+        1111496633      instructions:u                   #    1.69  insn per cycle            
+          31434270      cache-references:u                                                    
+           5758312      cache-misses:u                   #   18.32% of all cache refs         
+
+       0.237834395 seconds time elapsed
+
+       0.161874000 seconds user
+       0.032374000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         682987505      cycles:u                                                              
+        1111980891      instructions:u                   #    1.63  insn per cycle            
+          31145091      cache-references:u                                                    
+           6354035      cache-misses:u                   #   20.40% of all cache refs         
+
+       0.234939755 seconds time elapsed
+
+       0.170386000 seconds user
+       0.030290000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 2560x1920 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         729235721      cycles:u                                                              
+        1242020946      instructions:u                   #    1.70  insn per cycle            
+          31986092      cache-references:u                                                    
+           6615516      cache-misses:u                   #   20.68% of all cache refs         
+
+       0.268491222 seconds time elapsed
+
+       0.173222000 seconds user
+       0.047242000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         708155657      cycles:u                                                              
+        1242013900      instructions:u                   #    1.75  insn per cycle            
+          32724742      cache-references:u                                                    
+           6179274      cache-misses:u                   #   18.88% of all cache refs         
+
+       0.303341463 seconds time elapsed
+
+       0.187593000 seconds user
+       0.076742000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         699100266      cycles:u                                                              
+        1176946253      instructions:u                   #    1.68  insn per cycle            
+          32298847      cache-references:u                                                    
+           6747193      cache-misses:u                   #   20.89% of all cache refs         
+
+       0.254894573 seconds time elapsed
+
+       0.172545000 seconds user
+       0.037875000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         700846712      cycles:u                                                              
+        1176772217      instructions:u                   #    1.68  insn per cycle            
+          32277885      cache-references:u                                                    
+           6350950      cache-misses:u                   #   19.68% of all cache refs         
+
+       0.245624005 seconds time elapsed
+
+       0.176745000 seconds user
+       0.032135000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         830925313      cycles:u                                                              
+        1233158345      instructions:u                   #    1.48  insn per cycle            
+          33283955      cache-references:u                                                    
+           8184441      cache-misses:u                   #   24.59% of all cache refs         
+
+       0.293386063 seconds time elapsed
+
+       0.195031000 seconds user
+       0.052008000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         825570051      cycles:u                                                              
+        1232823555      instructions:u                   #    1.49  insn per cycle            
+          32638751      cache-references:u                                                    
+           7555665      cache-misses:u                   #   23.15% of all cache refs         
+
+       0.326815790 seconds time elapsed
+
+       0.191385000 seconds user
+       0.097728000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 256x256 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         626576466      cycles:u                                                              
+         496894047      instructions:u                   #    0.79  insn per cycle            
+          24858132      cache-references:u                                                    
+           7076152      cache-misses:u                   #   28.47% of all cache refs         
+
+       0.191763835 seconds time elapsed
+
+       0.148995000 seconds user
+       0.030563000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         629746814      cycles:u                                                              
+         496825874      instructions:u                   #    0.79  insn per cycle            
+          24607178      cache-references:u                                                    
+           7176343      cache-misses:u                   #   29.16% of all cache refs         
+
+       0.196611642 seconds time elapsed
+
+       0.130257000 seconds user
+       0.055260000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         445672059      cycles:u                                                              
+         497252569      instructions:u                   #    1.12  insn per cycle            
+          24307247      cache-references:u                                                    
+           4002666      cache-misses:u                   #   16.47% of all cache refs         
+
+       0.136384015 seconds time elapsed
+
+       0.108793000 seconds user
+       0.019427000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         437549348      cycles:u                                                              
+         497117742      instructions:u                   #    1.14  insn per cycle            
+          23812355      cache-references:u                                                    
+           3541276      cache-misses:u                   #   14.87% of all cache refs         
+
+       0.134524159 seconds time elapsed
+
+       0.117689000 seconds user
+       0.008116000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         483072323      cycles:u                                                              
+         496534961      instructions:u                   #    1.03  insn per cycle            
+          24100509      cache-references:u                                                    
+           5336483      cache-misses:u                   #   22.14% of all cache refs         
+
+       0.147031194 seconds time elapsed
+
+       0.123812000 seconds user
+       0.016508000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         570936120      cycles:u                                                              
+         496789675      instructions:u                   #    0.87  insn per cycle            
+          24919082      cache-references:u                                                    
+           5820409      cache-misses:u                   #   23.36% of all cache refs         
+
+       0.175591783 seconds time elapsed
+
+       0.146197000 seconds user
+       0.019756000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 3840x2880 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1119691208      cycles:u                                                              
+        2212084724      instructions:u                   #    1.98  insn per cycle            
+          45896840      cache-references:u                                                    
+          11294499      cache-misses:u                   #   24.61% of all cache refs         
+
+       0.501129843 seconds time elapsed
+
+       0.281488000 seconds user
+       0.146863000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1292187436      cycles:u                                                              
+        2212297318      instructions:u                   #    1.71  insn per cycle            
+          45826837      cache-references:u                                                    
+          12011320      cache-misses:u                   #   26.21% of all cache refs         
+
+       0.600269646 seconds time elapsed
+
+       0.320075000 seconds user
+       0.201528000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1268821027      cycles:u                                                              
+        2195510816      instructions:u                   #    1.73  insn per cycle            
+          44859223      cache-references:u                                                    
+          12253428      cache-misses:u                   #   27.32% of all cache refs         
+
+       0.457754720 seconds time elapsed
+
+       0.320748000 seconds user
+       0.072168000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1042232404      cycles:u                                                              
+        2195508644      instructions:u                   #    2.11  insn per cycle            
+          45975197      cache-references:u                                                    
+          10017524      cache-misses:u                   #   21.79% of all cache refs         
+
+       0.386913852 seconds time elapsed
+
+       0.263673000 seconds user
+       0.048678000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1058548470      cycles:u                                                              
+        2229270227      instructions:u                   #    2.11  insn per cycle            
+          45586362      cache-references:u                                                    
+          10293745      cache-misses:u                   #   22.58% of all cache refs         
+
+       0.471281561 seconds time elapsed
+
+       0.247513000 seconds user
+       0.158246000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1039429315      cycles:u                                                              
+        2229916131      instructions:u                   #    2.15  insn per cycle            
+          45666284      cache-references:u                                                    
+           9537500      cache-misses:u                   #   20.89% of all cache refs         
+
+       0.374099903 seconds time elapsed
+
+       0.237158000 seconds user
+       0.068333000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 4096x4096 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1459888430      cycles:u                                                              
+        3043243300      instructions:u                   #    2.08  insn per cycle            
+          54539069      cache-references:u                                                    
+          12875540      cache-misses:u                   #   23.61% of all cache refs         
+
+       0.646526990 seconds time elapsed
+
+       0.316513000 seconds user
+       0.187409000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1401821157      cycles:u                                                              
+        3043840367      instructions:u                   #    2.17  insn per cycle            
+          59236377      cache-references:u                                                    
+          12939461      cache-misses:u                   #   21.84% of all cache refs         
+
+       0.682482143 seconds time elapsed
+
+       0.336250000 seconds user
+       0.250137000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1318329039      cycles:u                                                              
+        3041051217      instructions:u                   #    2.31  insn per cycle            
+          56945709      cache-references:u                                                    
+          11240369      cache-misses:u                   #   19.74% of all cache refs         
+
+       0.515982706 seconds time elapsed
+
+       0.293681000 seconds user
+       0.104886000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1341252803      cycles:u                                                              
+        3040911091      instructions:u                   #    2.27  insn per cycle            
+          60607158      cache-references:u                                                    
+          12134774      cache-misses:u                   #   20.02% of all cache refs         
+
+       0.719842593 seconds time elapsed
+
+       0.326241000 seconds user
+       0.284944000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1320154855      cycles:u                                                              
+        3031854695      instructions:u                   #    2.30  insn per cycle            
+          56914222      cache-references:u                                                    
+          11554822      cache-misses:u                   #   20.30% of all cache refs         
+
+       0.492171935 seconds time elapsed
+
+       0.322548000 seconds user
+       0.067695000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+        1318909346      cycles:u                                                              
+        3031264083      instructions:u                   #    2.30  insn per cycle            
+          59412180      cache-references:u                                                    
+          11675408      cache-misses:u                   #   19.65% of all cache refs         
+
+       0.484241462 seconds time elapsed
+
+       0.303469000 seconds user
+       0.086705000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 512x512 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         447621074      cycles:u                                                              
+         524828807      instructions:u                   #    1.17  insn per cycle            
+          24260719      cache-references:u                                                    
+           3900032      cache-misses:u                   #   16.08% of all cache refs         
+
+       0.148045222 seconds time elapsed
+
+       0.111225000 seconds user
+       0.016477000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         477082761      cycles:u                                                              
+         524504017      instructions:u                   #    1.10  insn per cycle            
+          24378274      cache-references:u                                                    
+           4527231      cache-misses:u                   #   18.57% of all cache refs         
+
+       0.147568684 seconds time elapsed
+
+       0.126652000 seconds user
+       0.011513000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         461281534      cycles:u                                                              
+         525032826      instructions:u                   #    1.14  insn per cycle            
+          23839035      cache-references:u                                                    
+           3779625      cache-misses:u                   #   15.85% of all cache refs         
+
+       0.153852714 seconds time elapsed
+
+       0.117874000 seconds user
+       0.012193000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         431251312      cycles:u                                                              
+         524839270      instructions:u                   #    1.22  insn per cycle            
+          24706151      cache-references:u                                                    
+           2861218      cache-misses:u                   #   11.58% of all cache refs         
+
+       0.135567305 seconds time elapsed
+
+       0.124561000 seconds user
+       0.000000000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         424065164      cycles:u                                                              
+         517333201      instructions:u                   #    1.22  insn per cycle            
+          24598165      cache-references:u                                                    
+           2817459      cache-misses:u                   #   11.45% of all cache refs         
+
+       0.144409949 seconds time elapsed
+
+       0.100729000 seconds user
+       0.023245000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         421337454      cycles:u                                                              
+         517060609      instructions:u                   #    1.23  insn per cycle            
+          24248773      cache-references:u                                                    
+           2756676      cache-misses:u                   #   11.37% of all cache refs         
+
+       0.136303320 seconds time elapsed
+
+       0.109195000 seconds user
+       0.016177000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 640x480 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         606374048      cycles:u                                                              
+         532008304      instructions:u                   #    0.88  insn per cycle            
+          22921959      cache-references:u                                                    
+           5083551      cache-misses:u                   #   22.18% of all cache refs         
+
+       0.201467018 seconds time elapsed
+
+       0.152883000 seconds user
+       0.031360000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         428925191      cycles:u                                                              
+         532428794      instructions:u                   #    1.24  insn per cycle            
+          24737954      cache-references:u                                                    
+           2810242      cache-misses:u                   #   11.36% of all cache refs         
+
+       0.135134021 seconds time elapsed
+
+       0.102003000 seconds user
+       0.022667000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         428751253      cycles:u                                                              
+         528749291      instructions:u                   #    1.23  insn per cycle            
+          24596033      cache-references:u                                                    
+           2956640      cache-misses:u                   #   12.02% of all cache refs         
+
+       0.144630500 seconds time elapsed
+
+       0.105694000 seconds user
+       0.019572000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         425838224      cycles:u                                                              
+         527779632      instructions:u                   #    1.24  insn per cycle            
+          23618147      cache-references:u                                                    
+           2669809      cache-misses:u                   #   11.30% of all cache refs         
+
+       0.135638714 seconds time elapsed
+
+       0.081691000 seconds user
+       0.042995000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         432068072      cycles:u                                                              
+         532618051      instructions:u                   #    1.23  insn per cycle            
+          25049843      cache-references:u                                                    
+           2864909      cache-misses:u                   #   11.44% of all cache refs         
+
+       0.147765039 seconds time elapsed
+
+       0.107636000 seconds user
+       0.020699000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         424830409      cycles:u                                                              
+         532503669      instructions:u                   #    1.25  insn per cycle            
+          24595632      cache-references:u                                                    
+           2739601      cache-misses:u                   #   11.14% of all cache refs         
+
+       0.134322535 seconds time elapsed
+
+       0.112805000 seconds user
+       0.011280000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 800x600 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         430627325      cycles:u                                                              
+         546336223      instructions:u                   #    1.27  insn per cycle            
+          25372727      cache-references:u                                                    
+           2793387      cache-misses:u                   #   11.01% of all cache refs         
+
+       0.147655127 seconds time elapsed
+
+       0.090226000 seconds user
+       0.036910000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         430737623      cycles:u                                                              
+         546116278      instructions:u                   #    1.27  insn per cycle            
+          24986009      cache-references:u                                                    
+           2848630      cache-misses:u                   #   11.40% of all cache refs         
+
+       0.138905226 seconds time elapsed
+
+       0.104484000 seconds user
+       0.022389000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         439974537      cycles:u                                                              
+         559863418      instructions:u                   #    1.27  insn per cycle            
+          25073936      cache-references:u                                                    
+           3070698      cache-misses:u                   #   12.25% of all cache refs         
+
+       0.148699341 seconds time elapsed
+
+       0.108106000 seconds user
+       0.020019000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         436363245      cycles:u                                                              
+         559104630      instructions:u                   #    1.28  insn per cycle            
+          24753146      cache-references:u                                                    
+           2712210      cache-misses:u                   #   10.96% of all cache refs         
+
+       0.136305467 seconds time elapsed
+
+       0.110373000 seconds user
+       0.015767000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         439598534      cycles:u                                                              
+         560535093      instructions:u                   #    1.28  insn per cycle            
+          25047984      cache-references:u                                                    
+           2900839      cache-misses:u                   #   11.58% of all cache refs         
+
+       0.154065632 seconds time elapsed
+
+       0.116435000 seconds user
+       0.016633000 seconds sys
+
+
+
+
+  Repetition 2:
+
+ Performance counter stats for 'python3 /tmp/temp_perf_12576.py':
+
+         442614726      cycles:u                                                              
+         560413982      instructions:u                   #    1.27  insn per cycle            
+          24518655      cache-references:u                                                    
+           2845423      cache-misses:u                   #   11.61% of all cache refs         
+
+       0.142360529 seconds time elapsed
+
+       0.099228000 seconds user
+       0.030531000 seconds sys
+
+
+
+
+
+
+=== SUMMARY  ===
+Total runs: 84
+Errors found: 0
+Success rate: 100.00%

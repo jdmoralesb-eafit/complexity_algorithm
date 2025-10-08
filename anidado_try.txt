@@ -1,0 +1,858 @@
+Performance analysis - modified_invert_and_fft
+==================================================
+
+Analyzed directory: C:/Users/drago/Desktop/complex_code/stack_try
+Original parameters: {'img_array': 'C:/Users/drago/Desktop/complex_code/stack_try', 'save_prefix': 'output'}
+
+=== FOLDER: 128x128 ===
+--- IMAGE: hologram_01.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1559901684      cycles:u                                                              
+        2050272358      instructions:u                   #    1.31  insn per cycle            
+          72283847      cache-references:u                                                    
+          14718518      cache-misses:u                   #   20.36% of all cache refs         
+
+       0.641891217 seconds time elapsed
+
+       0.391250000 seconds user
+       0.072603000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_02.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1723030922      cycles:u                                                              
+        2044205609      instructions:u                   #    1.19  insn per cycle            
+          69935739      cache-references:u                                                    
+          15170415      cache-misses:u                   #   21.69% of all cache refs         
+
+       0.612902334 seconds time elapsed
+
+       0.470715000 seconds user
+       0.033032000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_03.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1508987445      cycles:u                                                              
+        2044361631      instructions:u                   #    1.35  insn per cycle            
+          70713501      cache-references:u                                                    
+          13376355      cache-misses:u                   #   18.92% of all cache refs         
+
+       0.492761871 seconds time elapsed
+
+       0.368227000 seconds user
+       0.042636000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_04.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1553837555      cycles:u                                                              
+        2045377645      instructions:u                   #    1.32  insn per cycle            
+          70609686      cache-references:u                                                    
+          14709175      cache-misses:u                   #   20.83% of all cache refs         
+
+       0.518936509 seconds time elapsed
+
+       0.367989000 seconds user
+       0.065420000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_05.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1501546161      cycles:u                                                              
+        2043913751      instructions:u                   #    1.36  insn per cycle            
+          69484121      cache-references:u                                                    
+          13546179      cache-misses:u                   #   19.50% of all cache refs         
+
+       0.494464898 seconds time elapsed
+
+       0.356074000 seconds user
+       0.053206000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_06.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1515295577      cycles:u                                                              
+        2044434595      instructions:u                   #    1.35  insn per cycle            
+          69884652      cache-references:u                                                    
+          14195302      cache-misses:u                   #   20.31% of all cache refs         
+
+       0.495611217 seconds time elapsed
+
+       0.361205000 seconds user
+       0.050491000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_07.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1521465679      cycles:u                                                              
+        2044952740      instructions:u                   #    1.34  insn per cycle            
+          70925128      cache-references:u                                                    
+          13771741      cache-misses:u                   #   19.42% of all cache refs         
+
+       0.501711760 seconds time elapsed
+
+       0.389018000 seconds user
+       0.027787000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_08.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1527214877      cycles:u                                                              
+        2046246198      instructions:u                   #    1.34  insn per cycle            
+          70952121      cache-references:u                                                    
+          13656777      cache-misses:u                   #   19.25% of all cache refs         
+
+       0.507279774 seconds time elapsed
+
+       0.381315000 seconds user
+       0.037302000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_09.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1518758291      cycles:u                                                              
+        2045799302      instructions:u                   #    1.35  insn per cycle            
+          69907720      cache-references:u                                                    
+          13831155      cache-misses:u                   #   19.78% of all cache refs         
+
+       0.495495208 seconds time elapsed
+
+       0.363457000 seconds user
+       0.048461000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_10.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1518284272      cycles:u                                                              
+        2044168827      instructions:u                   #    1.35  insn per cycle            
+          70655563      cache-references:u                                                    
+          13734275      cache-misses:u                   #   19.44% of all cache refs         
+
+       0.504196527 seconds time elapsed
+
+       0.379945000 seconds user
+       0.036377000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 256x256 ===
+--- IMAGE: hologram_01.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1612724637      cycles:u                                                              
+        2229190850      instructions:u                   #    1.38  insn per cycle            
+          70027055      cache-references:u                                                    
+          13932655      cache-misses:u                   #   19.90% of all cache refs         
+
+       0.503742596 seconds time elapsed
+
+       0.404274000 seconds user
+       0.031707000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_02.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1935889594      cycles:u                                                              
+        2229073064      instructions:u                   #    1.15  insn per cycle            
+          78426381      cache-references:u                                                    
+          20848798      cache-misses:u                   #   26.58% of all cache refs         
+
+       0.647113649 seconds time elapsed
+
+       0.470627000 seconds user
+       0.090203000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_03.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1627406155      cycles:u                                                              
+        2230391285      instructions:u                   #    1.37  insn per cycle            
+          73395370      cache-references:u                                                    
+          13718079      cache-misses:u                   #   18.69% of all cache refs         
+
+       0.549653962 seconds time elapsed
+
+       0.389759000 seconds user
+       0.071588000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_04.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1624321071      cycles:u                                                              
+        2229884567      instructions:u                   #    1.37  insn per cycle            
+          71035781      cache-references:u                                                    
+          13711000      cache-misses:u                   #   19.30% of all cache refs         
+
+       0.538529761 seconds time elapsed
+
+       0.384082000 seconds user
+       0.060248000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_05.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1611875237      cycles:u                                                              
+        2228563638      instructions:u                   #    1.38  insn per cycle            
+          71112601      cache-references:u                                                    
+          13762747      cache-misses:u                   #   19.35% of all cache refs         
+
+       0.538462961 seconds time elapsed
+
+       0.392670000 seconds user
+       0.049083000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_06.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1619893625      cycles:u                                                              
+        2227330278      instructions:u                   #    1.37  insn per cycle            
+          73668786      cache-references:u                                                    
+          13688977      cache-misses:u                   #   18.58% of all cache refs         
+
+       0.537113978 seconds time elapsed
+
+       0.409777000 seconds user
+       0.030353000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_07.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1620221777      cycles:u                                                              
+        2230601834      instructions:u                   #    1.38  insn per cycle            
+          71420823      cache-references:u                                                    
+          13615747      cache-misses:u                   #   19.06% of all cache refs         
+
+       0.535801485 seconds time elapsed
+
+       0.401608000 seconds user
+       0.038248000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_08.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1814916331      cycles:u                                                              
+        2227069868      instructions:u                   #    1.23  insn per cycle            
+          74183151      cache-references:u                                                    
+          19508260      cache-misses:u                   #   26.30% of all cache refs         
+
+       0.619054574 seconds time elapsed
+
+       0.442882000 seconds user
+       0.068445000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_09.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1615873625      cycles:u                                                              
+        2228510216      instructions:u                   #    1.38  insn per cycle            
+          72733061      cache-references:u                                                    
+          13515953      cache-misses:u                   #   18.58% of all cache refs         
+
+       0.536681739 seconds time elapsed
+
+       0.411172000 seconds user
+       0.026650000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_10.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1613882775      cycles:u                                                              
+        2228761980      instructions:u                   #    1.38  insn per cycle            
+          72556112      cache-references:u                                                    
+          13718733      cache-misses:u                   #   18.91% of all cache refs         
+
+       0.535371126 seconds time elapsed
+
+       0.379631000 seconds user
+       0.063271000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 512x512 ===
+--- IMAGE: hologram_01.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1988595319      cycles:u                                                              
+        2910074166      instructions:u                   #    1.46  insn per cycle            
+          77630815      cache-references:u                                                    
+          14663163      cache-misses:u                   #   18.89% of all cache refs         
+
+       0.635190320 seconds time elapsed
+
+       0.453551000 seconds user
+       0.092315000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_02.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1986285837      cycles:u                                                              
+        2912736017      instructions:u                   #    1.47  insn per cycle            
+          77990445      cache-references:u                                                    
+          14416552      cache-misses:u                   #   18.49% of all cache refs         
+
+       0.625772077 seconds time elapsed
+
+       0.482130000 seconds user
+       0.055783000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_03.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2003520069      cycles:u                                                              
+        2914534592      instructions:u                   #    1.45  insn per cycle            
+          77720213      cache-references:u                                                    
+          14904167      cache-misses:u                   #   19.18% of all cache refs         
+
+       0.648208178 seconds time elapsed
+
+       0.494816000 seconds user
+       0.066530000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_04.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1989491965      cycles:u                                                              
+        2912295742      instructions:u                   #    1.46  insn per cycle            
+          78155949      cache-references:u                                                    
+          14719052      cache-misses:u                   #   18.83% of all cache refs         
+
+       0.643171629 seconds time elapsed
+
+       0.491976000 seconds user
+       0.046122000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_05.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2021247265      cycles:u                                                              
+        2909195733      instructions:u                   #    1.44  insn per cycle            
+          78593560      cache-references:u                                                    
+          16275835      cache-misses:u                   #   20.71% of all cache refs         
+
+       0.680612702 seconds time elapsed
+
+       0.497146000 seconds user
+       0.072659000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_06.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1964382998      cycles:u                                                              
+        2910289633      instructions:u                   #    1.48  insn per cycle            
+          76964222      cache-references:u                                                    
+          14330977      cache-misses:u                   #   18.62% of all cache refs         
+
+       0.631800109 seconds time elapsed
+
+       0.483961000 seconds user
+       0.046834000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_07.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1985589364      cycles:u                                                              
+        2915098031      instructions:u                   #    1.47  insn per cycle            
+          78254997      cache-references:u                                                    
+          14251005      cache-misses:u                   #   18.21% of all cache refs         
+
+       0.656276439 seconds time elapsed
+
+       0.473353000 seconds user
+       0.078240000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_08.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1983711901      cycles:u                                                              
+        2913370928      instructions:u                   #    1.47  insn per cycle            
+          77681125      cache-references:u                                                    
+          14628808      cache-misses:u                   #   18.83% of all cache refs         
+
+       0.604903249 seconds time elapsed
+
+       0.481166000 seconds user
+       0.054766000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_09.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1972019292      cycles:u                                                              
+        2911593602      instructions:u                   #    1.48  insn per cycle            
+          77736123      cache-references:u                                                    
+          14356044      cache-misses:u                   #   18.47% of all cache refs         
+
+       0.609615424 seconds time elapsed
+
+       0.503627000 seconds user
+       0.029378000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_10.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        1991861298      cycles:u                                                              
+        2911986845      instructions:u                   #    1.46  insn per cycle            
+          78345568      cache-references:u                                                    
+          14627755      cache-misses:u                   #   18.67% of all cache refs         
+
+       0.623971830 seconds time elapsed
+
+       0.497058000 seconds user
+       0.062132000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 640x480 ===
+--- IMAGE: hologram_01.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2069080022      cycles:u                                                              
+        3088405084      instructions:u                   #    1.49  insn per cycle            
+          78466601      cache-references:u                                                    
+          14295548      cache-misses:u                   #   18.22% of all cache refs         
+
+       0.616345741 seconds time elapsed
+
+       0.516692000 seconds user
+       0.042007000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_02.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2086685077      cycles:u                                                              
+        3082986029      instructions:u                   #    1.48  insn per cycle            
+          78893898      cache-references:u                                                    
+          14719958      cache-misses:u                   #   18.66% of all cache refs         
+
+       0.641296397 seconds time elapsed
+
+       0.502524000 seconds user
+       0.081052000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_03.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2068075982      cycles:u                                                              
+        3088266977      instructions:u                   #    1.49  insn per cycle            
+          78323917      cache-references:u                                                    
+          14407895      cache-misses:u                   #   18.40% of all cache refs         
+
+       0.645173265 seconds time elapsed
+
+       0.506614000 seconds user
+       0.052269000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_04.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2068772123      cycles:u                                                              
+        3083395936      instructions:u                   #    1.49  insn per cycle            
+          78389372      cache-references:u                                                    
+          14727430      cache-misses:u                   #   18.79% of all cache refs         
+
+       0.653192497 seconds time elapsed
+
+       0.494161000 seconds user
+       0.075718000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_05.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2061200017      cycles:u                                                              
+        3088411713      instructions:u                   #    1.50  insn per cycle            
+          78317887      cache-references:u                                                    
+          13920715      cache-misses:u                   #   17.77% of all cache refs         
+
+       0.639429973 seconds time elapsed
+
+       0.500975000 seconds user
+       0.055225000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_06.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2049267096      cycles:u                                                              
+        3083141279      instructions:u                   #    1.50  insn per cycle            
+          76568128      cache-references:u                                                    
+          14021197      cache-misses:u                   #   18.31% of all cache refs         
+
+       0.634382263 seconds time elapsed
+
+       0.507045000 seconds user
+       0.043917000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_07.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2069196056      cycles:u                                                              
+        3092538515      instructions:u                   #    1.49  insn per cycle            
+          79147984      cache-references:u                                                    
+          14462615      cache-misses:u                   #   18.27% of all cache refs         
+
+       0.663368421 seconds time elapsed
+
+       0.491027000 seconds user
+       0.087825000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_08.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2067717458      cycles:u                                                              
+        3081793893      instructions:u                   #    1.49  insn per cycle            
+          77873805      cache-references:u                                                    
+          14610574      cache-misses:u                   #   18.76% of all cache refs         
+
+       0.636385342 seconds time elapsed
+
+       0.502286000 seconds user
+       0.055809000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_09.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2073626806      cycles:u                                                              
+        3088539681      instructions:u                   #    1.49  insn per cycle            
+          79757869      cache-references:u                                                    
+          14544244      cache-misses:u                   #   18.24% of all cache refs         
+
+       0.669293724 seconds time elapsed
+
+       0.516893000 seconds user
+       0.065120000 seconds sys
+
+
+
+
+
+--- IMAGE: hologram_10.png ---
+  Repetition 1:
+entro a anidado 2
+entro a anidado 1
+
+ Performance counter stats for 'python3 /tmp/temp_perf_4652.py':
+
+        2087482403      cycles:u                                                              
+        3090664087      instructions:u                   #    1.48  insn per cycle            
+          78765179      cache-references:u                                                    
+          14882559      cache-misses:u                   #   18.89% of all cache refs         
+
+       0.654492456 seconds time elapsed
+
+       0.496955000 seconds user
+       0.067049000 seconds sys
+
+
+
+
+
+
+=== SUMMARY  ===
+Total runs: 40
+Errors found: 0
+Success rate: 100.00%
