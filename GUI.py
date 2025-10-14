@@ -399,6 +399,11 @@ class PerformanceAnalyzerApp:
         self.function_args = {}
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
+        # Variables para almacenar la figura actual y datos
+        self.current_figure = None
+        self.current_fit_data = None
+        self.current_txt_file = None
+
         self.setup_ui()
         
     def setup_ui(self):
@@ -484,6 +489,11 @@ class PerformanceAnalyzerApp:
         # Botón para generar gráficos
         ttk.Button(control_frame, text="Generate Plots", 
                   command=self.generate_plots).pack(side=tk.LEFT, padx=5)
+        
+        # Botón para descargar gráfico (inicialmente deshabilitado)
+        self.download_btn = ttk.Button(control_frame, text="Download Plot", 
+                                      command=self.download_plot, state="disabled")
+        self.download_btn.pack(side=tk.LEFT, padx=5)
         
         # Label para mostrar archivo cargado
         self.file_label = ttk.Label(control_frame, text="No file loaded")
@@ -784,7 +794,7 @@ class PerformanceAnalyzerApp:
             filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
         )
         if filepath:
-            self.results_file = filepath
+            self.current_txt_file = filepath
             self.file_label.config(text=f"File: {os.path.basename(filepath)}")
             
             # Detectar tipo de archivo
@@ -825,13 +835,13 @@ class PerformanceAnalyzerApp:
 
     def generate_plots(self):
         """Generar gráficos a partir del archivo de resultados"""
-        if not hasattr(self, 'results_file'):
+        if not hasattr(self, 'current_txt_file'):
             messagebox.showerror("Error", "You must load a results file first")
             return
             
         try:
             # Detectar tipo de archivo
-            file_type = self.detect_file_type(self.results_file)
+            file_type = self.detect_file_type(self.current_txt_file)
             
             # Limpiar área de gráficos
             for widget in self.plot_frame.winfo_children():
@@ -839,7 +849,7 @@ class PerformanceAnalyzerApp:
                 
             # Crear figura de matplotlib según el tipo
             if file_type == "performance":
-                fig = self.create_performance_plots(self.results_file)
+                fig, fit_data = self.create_performance_plots(self.current_txt_file)
             else:
                 messagebox.showerror("Error", "Unrecognized file type")
                 return
@@ -857,12 +867,70 @@ class PerformanceAnalyzerApp:
             toolbar = NavigationToolbar2Tk(canvas, self.plot_frame)
             toolbar.update()
             
+            # Guardar referencia para posible descarga
+            self.current_figure = fig
+            self.current_fit_data = fit_data
+            
+            # Habilitar botón de descarga
+            self.download_btn.config(state="normal")
+            
             self.log_message(f"{file_type} plots generated successfully")
             
         except Exception as e:
             error_msg = f"Error generating plots: {str(e)}"
             self.log_message(error_msg)
             messagebox.showerror("Error", error_msg)
+
+    def download_plot(self):
+        """Descargar la figura actual"""
+        if self.current_figure is None:
+            messagebox.showwarning("Warning", "No plot available to download.")
+            return
+        
+        try:
+            # Sugerir nombre por defecto basado en el archivo TXT
+            if self.current_txt_file:
+                default_name = os.path.splitext(self.current_txt_file)[0] + "_performance_plot.png"
+            else:
+                default_name = "performance_plot.png"
+            
+            file_path = filedialog.asksaveasfilename(
+                defaultextension=".png",
+                initialfile=os.path.basename(default_name),
+                filetypes=[
+                    ("PNG files", "*.png"),
+                    ("PDF files", "*.pdf"), 
+                    ("SVG files", "*.svg"),
+                    ("JPEG files", "*.jpg"),
+                    ("All files", "*.*")
+                ]
+            )
+            
+            if file_path:
+                # Determinar formato basado en extensión
+                format_map = {
+                    '.png': 'png',
+                    '.pdf': 'pdf', 
+                    '.svg': 'svg',
+                    '.jpg': 'jpeg',
+                    '.jpeg': 'jpeg'
+                }
+                ext = os.path.splitext(file_path)[1].lower()
+                file_format = format_map.get(ext, 'png')
+                
+                # Guardar con alta calidad
+                self.current_figure.savefig(
+                    file_path, 
+                    format=file_format, 
+                    dpi=300, 
+                    bbox_inches='tight',
+                    facecolor='white'
+                )
+                
+                messagebox.showinfo("Success", f"Plot saved successfully as:\n{file_path}")
+                
+        except Exception as e:
+            messagebox.showerror("Error", f"Error saving plot: {str(e)}")
     
     def parse_results_file(self, filepath):
         # Implementar el parsing del archivo de resultados
@@ -894,13 +962,14 @@ class PerformanceAnalyzerApp:
                 results['cache_misses'].append(int(match.replace(',', '')))
                 
         return results
+
     def log_message(self, message):
         """Mensaje de log para la pestaña principal"""
         self.log_text.insert(tk.END, message + "\n")
         self.log_text.see(tk.END)
         self.root.update_idletasks()
         
-    def create_performance_plots(self, txt_file):
+    def create_performance_plots(self, txt_file, save_path=None):
         """Crear gráficos de performance a partir de archivo TXT - Versión mejorada"""
         # Orden deseado de carpetas (resoluciones)
         resol_order = [
@@ -1137,7 +1206,7 @@ class PerformanceAnalyzerApp:
         best_order_instructions, best_equation_instructions, best_r2_instructions, best_func_instructions, best_params_instructions = find_best_fit_only(x_fit, y_instructions_fit)
 
         # Crear gráficos
-        fig, axes = plt.subplots(2, 1, figsize=(16, 12))
+        fig, axes = plt.subplots(2, 1)
 
         # Colores para los ajustes
         colors = {
@@ -1220,10 +1289,41 @@ class PerformanceAnalyzerApp:
 
         plt.tight_layout()
         
-        return fig
+        # Guardado automático si se proporciona save_path
+        if save_path:
+            try:
+                plt.savefig(save_path, dpi=300, bbox_inches='tight')
+                self.log_message(f"Gráfico guardado automáticamente en: {save_path}")
+            except Exception as e:
+                self.log_message(f"Error al guardar automáticamente: {e}")
+        
+        # Retornar figura y datos de los ajustes para el botón de descarga
+        fit_data = {
+            'time': {
+                'order': best_order_time,
+                'equation': best_equation_time,
+                'r2': best_r2_time,
+                'function': best_func_time,
+                'params': best_params_time
+            },
+            'instructions': {
+                'order': best_order_instructions,
+                'equation': best_equation_instructions,
+                'r2': best_r2_instructions,
+                'function': best_func_instructions,
+                'params': best_params_instructions
+            },
+            'resolutions': available_resolutions,
+            'x_fit': x_fit,
+            'y_time_fit': y_time_fit,
+            'y_instructions_fit': y_instructions_fit
+        }
+        
+        return fig, fit_data
 
     def on_closing(self):
         self.root.destroy()
+
 def main():
     root = tk.Tk()
     app = PerformanceAnalyzerApp(root)
