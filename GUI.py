@@ -1044,291 +1044,178 @@ class PerformanceAnalyzerApp:
         def f_quartic(N, a, b):
             return a*N**4 + b
 
-        # FUNCIÓN POLINÓMICA COMPLETA - a*N⁴ + b*N³ + c*N² + d*N + e
-        def f_polynomial_complete(N, a, b, c, d, e):
-            return a*N**4 + b*N**3 + c*N**2 + d*N + e
-
-        # Función para generar ecuaciones legibles
-        def format_polynomial_equation(coeffs):
-            """Formatea ecuación polinómica completa"""
-            a, b, c, d, e = coeffs
-            parts = []
-            
-            if abs(a) > 1e-10:
-                parts.append(f"({a:.2e})·N⁴")
-            if abs(b) > 1e-10:
-                parts.append(f"({b:.2e})·N³")
-            if abs(c) > 1e-10:
-                parts.append(f"({c:.2e})·N²")
-            if abs(d) > 1e-10:
-                parts.append(f"({d:.2e})·N")
-            if abs(e) > 1e-10:
-                parts.append(f"({e:.2e})")
-            
-            if not parts:
-                return "y = 0"
-            
-            return "y = " + " + ".join(parts)
-
-        def complete_polynomial_fit(x, y, threshold=0.009):
-            """
-            Ajuste polinómico completo: a*N⁴ + b*N³ + c*N² + d*N + e
-            con eliminación jerárquica de términos no significativos
-            """
-            best_r2 = -np.inf
-            best_fit = None
+        # Función para encontrar solo el mejor ajuste (el de mayor orden válido)
+        def find_best_fit_only(x, y):
+            """Encuentra solo el mejor ajuste (mayor orden válido) con umbrales específicos por orden"""
+            best_order = 0
+            best_equation = ""
+            best_r2 = 0
+            best_func = None
             best_params = None
-            best_complexity = "Polynomial"
             
-            # Probar diferentes combinaciones eliminando términos de mayor a menor orden
-            term_combinations = [
-                [True, True, True, True, True],   # Todos los términos: N⁴, N³, N², N, constante
-                [True, True, True, True, False],  # Sin constante
-                [True, True, True, False, True],  # Sin término N
-                [True, True, False, True, True],  # Sin término N²
-                [True, False, True, True, True],  # Sin término N³
-                [False, True, True, True, True],  # Sin término N⁴
-                [True, True, True, False, False], # Solo N⁴, N³, N²
-                [True, True, False, False, True], # Solo N⁴, N³, constante
-                [True, False, False, True, True], # Solo N⁴, N, constante
-                [False, True, True, False, True], # Solo N³, N², constante
-                [False, False, True, True, True], # Solo N², N, constante
-            ]
+            # Umbrales específicos para cada orden
+            # Los órdenes más altos pueden tener coeficientes más pequeños pero aún significativos
+            thresholds = {
+                4: 1e-13,  # O(N⁴) - más estricto porque los coeficientes suelen ser muy pequeños
+                3: 9e-11,  # O(N³) 
+                2: 5e-7,   # O(N²)
+                1: 1e-31,   # O(N) - más permisivo
+                -1: 1e-31   # O(N log N) - mismo que O(N)
+            }
             
-            for terms in term_combinations:
+            # 1. Probar polinomios de mayor a menor orden
+            for order in range(4, 0, -1):
                 try:
-                    # Definir función parcial según términos activos
-                    def partial_poly(N, *params):
-                        result = np.zeros_like(N, dtype=float)
-                        param_idx = 0
-                        if terms[0]:  # N⁴
-                            result += params[param_idx] * N**4
-                            param_idx += 1
-                        if terms[1]:  # N³
-                            result += params[param_idx] * N**3
-                            param_idx += 1
-                        if terms[2]:  # N²
-                            result += params[param_idx] * N**2
-                            param_idx += 1
-                        if terms[3]:  # N
-                            result += params[param_idx] * N
-                            param_idx += 1
-                        if terms[4]:  # constante
-                            result += params[param_idx]
-                        return result
+                    # Ajustar polinomio del orden específico
+                    coeffs = np.polyfit(x, y, order)
                     
-                    n_params = sum(terms)
-                    if n_params == 0 or n_params >= len(x):
-                        continue
-                    
-                    # Valores iniciales
-                    p0 = [1.0] * n_params
-                    
-                    # Ajuste
-                    popt, pcov = curve_fit(partial_poly, x, y, p0=p0, maxfev=5000)
-                    
-                    # Verificar si los coeficientes son significativos
-                    significant = True
-                    param_idx = 0
-                    
-                    if terms[0] and param_idx < len(popt) and abs(popt[param_idx]) < threshold:
-                        significant = False
-                    param_idx += 1 if terms[0] else 0
-                    
-                    if terms[1] and param_idx < len(popt) and abs(popt[param_idx]) < threshold:
-                        significant = False
-                    param_idx += 1 if terms[1] else 0
-                    
-                    if terms[2] and param_idx < len(popt) and abs(popt[param_idx]) < threshold:
-                        significant = False
-                    
-                    if not significant:
-                        continue
-                    
-                    # Calcular R²
-                    y_pred = partial_poly(x, *popt)
-                    ss_res = np.sum((y - y_pred) ** 2)
-                    ss_tot = np.sum((y - np.mean(y)) ** 2)
-                    r_squared = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
-                    
-                    # Si es mejor que el anterior, actualizar
-                    if r_squared > best_r2:
-                        best_r2 = r_squared
-                        best_fit = partial_poly
-                        best_params = popt
+                    # Verificar si el coeficiente principal es significativo usando el umbral específico
+                    threshold = thresholds.get(order, 1e-10)
+                    if abs(coeffs[0]) > threshold:
+                        poly_func = np.poly1d(coeffs)
+                        y_pred = poly_func(x)
                         
-                except Exception:
-                    continue
-            
-            return best_complexity, best_r2, best_fit, best_params, terms if best_fit is not None else None
-
-        # Definir las funciones de ajuste
-        fit_functions = {
-            'O(N)': f_linear,
-            'O(N²)': f_quadratic,
-            'O(N log N)': f_nlogn,
-            'O(N³)': f_cubic,
-            'O(N⁴)': f_quartic,
-            'Polynomial': f_polynomial_complete
-        }
-
-        # Función para calcular el mejor ajuste
-        def find_best_fit(x, y, metric_name):
-            """Encuentra el mejor ajuste entre diferentes funciones"""
-            fits = {}
-            r_squared_values = {}
-            equations = {}
-            
-            # Probar ajuste polinómico completo
-            poly_complexity, poly_r2, poly_func, poly_params, poly_terms = complete_polynomial_fit(x, y)
-            
-            if poly_func is not None:
-                fits['Polynomial'] = (poly_params, None, poly_func(x, *poly_params))
-                r_squared_values['Polynomial'] = poly_r2
-                
-                # Reconstruir ecuación completa
-                full_params = [0, 0, 0, 0, 0]  # a, b, c, d, e
-                param_idx = 0
-                if poly_terms[0]:
-                    full_params[0] = poly_params[param_idx]
-                    param_idx += 1
-                if poly_terms[1]:
-                    full_params[1] = poly_params[param_idx]
-                    param_idx += 1
-                if poly_terms[2]:
-                    full_params[2] = poly_params[param_idx]
-                    param_idx += 1
-                if poly_terms[3]:
-                    full_params[3] = poly_params[param_idx]
-                    param_idx += 1
-                if poly_terms[4]:
-                    full_params[4] = poly_params[param_idx]
-                
-                equations['Polynomial'] = format_polynomial_equation(full_params)
-            
-            # Probar funciones simples
-            for name, func in fit_functions.items():
-                if name == 'Polynomial':  # Ya probado
-                    continue
-                try:
-                    if len(x) >= 2:
-                        popt, pcov = curve_fit(func, x, y, maxfev=5000)
-                        y_pred = func(x, *popt)
-                        
+                        # Calcular R²
                         ss_res = np.sum((y - y_pred) ** 2)
                         ss_tot = np.sum((y - np.mean(y)) ** 2)
                         r_squared = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
                         
-                        fits[name] = (popt, pcov, y_pred)
-                        r_squared_values[name] = r_squared
+                        # Generar ecuación (usando el mismo umbral para todos los términos)
+                        equation_parts = []
+                        for i, coef in enumerate(coeffs):
+                            power = order - i
+                            if abs(coef) > threshold:
+                                if power == 0:
+                                    equation_parts.append(f"({coef:.2e})")
+                                elif power == 1:
+                                    equation_parts.append(f"({coef:.2e})·N")
+                                else:
+                                    equation_parts.append(f"({coef:.2e})·N^{power}")
                         
-                        # Generar ecuación
-                        if name == 'O(N log N)':
-                            equations[name] = f"y = ({popt[0]:.2e})·N·log(N) + {popt[1]:.2e}"
+                        if equation_parts:
+                            equation = "y = " + " + ".join(equation_parts)
                         else:
-                            order = 1 if name == 'O(N)' else int(name.split('O(N')[1].split(')')[0]) if 'O(N²)' not in name else 2
-                            if order == 1:
-                                equations[name] = f"y = ({popt[0]:.2e})·N + {popt[1]:.2e}"
-                            else:
-                                equations[name] = f"y = ({popt[0]:.2e})·N^{order} + {popt[1]:.2e}"
-                except:
+                            equation = "y = 0"
+                        
+                        best_order = order
+                        best_equation = equation
+                        best_r2 = r_squared
+                        best_func = poly_func
+                        best_params = coeffs
+                        break  # Nos quedamos con el mayor orden válido
+                        
+                except Exception as e:
                     continue
             
-            # Encontrar el mejor ajuste
-            best_fit = None
-            best_r2 = -1
-            for name, r2 in r_squared_values.items():
-                if r2 > best_r2:
-                    best_r2 = r2
-                    best_fit = name
+            # 2. Si no hay polinomios válidos, probar O(N log N)
+            if best_order == 0:
+                try:
+                    if len(x) >= 2:
+                        popt, pcov = curve_fit(f_nlogn, x, y, maxfev=5000)
+                        
+                        # Verificar si el coeficiente principal es significativo
+                        threshold = thresholds.get(-1, 1e-6)
+                        if abs(popt[0]) > threshold:
+                            y_pred = f_nlogn(x, *popt)
+                            
+                            ss_res = np.sum((y - y_pred) ** 2)
+                            ss_tot = np.sum((y - np.mean(y)) ** 2)
+                            r_squared = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
+                            
+                            best_equation = f"y = ({popt[0]:.2e})·N·log(N) + {popt[1]:.2e}"
+                            best_r2 = r_squared
+                            best_order = -1  # Indicador para O(N log N)
+                            best_func = lambda N: f_nlogn(N, *popt)
+                            best_params = popt
+                except:
+                    pass
             
-            return best_fit, best_r2, fits, r_squared_values, equations
+            return best_order, best_equation, best_r2, best_func, best_params
 
-        # Encontrar mejores ajustes
-        best_fit_time, best_r2_time, fits_time, r2_values_time, equations_time = find_best_fit(x_fit, y_time_fit, "Time")
-        best_fit_instructions, best_r2_instructions, fits_instructions, r2_values_instructions, equations_instructions = find_best_fit(x_fit, y_instructions_fit, "Instructions")
+        # Encontrar mejores ajustes con umbrales específicos por orden
+        best_order_time, best_equation_time, best_r2_time, best_func_time, best_params_time = find_best_fit_only(x_fit, y_time_fit)
+        best_order_instructions, best_equation_instructions, best_r2_instructions, best_func_instructions, best_params_instructions = find_best_fit_only(x_fit, y_instructions_fit)
 
         # Crear gráficos
         fig, axes = plt.subplots(2, 1, figsize=(16, 12))
 
         # Colores para los ajustes
         colors = {
-            'O(N)': 'blue', 'O(N²)': 'green', 'O(N log N)': 'orange',
-            'O(N³)': 'red', 'O(N⁴)': 'brown', 'Polynomial': 'magenta'
+            1: 'blue', 
+            -1: 'orange',  # O(N log N)
+            2: 'green', 
+            3: 'red', 
+            4: 'brown'
         }
 
         # 1. Ajuste de complejidad computacional (instrucciones)
         if len(x_fit) > 0:
             # Graficar puntos reales
             for i, (resol, x_val, y_val) in enumerate(zip(available_resolutions, x_fit, y_instructions_fit)):
-                axes[0].scatter(x_val, y_val, color='purple', s=50, alpha=0.7, label='Data points' if i == 0 else "")
+                axes[0].scatter(x_val, y_val, color='purple', s=50, alpha=0.7)
 
             xx = np.linspace(min(x_fit), max(x_fit), 500)
             
-            # Graficar solo el MEJOR ajuste
-            if best_fit_instructions and best_fit_instructions in fits_instructions:
-                if best_fit_instructions == 'Polynomial':
-                    # Para polinomio completo
-                    poly_complexity, _, poly_func, poly_params, _ = complete_polynomial_fit(x_fit, y_instructions_fit)
-                    y_best_fit = poly_func(xx, *poly_params)
-                else:
-                    popt = fits_instructions[best_fit_instructions][0]
-                    y_best_fit = fit_functions[best_fit_instructions](xx, *popt)
-                
-                label = f'Best Fit: {best_fit_instructions} (R²={best_r2_instructions:.3f})'
-                color = colors.get(best_fit_instructions, 'red')
-                
-                axes[0].plot(xx, y_best_fit, '-', color=color, label=label, linewidth=3)
+            # Graficar solo el MEJOR ajuste usando la misma función que se usó para generar la ecuación
+            if best_order_instructions != 0 and best_func_instructions is not None:
+                color = colors.get(best_order_instructions, 'black')
+                y_fit = best_func_instructions(xx)
+                axes[0].plot(xx, y_fit, '-', color=color, linewidth=3)
 
             # Añadir ecuación
-            if best_fit_instructions in equations_instructions:
-                eq_text = equations_instructions[best_fit_instructions]
-                axes[0].text(0.02, 0.98, f'Equation: {eq_text}', 
+            if best_order_instructions != 0:
+                # Mostrar el orden en el texto
+                order_names = {-1: "O(N log N)", 1: "O(N)", 2: "O(N²)", 3: "O(N³)", 4: "O(N⁴)"}
+                order_name = order_names.get(best_order_instructions, f"O(N^{best_order_instructions})")
+                
+                axes[0].text(0.02, 0.98, f'Best Fit: {order_name}\nEquation: {best_equation_instructions}\nR² = {best_r2_instructions:.3f}', 
                             transform=axes[0].transAxes, verticalalignment='top',
                             bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8),
-                            fontsize=9)
+                            fontsize=10)
+            else:
+                axes[0].text(0.02, 0.98, 'No significant fit found', 
+                            transform=axes[0].transAxes, verticalalignment='top',
+                            bbox=dict(boxstyle='round', facecolor='yellow', alpha=0.8),
+                            fontsize=10)
 
             axes[0].set_xlabel('Number of pixels (N)')
             axes[0].set_ylabel('Instructions')
-            axes[0].set_title(f'Computational complexity fit\n(Best: {best_fit_instructions}, R²={best_r2_instructions:.3f})')
-            axes[0].legend()
+            axes[0].set_title('Computational complexity fit')
             axes[0].grid(True, linestyle='--', alpha=0.6)
 
         # 2. Ajuste de complejidad temporal (tiempo)
         if len(x_fit) > 0:
             # Graficar puntos reales
             for i, (resol, x_val, y_val) in enumerate(zip(available_resolutions, x_fit, y_time_fit)):
-                axes[1].scatter(x_val, y_val, color='red', s=50, alpha=0.7, label='Data points' if i == 0 else "")
+                axes[1].scatter(x_val, y_val, color='red', s=50, alpha=0.7)
                 
             xx = np.linspace(min(x_fit), max(x_fit), 500)
             
-            # Graficar solo el MEJOR ajuste
-            if best_fit_time and best_fit_time in fits_time:
-                if best_fit_time == 'Polynomial':
-                    # Para polinomio completo
-                    poly_complexity, _, poly_func, poly_params, _ = complete_polynomial_fit(x_fit, y_time_fit)
-                    y_best_fit = poly_func(xx, *poly_params)
-                else:
-                    popt = fits_time[best_fit_time][0]
-                    y_best_fit = fit_functions[best_fit_time](xx, *popt)
-                
-                label = f'Best Fit: {best_fit_time} (R²={best_r2_time:.3f})'
-                color = colors.get(best_fit_time, 'red')
-                
-                axes[1].plot(xx, y_best_fit, '-', color=color, label=label, linewidth=3)
+            # Graficar solo el MEJOR ajuste usando la misma función que se usó para generar la ecuación
+            if best_order_time != 0 and best_func_time is not None:
+                color = colors.get(best_order_time, 'black')
+                y_fit = best_func_time(xx)
+                axes[1].plot(xx, y_fit, '-', color=color, linewidth=3)
 
             # Añadir ecuación
-            if best_fit_time in equations_time:
-                eq_text = equations_time[best_fit_time]
-                axes[1].text(0.02, 0.98, f'Equation: {eq_text}', 
+            if best_order_time != 0:
+                # Mostrar el orden en el texto
+                order_names = {-1: "O(N log N)", 1: "O(N)", 2: "O(N²)", 3: "O(N³)", 4: "O(N⁴)"}
+                order_name = order_names.get(best_order_time, f"O(N^{best_order_time})")
+                
+                axes[1].text(0.02, 0.98, f'Best Fit: {order_name}\nEquation: {best_equation_time}\nR² = {best_r2_time:.3f}', 
                             transform=axes[1].transAxes, verticalalignment='top',
                             bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8),
-                            fontsize=9)
+                            fontsize=10)
+            else:
+                axes[1].text(0.02, 0.98, 'No significant fit found', 
+                            transform=axes[1].transAxes, verticalalignment='top',
+                            bbox=dict(boxstyle='round', facecolor='yellow', alpha=0.8),
+                            fontsize=10)
 
             axes[1].set_xlabel('Number of pixels (N)')
             axes[1].set_ylabel('Time (s)')
-            axes[1].set_title(f'Time complexity fit\n(Best: {best_fit_time}, R²={best_r2_time:.3f})')
-            axes[1].legend()
+            axes[1].set_title('Time complexity fit')
             axes[1].grid(True, linestyle='--', alpha=0.6)
 
         plt.tight_layout()
