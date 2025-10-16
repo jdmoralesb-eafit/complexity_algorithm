@@ -1,0 +1,9 @@
+# Core dependencies
+numpy=1.21.0
+Pillow=9.0.0
+matplotlib=3.5.0
+scipy=1.7.0
+
+# Note tkinter is included with Python standard library
+# If tkinter is not available, install python3-tk on Linux
+# sudo apt-get install python3-tk
