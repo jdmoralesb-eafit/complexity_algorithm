@@ -42,7 +42,6 @@ This system provides an automated framework for **experimental evaluation of com
 ### Prerequisites
 
 - **Operating System**: Linux or Windows with WSL2
-- **Python**: 3.7+ (preinstalled in most WSL Ubuntu distributions)
 - **Administrator Access**: Required for WSL installation on Windows
 
 ### For Windows Users: WSL Setup (Required)
