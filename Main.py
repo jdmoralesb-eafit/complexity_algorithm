@@ -16,7 +16,8 @@ from scipy.optimize import curve_fit
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 import collections
 import dis
-
+import types
+import importlib
 # --- Funciones existentes ---
 def detect_dependencies(code: str):
     imports = re.findall(r'^\s*(?:from|import)\s+([a-zA-Z0-9_\.]+)', code, re.MULTILINE)
@@ -93,7 +94,7 @@ def measure_function_perf(func_import_path: str, func_call: str, repetitions: in
         # Si no hay archivo seleccionado, ejecutar normalmente
         all_results = []
         for rep in range(repetitions):
-            result = execute_perf_measurement("", func_call, selected_file_path)
+            result = execute_perf_measurement("", func_call, None)  # Sin imagen
             all_results.append(("Single execution", [result]))
         return all_results
     
@@ -110,9 +111,9 @@ def measure_function_perf(func_import_path: str, func_call: str, repetitions: in
     # Extraer el nombre de la función
     func_name_match = re.search(r'^(\w+)\(', func_call)
     if not func_name_match:
-        # Ejecución normal
+        # Ejecución normal SIN imagen
         for rep in range(repetitions):
-            result = execute_perf_measurement(module_code, func_call, selected_file_path)
+            result = execute_perf_measurement(module_code, func_call, None)
             all_results.append(("Single execution", [result]))
         return all_results
     
@@ -147,9 +148,9 @@ def measure_function_perf(func_import_path: str, func_call: str, repetitions: in
                 
                 return all_results
     
-    # Ejecución normal si no es un directorio
+    # Ejecución normal si no es un directorio - SIN imagen
     for rep in range(repetitions):
-        result = execute_perf_measurement(module_code, func_call, selected_file_path)
+        result = execute_perf_measurement(module_code, func_call, None)
         all_results.append(("Single execution", [result]))
     
     return all_results
@@ -252,7 +253,7 @@ def process_images_in_folder(folder_path: str, param_name: str, original_param_v
                             f"{param_name}=r'{file_path_full}'"
                         )
                     
-                    result = execute_perf_measurement(module_code, file_func_call, file_path)
+                    result = execute_perf_measurement(module_code, file_func_call, file_path_full)
                     file_results.append(result)
                 
                 all_results.append((relative_path, file_results))
@@ -282,7 +283,7 @@ def process_subfolders(folder_path: str, param_name: str, original_param_value: 
                 f"{param_name}=r'{subfolder_path}'"
             )
             
-            result = execute_perf_measurement(module_code, folder_func_call, file_path)
+            result = execute_perf_measurement(module_code, folder_func_call, subfolder_path)
             folder_results.append(result)
         
         all_results.append((folder, folder_results))
@@ -294,6 +295,9 @@ def execute_perf_measurement(module_code: str, func_call: str, file_path: str):
     file_dir = os.path.dirname(file_path) if file_path else os.getcwd()
     file_dir = file_dir.replace('\\', '/')
     file_dir_wsl = convert_windows_path_to_wsl(file_dir)
+
+    # Convertir la ruta de la imagen a WSL
+    image_path_wsl = convert_windows_path_to_wsl(file_path) if file_path else ""
 
     # NO convertir rutas aquí - ya se hizo en run_analysis
     # Solo asegurarnos de que las rutas de Windows se conviertan a WSL
@@ -320,8 +324,27 @@ def execute_perf_measurement(module_code: str, func_call: str, file_path: str):
         module_code,
         "",
         "if __name__ == '__main__':",
-        f"    result = {modified_func_call}"
     ]
+    
+    # Si hay una ruta de imagen, cargarla directamente y mostrar dimensiones
+    if file_path and image_path_wsl:
+        code_lines.extend([
+            "    # Obtener dimensiones de la imagen",
+            "    try:",
+            f"        img = Image.open(r'{image_path_wsl}')",
+            "        w, h = img.size",
+            "        print(f'IMAGE_DIMENSIONS: {w}x{h}')",
+            "    except Exception as e:",
+            "        print(f'IMAGE_DIMENSIONS_ERROR: {e}')",
+            f"    result = {modified_func_call}"
+        ])
+    else:
+        # Si no hay ruta de imagen, ejecutar directamente
+        code_lines.extend([
+            f"    result = {modified_func_call}",
+            "    print('IMAGE_DIMENSIONS: No image path provided')"
+        ])
+
     temp_code = "\n".join(code_lines)
 
     # --- Guardar directamente en /tmp dentro de WSL ---
@@ -332,10 +355,11 @@ def execute_perf_measurement(module_code: str, func_call: str, file_path: str):
 
     # --- Ejecutar con perf ---
     if platform.system() == "Windows":
+        # Ya no necesitamos pasar argumentos porque la imagen se carga directamente
         bash_command = (
             f"cd /tmp && "
-            f"env -i PATH=/usr/lib/linux-tools-6.8.0-79:/usr/lib/linux-tools-6.8.0-79-generic:/usr/bin:/bin "
-            f"perf stat -e cycles,instructions,cache-references,cache-misses python3 {shlex.quote(wsl_tmp_path)} 2>&1"
+            f"perf stat -e cycles,instructions,cache-references,cache-misses python3 {shlex.quote(wsl_tmp_path)} 2>&1 | "
+            f"grep -v 'WARNING: perf not found for kernel'"
         )
         cmd = ["wsl", "bash", "-c", bash_command]
     else:
@@ -391,7 +415,7 @@ def remove_main_block(code: str) -> str:
 class PerformanceAnalyzerApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Performance and Complexity Analizer")
+        self.root.title("Performance and Complexity Analyzer")
         self.root.geometry("900x700")
         
         self.function_module = None
@@ -403,7 +427,12 @@ class PerformanceAnalyzerApp:
         self.current_figure = None
         self.current_fit_data = None
         self.current_txt_file = None
-
+        
+        # Inicializar lista para múltiples archivos
+        self.loaded_txt_files = []  # Lista para múltiples archivos
+        self.current_figures = {}   # Diccionario para figuras por archivo
+        self.current_fit_data = {}  # Diccionario para datos de ajuste
+        
         self.setup_ui()
         
     def setup_ui(self):
@@ -482,26 +511,35 @@ class PerformanceAnalyzerApp:
         control_frame = ttk.Frame(main_frame)
         control_frame.pack(fill='x', pady=10)
         
-        # Botón para cargar archivo
-        ttk.Button(control_frame, text="Load Results File", 
-                  command=self.load_results_file).pack(side=tk.LEFT, padx=5)
+        # Botón para cargar archivos
+        ttk.Button(control_frame, text="Load Results Files", 
+                command=self.load_results_file).pack(side=tk.LEFT, padx=5)
         
-        # Botón para generar gráficos
-        ttk.Button(control_frame, text="Generate Plots", 
-                  command=self.generate_plots).pack(side=tk.LEFT, padx=5)
+        # Botón para generar gráficos (ahora lo referenciamos)
+        self.generate_btn = ttk.Button(control_frame, text="Generate Plots", 
+                                    command=self.generate_plots)
+        self.generate_btn.pack(side=tk.LEFT, padx=5)
         
-        # Botón para descargar gráfico (inicialmente deshabilitado)
+        # Botón para limpiar archivos (nuevo)
+        self.clear_btn = ttk.Button(control_frame, text="Clear Files", 
+                                command=self.clear_loaded_files)
+        self.clear_btn.pack(side=tk.LEFT, padx=5)
+        
+        # Botón para descargar gráfico
         self.download_btn = ttk.Button(control_frame, text="Download Plot", 
-                                      command=self.download_plot, state="disabled")
+                                    command=self.download_plot, state="disabled")
         self.download_btn.pack(side=tk.LEFT, padx=5)
         
-        # Label para mostrar archivo cargado
-        self.file_label = ttk.Label(control_frame, text="No file loaded")
-        self.file_label.pack(side=tk.LEFT, padx=10)
+        # Label para mostrar archivos cargados
+        self.file_label = ttk.Label(control_frame, text="No files loaded", justify=tk.LEFT)
+        self.file_label.pack(side=tk.LEFT, padx=10, fill='x', expand=True)
         
         # Frame para gráficos
         self.plot_frame = ttk.Frame(main_frame)
         self.plot_frame.pack(fill='both', expand=True)
+        
+        # Inicializar estado de botones
+        self.update_buttons_state()
         
     def browse_python_file(self):
         filepath = filedialog.askopenfilename(
@@ -731,7 +769,7 @@ class PerformanceAnalyzerApp:
                     # Ejecutar para esta imagen
                     image_results = []
                     for rep in range(self.repetitions_var.get()):
-                        result = execute_perf_measurement(module_code, modified_func_call, self.file_path.get())
+                        result = execute_perf_measurement(module_code, modified_func_call, image_path)
                         image_results.append(result)
                     
                     folder_results.append((os.path.basename(image_path), image_results))
@@ -789,18 +827,63 @@ class PerformanceAnalyzerApp:
         self.root.update_idletasks()
         
     def load_results_file(self):
-        filepath = filedialog.askopenfilename(
-            title="Select results file",
+        """Cargar archivo de resultados a la lista"""
+        filepaths = filedialog.askopenfilenames(
+            title="Select results files",
             filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
         )
-        if filepath:
-            self.current_txt_file = filepath
-            self.file_label.config(text=f"File: {os.path.basename(filepath)}")
-            
-            # Detectar tipo de archivo
-            file_type = self.detect_file_type(filepath)
-            self.log_message(f"File detected as: {file_type}")
         
+        if filepaths:
+            for filepath in filepaths:
+                if filepath not in self.loaded_txt_files:
+                    self.loaded_txt_files.append(filepath)
+                    self.log_message(f"Loaded: {os.path.basename(filepath)}")
+                    
+            self.update_file_list_display()
+            
+            # Habilitar botones que requieren archivos
+            self.update_buttons_state()
+
+    def clear_loaded_files(self):
+        """Limpiar lista de archivos cargados"""
+        if self.loaded_txt_files:
+            file_list = ", ".join([os.path.basename(f) for f in self.loaded_txt_files])
+            self.loaded_txt_files.clear()
+            self.update_file_list_display()
+            self.update_buttons_state()
+            
+            # Limpiar también el área de gráficos
+            for widget in self.plot_frame.winfo_children():
+                widget.destroy()
+                
+            self.current_figure = None
+            self.current_fit_data = None
+            
+            self.log_message(f"Cleared files: {file_list}")
+        else:
+            self.log_message("No files to clear")
+
+    def update_file_list_display(self):
+        """Actualizar display de archivos cargados"""
+        if self.loaded_txt_files:
+            file_list = "\n".join([f"• {os.path.basename(f)}" for f in self.loaded_txt_files])
+            self.file_label.config(text=f"Files loaded: {len(self.loaded_txt_files)}\n{file_list}")
+        else:
+            self.file_label.config(text="No files loaded")
+
+    def update_buttons_state(self):
+        """Actualizar estado de los botones según los archivos cargados"""
+        has_files = len(self.loaded_txt_files) > 0
+        
+        # Botón de generar gráficos - solo habilitado si hay archivos
+        self.generate_btn.config(state="normal" if has_files else "disabled")
+        
+        # Botón de descarga - solo habilitado si hay un gráfico actual
+        has_plot = hasattr(self, 'current_figure') and self.current_figure is not None
+        self.download_btn.config(state="normal" if has_plot else "disabled")
+        
+        # Botón de limpiar - siempre habilitado, pero podría cambiar
+        self.clear_btn.config(state="normal")
     def detect_file_type(self, filepath):
         """Detecta si el archivo es de performance o de bytecodes"""
         try:
@@ -832,30 +915,102 @@ class PerformanceAnalyzerApp:
         except Exception as e:
             self.log_message(f"Error detecting file type: {e}")
             return "unknown"
-
+    def reload_create_performance_plots(self):
+        """Recarga solo la función create_performance_plots del archivo actual"""
+        try:
+            # Leer el archivo actual
+            current_file = __file__
+            with open(current_file, 'r', encoding='utf-8') as f:
+                current_code = f.read()
+            
+            # Extraer y recompilar la función
+            function_code = self.extract_single_function(current_code, 'create_performance_plots')
+            
+            if function_code:
+                # Crear un nuevo contexto de ejecución
+                context = {}
+                exec(function_code, context)
+                
+                # Reemplazar la función en la instancia actual
+                self.create_performance_plots = types.MethodType(
+                    context['create_performance_plots'], 
+                    self
+                )
+                self.log_message("Función create_performance_plots recargada exitosamente")
+                
+        except Exception as e:
+            self.log_message(f"Error recargando función: {e}")
+    
+    def extract_single_function(self, full_code, function_name):
+        """Extrae el código de una función específica del archivo"""
+        lines = full_code.split('\n')
+        function_lines = []
+        in_function = False
+        base_indent = 0
+        
+        for i, line in enumerate(lines):
+            # Buscar el inicio de la función
+            if line.strip().startswith(f'def {function_name}('):
+                in_function = True
+                function_lines.append(line)
+                base_indent = len(line) - len(line.lstrip())
+                continue
+            
+            if in_function:
+                # Si encontramos otra función al mismo nivel, terminar
+                if (line.strip() and 
+                    not line.strip().startswith('#') and 
+                    not line.strip().startswith('@') and
+                    len(line) - len(line.lstrip()) == base_indent and
+                    line.strip().startswith('def ')):
+                    break
+                
+                # Si encontramos el final de la clase o otro elemento importante
+                if (line.strip().startswith('class ') or 
+                    (line.strip() and len(line) - len(line.lstrip()) < base_indent)):
+                    break
+                
+                function_lines.append(line)
+        
+        return '\n'.join(function_lines) if function_lines else None
+    
     def generate_plots(self):
-        """Generar gráficos a partir del archivo de resultados"""
-        if not hasattr(self, 'current_txt_file'):
-            messagebox.showerror("Error", "You must load a results file first")
+        """Generar gráficos a partir de los archivos de resultados cargados"""
+        if not self.loaded_txt_files:
+            messagebox.showerror("Error", "You must load at least one results file first")
             return
             
         try:
-            # Detectar tipo de archivo
-            file_type = self.detect_file_type(self.current_txt_file)
-            
             # Limpiar área de gráficos
             for widget in self.plot_frame.winfo_children():
                 widget.destroy()
+            
+            # Lista para almacenar resultados de análisis
+            analysis_results = []
+            
+            # Analizar cada archivo cargado
+            for txt_file in self.loaded_txt_files:
+                # Detectar tipo de archivo
+                file_type = self.detect_file_type(txt_file)
                 
-            # Crear figura de matplotlib según el tipo
-            if file_type == "performance":
-                fig, fit_data = self.create_performance_plots(self.current_txt_file)
-            else:
-                messagebox.showerror("Error", "Unrecognized file type")
+                if file_type == "performance":
+                    # Usar la nueva función de análisis
+                    analysis_data = self.analyze_performance_data(txt_file)
+                    analysis_results.append(analysis_data)
+                    self.log_message(f"Analyzed: {os.path.basename(txt_file)}")
+                else:
+                    self.log_message(f"Unrecognized file type for {os.path.basename(txt_file)}")
+                    continue
+            
+            if not analysis_results:
+                messagebox.showerror("Error", "No valid performance data found in loaded files")
                 return
-                
+            
+            # Crear gráficos combinados usando la nueva función
+            fig, fit_data = self.create_performance_plots(analysis_results)
+            
             if fig is None:
-                messagebox.showerror("Error", "Could not extract data from the results file")
+                messagebox.showerror("Error", "Could not generate plots from the analyzed data")
                 return
                 
             # Mostrar en la interfaz
@@ -869,12 +1024,15 @@ class PerformanceAnalyzerApp:
             
             # Guardar referencia para posible descarga
             self.current_figure = fig
-            self.current_fit_data = fit_data
+            self.current_fit_data = fit_data  # Esto ahora contiene todos los analysis_results
             
             # Habilitar botón de descarga
             self.download_btn.config(state="normal")
             
-            self.log_message(f"{file_type} plots generated successfully")
+            # Mostrar resumen en el log
+            num_files = len(analysis_results)
+            file_types = "performance"
+            self.log_message(f"{file_types} plots generated for {num_files} files successfully")
             
         except Exception as e:
             error_msg = f"Error generating plots: {str(e)}"
@@ -932,36 +1090,6 @@ class PerformanceAnalyzerApp:
         except Exception as e:
             messagebox.showerror("Error", f"Error saving plot: {str(e)}")
     
-    def parse_results_file(self, filepath):
-        # Implementar el parsing del archivo de resultados
-        # Esto es un placeholder - necesitarás implementar el parsing real
-        results = {
-            'cycles': [],
-            'instructions': [],
-            'cache_references': [],
-            'cache_misses': []
-        }
-        
-        with open(filepath, 'r', encoding='utf-8') as f:
-            content = f.read()
-            
-            # Extraer métricas usando expresiones regulares
-            cycles_matches = re.findall(r'(\d+,\d+|\d+)\s+cycles', content)
-            instructions_matches = re.findall(r'(\d+,\d+|\d+)\s+instructions', content)
-            cache_ref_matches = re.findall(r'(\d+,\d+|\d+)\s+cache-references', content)
-            cache_miss_matches = re.findall(r'(\d+,\d+|\d+)\s+cache-misses', content)
-            
-            # Convertir a números
-            for match in cycles_matches:
-                results['cycles'].append(int(match.replace(',', '')))
-            for match in instructions_matches:
-                results['instructions'].append(int(match.replace(',', '')))
-            for match in cache_ref_matches:
-                results['cache_references'].append(int(match.replace(',', '')))
-            for match in cache_miss_matches:
-                results['cache_misses'].append(int(match.replace(',', '')))
-                
-        return results
 
     def log_message(self, message):
         """Mensaje de log para la pestaña principal"""
@@ -969,7 +1097,7 @@ class PerformanceAnalyzerApp:
         self.log_text.see(tk.END)
         self.root.update_idletasks()
         
-    def create_performance_plots(self, txt_file, save_path=None):
+    def analyze_performance_data(self, txt_file, save_path=None):
         """Crear gráficos de performance a partir de archivo TXT - Versión mejorada"""
         # Orden deseado de carpetas (resoluciones)
         resol_order = [
@@ -982,33 +1110,37 @@ class PerformanceAnalyzerApp:
         for r in resol_order:
             w, h = map(int, r.split("x"))
             resol_to_pixels[r] = w * h
-
         # Diccionarios para almacenar los datos
         data_cycles = defaultdict(list)
         data_instructions = defaultdict(list)
         data_cache_refs = defaultdict(list)
         data_cache_misses = defaultdict(list)
         data_time = defaultdict(list)
-
+        data_dimensions = defaultdict(list)
         # Expresiones regulares
         patterns = {
             'cycles': r'^\s*(\d+,\d+|\d+)\s+cycles:u',
             'instructions': r'^\s*(\d+,\d+|\d+)\s+instructions:u',
             'cache_refs': r'^\s*(\d+,\d+|\d+)\s+cache-references:u', 
             'cache_misses': r'^\s*(\d+,\d+|\d+)\s+cache-misses:u',
-            'time': r'^\s*([0-9]*\.[0-9]+)\s+seconds time elapsed'
+            'time': r'^\s*([0-9]*\.[0-9]+)\s+seconds time elapsed',
+            'dimensions': r'^IMAGE_DIMENSIONS:\s+(\d+)x(\d+)'  
         }
-        
         def parse_perf_line(line):
             """Parse una línea de output de perf y extrae las métricas"""
             metrics = {}
             for key, pattern in patterns.items():
                 match = re.search(pattern, line)
                 if match:
-                    val_str = match.group(1).replace(',', '')
-                    if key == 'time':
+                    if key == 'dimensions':
+                        # Para dimensiones, capturamos dos grupos
+                        metrics['width'] = int(match.group(1))
+                        metrics['height'] = int(match.group(2))
+                    elif key == 'time':
+                        val_str = match.group(1).replace(',', '')
                         metrics[key] = float(val_str)
                     else:
+                        val_str = match.group(1).replace(',', '')
                         metrics[key] = float(val_str)
             return metrics
 
@@ -1047,6 +1179,12 @@ class PerformanceAnalyzerApp:
                     data_time[current_folder].append(metrics['time'])
                 in_perf_block = False
             
+            # NUEVO: Capturar dimensiones (puede estar fuera del bloque perf)
+            elif "IMAGE_DIMENSIONS:" in line and current_folder:
+                metrics = parse_perf_line(line)
+                if 'width' in metrics and 'height' in metrics:
+                    data_dimensions[current_folder].append((metrics['width'], metrics['height']))
+            
             elif in_perf_block and current_folder:
                 metrics = parse_perf_line(line)
                 if metrics:
@@ -1058,15 +1196,40 @@ class PerformanceAnalyzerApp:
                         data_cache_refs[current_folder].append(metrics['cache_refs'])
                     if 'cache_misses' in metrics:
                         data_cache_misses[current_folder].append(metrics['cache_misses'])
+                    
         
-        # Calcular promedios por resolución
+        # Calcular pixeles totales por carpeta usando dimensiones REALES
+        folder_to_pixels = {}
+        cleaned_folder_names = {}  # Para mapear nombres limpios
+        
+        for folder in data_dimensions:
+            if data_dimensions[folder]:
+                # Limpiar el nombre de la carpeta
+                clean_name = folder.replace(' ===', '')
+                cleaned_folder_names[folder] = clean_name
+                
+                # Usar el promedio de dimensiones para esta carpeta
+                widths = [dim[0] for dim in data_dimensions[folder]]
+                heights = [dim[1] for dim in data_dimensions[folder]]
+                avg_width = np.mean(widths)
+                avg_height = np.mean(heights)
+                total_pixels = int(avg_width * avg_height)
+                folder_to_pixels[clean_name] = total_pixels  # Usar nombre limpio
+
+        # Si no hay dimensiones reales, usar las predefinidas como fallback
+        if not folder_to_pixels:
+            for r in resol_order:
+                w, h = map(int, r.split("x"))
+                folder_to_pixels[r] = w * h
+
+        # Calcular promedios por carpeta (no por resolución predefinida)
         def calculate_stats(data_dict):
             means = {}
             stds = {}
-            for resol in resol_order:
-                if resol in data_dict and data_dict[resol]:
-                    means[resol] = np.mean(data_dict[resol])
-                    stds[resol] = np.std(data_dict[resol])
+            for folder in data_dict:  # Cambiar: iterar sobre carpetas reales
+                if folder in data_dict and data_dict[folder]:
+                    means[folder] = np.mean(data_dict[folder])
+                    stds[folder] = np.std(data_dict[folder])
             return means, stds
 
         # Limpiar los nombres de las carpetas
@@ -1074,64 +1237,63 @@ class PerformanceAnalyzerApp:
             if name.endswith(' ==='):
                 return name[:-4]
             return name
-        
-        cleaned_data_cycles = {clean_folder_name(k): v for k, v in data_cycles.items()}
+
+        #cleaned_data_cycles = {clean_folder_name(k): v for k, v in data_cycles.items()}
         cleaned_data_instructions = {clean_folder_name(k): v for k, v in data_instructions.items()}
-        cleaned_data_cache_refs = {clean_folder_name(k): v for k, v in data_cache_refs.items()}
-        cleaned_data_cache_misses = {clean_folder_name(k): v for k, v in data_cache_misses.items()}
+        #cleaned_data_cache_refs = {clean_folder_name(k): v for k, v in data_cache_refs.items()}
+        #cleaned_data_cache_misses = {clean_folder_name(k): v for k, v in data_cache_misses.items()}
         cleaned_data_time = {clean_folder_name(k): v for k, v in data_time.items()}
-        
+
         # Usar los datos limpios
-        cycles_means, cycles_stds = calculate_stats(cleaned_data_cycles)
+        #cycles_means, cycles_stds = calculate_stats(cleaned_data_cycles)
         instructions_means, instructions_stds = calculate_stats(cleaned_data_instructions)
         time_means, time_stds = calculate_stats(cleaned_data_time)
 
-        # Determinar resoluciones disponibles
-        available_resolutions = [r for r in resol_order if r in time_means]
-        
-        if not available_resolutions:
-            available_resolutions = resol_order
+        # Determinar carpetas disponibles (todas las que tienen datos)
+        available_folders = list(time_means.keys())
 
-        # Preparar datos para ajuste de complejidad
-        x_fit = np.array([resol_to_pixels[r] for r in available_resolutions])
-        y_time_fit = np.array([time_means[r] for r in available_resolutions])
-        y_instructions_fit = np.array([instructions_means[r] for r in available_resolutions])
+        if not available_folders:
+            available_folders = list(folder_to_pixels.keys())
 
-        # Funciones de ajuste básicas
-        def f_linear(N, a, b): 
-            return a*N + b
+        # Preparar datos para ajuste de complejidad - USAR DIMENSIONES REALES
+        x_fit = np.array([folder_to_pixels[folder] for folder in available_folders])
+        y_time_fit = np.array([time_means[folder] for folder in available_folders])
+        y_instructions_fit = np.array([instructions_means[folder] for folder in available_folders])
 
-        def f_quadratic(N, a, b): 
-            return a*N**2 + b
+        def f_nlogn_2d(total_pixels, widths, heights, a, b):
+            # O(N×M × log(N)) para FFT 2D
+            # widths y heights son arrays con las dimensiones de cada imagen
+            N = widths  # Usamos el ancho como N
+            return a * total_pixels * np.log(N) + b
 
-        def f_nlogn(N, a, b): 
-            return a*N*np.log(N) + b
-
-        def f_cubic(N, a, b):
-            return a*N**3 + b
-
-        def f_quartic(N, a, b):
-            return a*N**4 + b
 
         # Función para encontrar solo el mejor ajuste (el de mayor orden válido)
-        def find_best_fit_only(x, y):
+        def find_best_fit_only(x, y, is_it_time, widths=None, heights=None):
             """Encuentra solo el mejor ajuste (mayor orden válido) con umbrales específicos por orden"""
             best_order = 0
             best_equation = ""
             best_r2 = 0
             best_func = None
             best_params = None
-            
-            # Umbrales específicos para cada orden
-            # Los órdenes más altos pueden tener coeficientes más pequeños pero aún significativos
-            thresholds = {
-                4: 1e-13,  # O(N⁴) - más estricto porque los coeficientes suelen ser muy pequeños
-                3: 9e-11,  # O(N³) 
-                2: 5e-7,   # O(N²)
-                1: 1e-31,   # O(N) - más permisivo
-                -1: 1e-31   # O(N log N) - mismo que O(N)
-            }
-            
+            if is_it_time:
+                # Umbrales específicos para cada orden
+                thresholds = {
+                    4: 1e-24,  # O(N⁴) 
+                    3: 1e-20,  # O(N³) 
+                    2: 5e-32,   # O(N²)
+                    1: 1e-32,   # O(N) - más permisivo
+                    -1: 1e-32,  # O(N log N) simple
+                    -2: 1e-32   # O(N×M log N) para FFT 2D
+                }
+            else:
+                thresholds = {
+                    4: 1e-13,  # O(N⁴) 
+                    3: 9e-11,  # O(N³) 
+                    2: 5e-7,   # O(N²)
+                    1: 1e-31,   # O(N) - más permisivo
+                    -1: 1e-31,  # O(N log N) simple
+                    -2: 1e-31   # O(N×M log N) para FFT 2D
+                }
             # 1. Probar polinomios de mayor a menor orden
             for order in range(4, 0, -1):
                 try:
@@ -1149,7 +1311,7 @@ class PerformanceAnalyzerApp:
                         ss_tot = np.sum((y - np.mean(y)) ** 2)
                         r_squared = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
                         
-                        # Generar ecuación (usando el mismo umbral para todos los términos)
+                        # Generar ecuación
                         equation_parts = []
                         for i, coef in enumerate(coeffs):
                             power = order - i
@@ -1176,117 +1338,156 @@ class PerformanceAnalyzerApp:
                 except Exception as e:
                     continue
             
-            # 2. Si no hay polinomios válidos, probar O(N log N)
-            if best_order == 0:
+            # 2. Si tenemos dimensiones, probar O(N×M log N) para FFT 2D
+            if best_order == 0 and widths is not None and heights is not None:
                 try:
                     if len(x) >= 2:
-                        popt, pcov = curve_fit(f_nlogn, x, y, maxfev=5000)
+                        # Para FFT 2D: O(N×M × log(N)) donde N es el ancho
+                        popt, pcov = curve_fit(lambda N, a, b: f_nlogn_2d(N, widths, heights, a, b), x, y, maxfev=5000)
                         
-                        # Verificar si el coeficiente principal es significativo
-                        threshold = thresholds.get(-1, 1e-6)
+                        threshold = thresholds.get(-2, 1e-6)
                         if abs(popt[0]) > threshold:
-                            y_pred = f_nlogn(x, *popt)
+                            y_pred = f_nlogn_2d(x, widths, heights, *popt)
                             
                             ss_res = np.sum((y - y_pred) ** 2)
                             ss_tot = np.sum((y - np.mean(y)) ** 2)
                             r_squared = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
                             
-                            best_equation = f"y = ({popt[0]:.2e})·N·log(N) + {popt[1]:.2e}"
+                            best_equation = f"y = ({popt[0]:.2e})·(N×M)·log(N) + {popt[1]:.2e}"
                             best_r2 = r_squared
-                            best_order = -1  # Indicador para O(N log N)
-                            best_func = lambda N: f_nlogn(N, *popt)
+                            best_order = -2  # Indicador para O(N×M log N)
+                            best_func = lambda N: f_nlogn_2d(N, widths, heights, *popt)
                             best_params = popt
                 except:
                     pass
             
             return best_order, best_equation, best_r2, best_func, best_params
 
-        # Encontrar mejores ajustes con umbrales específicos por orden
-        best_order_time, best_equation_time, best_r2_time, best_func_time, best_params_time = find_best_fit_only(x_fit, y_time_fit)
-        best_order_instructions, best_equation_instructions, best_r2_instructions, best_func_instructions, best_params_instructions = find_best_fit_only(x_fit, y_instructions_fit)
+        # Preparar arrays de dimensiones (widths y heights)
+        widths = np.array([])
+        heights = np.array([])
 
-        # Crear gráficos
+        # Llenar los arrays con las dimensiones de cada carpeta en el mismo orden que x_fit
+        for folder in available_folders:
+            if folder in data_dimensions and data_dimensions[folder]:
+                # Tomar la primera dimensión de cada carpeta (deberían ser todas iguales)
+                width, height = data_dimensions[folder][0]
+                widths = np.append(widths, width)
+                heights = np.append(heights, height)
+            else:
+                # Fallback si no hay dimensiones
+                widths = np.append(widths, np.sqrt(folder_to_pixels[folder]))  # Asume cuadrado
+                heights = np.append(heights, np.sqrt(folder_to_pixels[folder]))
+
+        # Encontrar mejores ajustes con dimensiones
+        best_order_time, best_equation_time, best_r2_time, best_func_time, best_params_time = find_best_fit_only(
+            x_fit, y_time_fit,True, widths, heights
+        )
+        best_order_instructions, best_equation_instructions, best_r2_instructions, best_func_instructions, best_params_instructions = find_best_fit_only(
+            x_fit, y_instructions_fit,False, widths, heights
+        )
+        analysis_result = {
+            'filename': os.path.basename(txt_file),
+            'filepath': txt_file,
+            'time_fit': {
+                'order': best_order_time,
+                'equation': best_equation_time,
+                'r2': best_r2_time,
+                'function': best_func_time,
+                'params': best_params_time
+            },
+            'instructions_fit': {
+                'order': best_order_instructions,
+                'equation': best_equation_instructions,
+                'r2': best_r2_instructions,
+                'function': best_func_instructions,
+                'params': best_params_instructions
+            },
+            'raw_data': {
+                'resolutions': available_folders,
+                'x_fit': x_fit,
+                'y_time_fit': y_time_fit,
+                'y_instructions_fit': y_instructions_fit,
+                'widths': widths,
+                'heights': heights
+            },
+            'metadata': {
+                'folder_to_pixels': folder_to_pixels,
+                'time_means': time_means,
+                'instructions_means': instructions_means,
+                'num_resolutions': len(available_folders)
+            }}
+        return analysis_result
+    def create_performance_plots(self, analysis_results, save_path=None):
+        """Crear gráficos de performance a partir de datos analizados"""
+        # analysis_results puede ser un solo dict o una lista de dicts
+        
+        # Si es un solo archivo, lo convertimos a lista
+        if isinstance(analysis_results, dict):
+            analysis_results = [analysis_results]
+        
+        # Crear figura
         fig, axes = plt.subplots(2, 1)
-
-        # Colores para los ajustes
-        colors = {
+        
+        # Colores para diferentes archivos
+        file_colors = ['blue', 'red', 'green', 'orange', 'purple', 'brown']
+        
+        # Colores para tipos de ajuste (si queremos mantener la lógica original)
+        fit_colors = {
             1: 'blue', 
-            -1: 'orange',  # O(N log N)
+            -1: 'orange',
             2: 'green', 
             3: 'red', 
             4: 'brown'
         }
-
-        # 1. Ajuste de complejidad computacional (instrucciones)
-        if len(x_fit) > 0:
-            # Graficar puntos reales
-            for i, (resol, x_val, y_val) in enumerate(zip(available_resolutions, x_fit, y_instructions_fit)):
-                axes[0].scatter(x_val, y_val, color='purple', s=50, alpha=0.7)
-
-            xx = np.linspace(min(x_fit), max(x_fit), 500)
+        
+        # Para cada archivo analizado
+        for idx, analysis_data in enumerate(analysis_results):
+            color = file_colors[idx % len(file_colors)]
+            filename = analysis_data['filename']
+            raw_data = analysis_data['raw_data']
+            time_fit = analysis_data['time_fit']
+            instructions_fit = analysis_data['instructions_fit']
             
-            # Graficar solo el MEJOR ajuste usando la misma función que se usó para generar la ecuación
-            if best_order_instructions != 0 and best_func_instructions is not None:
-                color = colors.get(best_order_instructions, 'black')
-                y_fit = best_func_instructions(xx)
-                axes[0].plot(xx, y_fit, '-', color=color, linewidth=3)
-
-            # Añadir ecuación
-            if best_order_instructions != 0:
-                # Mostrar el orden en el texto
-                order_names = {-1: "O(N log N)", 1: "O(N)", 2: "O(N²)", 3: "O(N³)", 4: "O(N⁴)"}
-                order_name = order_names.get(best_order_instructions, f"O(N^{best_order_instructions})")
-                
-                axes[0].text(0.02, 0.98, f'Best Fit: {order_name}\nEquation: {best_equation_instructions}\nR² = {best_r2_instructions:.3f}', 
-                            transform=axes[0].transAxes, verticalalignment='top',
-                            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8),
-                            fontsize=10)
-            else:
-                axes[0].text(0.02, 0.98, 'No significant fit found', 
-                            transform=axes[0].transAxes, verticalalignment='top',
-                            bbox=dict(boxstyle='round', facecolor='yellow', alpha=0.8),
-                            fontsize=10)
-
-            axes[0].set_xlabel('Number of pixels (N)')
-            axes[0].set_ylabel('Instructions')
-            axes[0].set_title('Computational complexity fit')
-            axes[0].grid(True, linestyle='--', alpha=0.6)
-
-        # 2. Ajuste de complejidad temporal (tiempo)
-        if len(x_fit) > 0:
-            # Graficar puntos reales
-            for i, (resol, x_val, y_val) in enumerate(zip(available_resolutions, x_fit, y_time_fit)):
-                axes[1].scatter(x_val, y_val, color='red', s=50, alpha=0.7)
-                
-            xx = np.linspace(min(x_fit), max(x_fit), 500)
+            x_fit = raw_data['x_fit']
+            y_time_fit = raw_data['y_time_fit']
+            y_instructions_fit = raw_data['y_instructions_fit']
             
-            # Graficar solo el MEJOR ajuste usando la misma función que se usó para generar la ecuación
-            if best_order_time != 0 and best_func_time is not None:
-                color = colors.get(best_order_time, 'black')
-                y_fit = best_func_time(xx)
-                axes[1].plot(xx, y_fit, '-', color=color, linewidth=3)
-
-            # Añadir ecuación
-            if best_order_time != 0:
-                # Mostrar el orden en el texto
-                order_names = {-1: "O(N log N)", 1: "O(N)", 2: "O(N²)", 3: "O(N³)", 4: "O(N⁴)"}
-                order_name = order_names.get(best_order_time, f"O(N^{best_order_time})")
-                
-                axes[1].text(0.02, 0.98, f'Best Fit: {order_name}\nEquation: {best_equation_time}\nR² = {best_r2_time:.3f}', 
-                            transform=axes[1].transAxes, verticalalignment='top',
-                            bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8),
-                            fontsize=10)
-            else:
-                axes[1].text(0.02, 0.98, 'No significant fit found', 
-                            transform=axes[1].transAxes, verticalalignment='top',
-                            bbox=dict(boxstyle='round', facecolor='yellow', alpha=0.8),
-                            fontsize=10)
-
-            axes[1].set_xlabel('Number of pixels (N)')
-            axes[1].set_ylabel('Time (s)')
-            axes[1].set_title('Time complexity fit')
-            axes[1].grid(True, linestyle='--', alpha=0.6)
-
+            # 1. Gráfico de instrucciones (subplot superior)
+            # Puntos reales
+            axes[0].scatter(x_fit, y_instructions_fit, color=color, s=50, alpha=0.7, label=filename)
+            
+            # Línea de ajuste
+            if instructions_fit['order'] != 0 and instructions_fit['function'] is not None:
+                xx = np.linspace(min(x_fit), max(x_fit), 500)
+                y_fit = instructions_fit['function'](xx)
+                fit_color = fit_colors.get(instructions_fit['order'], color)
+                axes[0].plot(xx, y_fit, '--', color=fit_color, linewidth=2, alpha=0.8)
+            
+            # 2. Gráfico de tiempo (subplot inferior)
+            # Puntos reales
+            axes[1].scatter(x_fit, y_time_fit, color=color, s=50, alpha=0.7, label=filename)
+            
+            # Línea de ajuste
+            if time_fit['order'] != 0 and time_fit['function'] is not None:
+                xx = np.linspace(min(x_fit), max(x_fit), 500)
+                y_fit = time_fit['function'](xx)
+                fit_color = fit_colors.get(time_fit['order'], color)
+                axes[1].plot(xx, y_fit, '--', color=fit_color, linewidth=2, alpha=0.8)
+        
+        # Configuración de los gráficos
+        axes[0].set_xlabel('Number of pixels (N)')
+        axes[0].set_ylabel('Instructions')
+        axes[0].set_title('Computational complexity fit')
+        axes[0].grid(True, linestyle='--', alpha=0.6)
+        axes[0].legend()
+        
+        axes[1].set_xlabel('Number of pixels (N)')
+        axes[1].set_ylabel('Time (s)')
+        axes[1].set_title('Time complexity fit')
+        axes[1].grid(True, linestyle='--', alpha=0.6)
+        axes[1].legend()
+        
         plt.tight_layout()
         
         # Guardado automático si se proporciona save_path
@@ -1297,29 +1498,8 @@ class PerformanceAnalyzerApp:
             except Exception as e:
                 self.log_message(f"Error al guardar automáticamente: {e}")
         
-        # Retornar figura y datos de los ajustes para el botón de descarga
-        fit_data = {
-            'time': {
-                'order': best_order_time,
-                'equation': best_equation_time,
-                'r2': best_r2_time,
-                'function': best_func_time,
-                'params': best_params_time
-            },
-            'instructions': {
-                'order': best_order_instructions,
-                'equation': best_equation_instructions,
-                'r2': best_r2_instructions,
-                'function': best_func_instructions,
-                'params': best_params_instructions
-            },
-            'resolutions': available_resolutions,
-            'x_fit': x_fit,
-            'y_time_fit': y_time_fit,
-            'y_instructions_fit': y_instructions_fit
-        }
-        
-        return fig, fit_data
+        return fig, analysis_results
+
 
     def on_closing(self):
         self.root.destroy()
