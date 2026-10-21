@@ -1,31 +1,55 @@
 import numpy as np
 
-def matrix_addition(matrix):
-    """
-    O(N^2) para matrices NxN
-    Suma una matriz consigo misma más una matriz de unos del mismo tamaño.
-    """
-    ones_matrix = np.ones_like(matrix)
-    return matrix + matrix + ones_matrix
 
-def matrix_multiplication(matrix):
+def process_nm(hologram):
     """
-    O(N^3) para matrices NxN (multiplicación ingenua)
-    Multiplica una matriz por sí misma.
+    O(N*M) — lineal en total de pixeles.
+    Operaciones elemento a elemento.
     """
-    return np.dot(matrix, matrix)
+    img = hologram.astype(np.float64)
+    result = np.sin(img) + np.cos(img)
+    result += img * 2.5 - np.mean(img)
+    result = np.sqrt(np.abs(result) + 1.0)
+    result = np.log1p(np.abs(result))
+    return result
 
-def triple_matrix_multiplication(matrix):
-    """
-    O(N^3) - similar a cubic_loops
-    Multiplica una matriz por sí misma tres veces.
-    """
-    return np.dot(np.dot(matrix, matrix), matrix)
 
-def compute_fft_matrix(matrix):
+def process_nm_logn(hologram):
     """
-    ~O(N^2 log N) para FFT 2D
-    Perform FFT 2D en la matriz de entrada.
+    O(N*M * log(N*M)) — FFT 2D + autocorrelacion + cepstrum.
     """
-    return np.fft.fft2(matrix)
+    img = hologram.astype(np.float64)
+    F = np.fft.fft2(img)
+    power = F * np.conj(F)
+    autocorr = np.fft.ifft2(power).real
+    log_spectrum = np.log1p(np.abs(F))
+    cepstrum = np.fft.ifft2(log_spectrum).real
+    return autocorr + cepstrum
 
+
+def process_nm2(hologram):
+    """
+    O(N * M^2) — Matriz de Gram (M x M) via producto img.T @ img.
+    Para imagenes cuadradas (N=M), equivale a O(N^3) = O(P^1.5).
+    """
+    img = hologram.astype(np.float64)
+    gram = img.T @ img
+    eigenvalues = np.linalg.eigvalsh(gram)
+    return np.sum(eigenvalues)
+
+
+def process_nm3(hologram):
+    """
+    O(N * M^3) — Para cada fila, multiplica la Gram matrix (M x M)
+    con el outer product de la fila. N iteraciones de matmul M x M.
+    Para imagenes cuadradas (N=M), equivale a O(N^4) = O(P^2).
+    """
+    img = hologram.astype(np.float64)
+    N, M = img.shape
+    gram = img.T @ img
+    total = 0.0
+    for i in range(N):
+        row_outer = np.outer(img[i], img[i])
+        product = gram @ row_outer
+        total += np.trace(product)
+    return total

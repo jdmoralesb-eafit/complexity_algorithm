@@ -1,0 +1,56 @@
+Hologram Simulation Summary
+===========================
+
+Parameters used:
+Wavelength: 0.633 µm
+Pixel size: 3.75 µm
+Magnification: 40.0x
+Numerical Aperture: 0.65
+Holograms per size: 10
+
+Results by size:
+--------------------------------------------------
+
+Size: 128x128
+  Average MSE: 1.758073 ± 0.238881
+  Average SSIM: 0.550539 ± 0.037922
+
+Size: 192x192
+  Average MSE: 1.402524 ± 0.559464
+  Average SSIM: 0.671135 ± 0.048601
+
+Size: 256x256
+  Average MSE: 0.271924 ± 0.062159
+  Average SSIM: 0.830382 ± 0.018417
+
+Size: 384x384
+  Average MSE: 0.837378 ± 0.342409
+  Average SSIM: 0.735791 ± 0.011697
+
+Size: 512x512
+  Average MSE: 1.015097 ± 0.422902
+  Average SSIM: 0.721883 ± 0.047601
+
+Size: 768x768
+  Average MSE: 1.994028 ± 0.402904
+  Average SSIM: 0.614746 ± 0.053579
+
+Size: 1024x1024
+  Average MSE: 1.787963 ± 0.284462
+  Average SSIM: 0.592978 ± 0.034393
+
+Size: 1536x1536
+  Average MSE: 0.149772 ± 0.002536
+  Average SSIM: 0.876743 ± 0.000321
+
+Size: 2048x2048
+  Average MSE: 0.291240 ± 0.104142
+  Average SSIM: 0.842876 ± 0.020920
+
+Size: 3072x3072
+  Average MSE: 0.787132 ± 0.287661
+  Average SSIM: 0.775395 ± 0.013146
+
+Size: 4096x4096
+  Average MSE: 1.236897 ± 0.517451
+  Average SSIM: 0.717925 ± 0.062061

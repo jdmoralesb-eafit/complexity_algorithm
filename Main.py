@@ -5,19 +5,21 @@ import re
 import shlex
 from PIL import Image
 import numpy as np
-import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
+import wx
+import wx.aui
 import inspect
 import importlib.util
 import sys
-import matplotlib.pyplot as plt
-from collections import defaultdict
-from scipy.optimize import curve_fit
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
-import collections
-import dis
-import types
+import matplotlib
+matplotlib.use("WXAgg")
+from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas, NavigationToolbar2WxAgg as NavigationToolbar
 import importlib
+import perf_protocol
+from visualizer_v2 import (
+    analyze_file, format_verdict_report, create_plots as create_plots_v2,
+    METRICS,
+)
+from complexity_fit import ShapeFilter
 # --- Funciones existentes ---
 def detect_dependencies(code: str):
     imports = re.findall(r'^\s*(?:from|import)\s+([a-zA-Z0-9_\.]+)', code, re.MULTILINE)
@@ -66,7 +68,8 @@ def verify_dependencies_once():
     from PIL import Image
     import math
     from math import pi
-    import matplotlib.pyplot as plt
+    import matplotlib
+matplotlib.use("WXAgg")
     from matplotlib.widgets import RectangleSelector
     import scipy.optimize
     from scipy import ndimage
@@ -102,9 +105,9 @@ def measure_function_perf(func_import_path: str, func_call: str, repetitions: in
         with open(selected_file_path, 'r', encoding='utf-8') as f:
             module_code = f.read()
     except FileNotFoundError:
-        return ["Error: Archivo no encontrado"] * repetitions
+        return ["Error: File not found"] * repetitions
     except Exception as e:
-        return [f"Error al leer archivo: {e}"] * repetitions
+        return [f"Error reading file: {e}"] * repetitions
     
     all_results = []
     
@@ -346,7 +349,10 @@ def execute_perf_measurement(module_code: str, func_call: str, file_path: str):
         ])
 
     temp_code = "\n".join(code_lines)
+    return execute_perf_code(temp_code)
 
+def execute_perf_code(temp_code: str) -> str:
+    """Ejecuta un script ya construido bajo perf stat y devuelve su salida."""
     # --- Guardar directamente en /tmp dentro de WSL ---
     wsl_tmp_path = f"/tmp/temp_perf_{os.getpid()}.py"
     
@@ -378,6 +384,17 @@ def execute_perf_measurement(module_code: str, func_call: str, file_path: str):
         os.remove(wsl_tmp_path)
 
     return (result.stdout or "") + "\n" + (result.stderr or "")
+
+def image_dims(path: str):
+    """(ancho, alto) de una imagen o .npy; None si no se puede leer."""
+    try:
+        if path.lower().endswith('.npy'):
+            shape = np.load(path, mmap_mode='r').shape
+            return int(shape[-1]), int(shape[0])
+        with Image.open(path) as img:
+            return img.size
+    except Exception:
+        return None
 
 def remove_main_block(code: str) -> str:
     """
@@ -412,255 +429,331 @@ def remove_main_block(code: str) -> str:
     return '\n'.join(processed_lines)
 
 # --- Nueva interfaz Tkinter ---
-class PerformanceAnalyzerApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Performance and Complexity Analyzer")
-        self.root.geometry("900x700")
-        
+FOLDER_TOOLTIP = "Select the folder containing the benchmark images"
+
+
+def msg_error(title, text):
+    wx.MessageBox(str(text), title, wx.OK | wx.ICON_ERROR)
+
+
+def msg_warning(title, text):
+    wx.MessageBox(str(text), title, wx.OK | wx.ICON_WARNING)
+
+
+def msg_info(title, text):
+    wx.MessageBox(str(text), title, wx.OK | wx.ICON_INFORMATION)
+
+
+class PerformanceAnalyzerApp(wx.Frame):
+    def __init__(self, parent):
+        super().__init__(parent, title="Performance and Complexity Analyzer", size=(900, 700))
+
         self.function_module = None
         self.function_info = None
         self.function_args = {}
-        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
+        self.function_flags = {}
 
         # Variables para almacenar la figura actual y datos
         self.current_figure = None
         self.current_fit_data = None
         self.current_txt_file = None
-        
+
         # Inicializar lista para múltiples archivos
         self.loaded_txt_files = []  # Lista para múltiples archivos
         self.current_figures = {}   # Diccionario para figuras por archivo
         self.current_fit_data = {}  # Diccionario para datos de ajuste
-        
+
+        self.CreateStatusBar()
+        self.setup_menus()
         self.setup_ui()
-        
+        self.Centre()
+
+    def setup_menus(self):
+        menubar = wx.MenuBar()
+
+        file_menu = wx.Menu()
+        open_item = file_menu.Append(wx.ID_OPEN, "Open Python File...\tCtrl+O")
+        load_item = file_menu.Append(wx.ID_ANY, "Load Results Files...\tCtrl+L")
+        file_menu.AppendSeparator()
+        exit_item = file_menu.Append(wx.ID_EXIT, "Exit")
+        menubar.Append(file_menu, "&File")
+
+        analysis_menu = wx.Menu()
+        self.run_item = analysis_menu.Append(wx.ID_ANY, "Run Analysis\tCtrl+R")
+        self.run_item.Enable(False)
+        plots_item = analysis_menu.Append(wx.ID_ANY, "Generate Plots\tCtrl+G")
+        menubar.Append(analysis_menu, "&Analysis")
+
+        self.SetMenuBar(menubar)
+        self.Bind(wx.EVT_MENU, self.browse_python_file, open_item)
+        self.Bind(wx.EVT_MENU, self.load_results_file, load_item)
+        self.Bind(wx.EVT_MENU, lambda e: self.Close(), exit_item)
+        self.Bind(wx.EVT_MENU, lambda e: self.run_analysis(), self.run_item)
+        self.Bind(wx.EVT_MENU, lambda e: self.generate_plots(), plots_item)
+
     def setup_ui(self):
         # Notebook (pestañas)
-        self.notebook = ttk.Notebook(self.root)
-        self.notebook.pack(fill='both', expand=True, padx=10, pady=10)
-        
+        self.notebook = wx.aui.AuiNotebook(self, style=wx.aui.AUI_NB_TOP | wx.aui.AUI_NB_TAB_MOVE)
+
         # Pestaña 1: Análisis de performance
-        self.analysis_frame = ttk.Frame(self.notebook)
-        self.notebook.add(self.analysis_frame, text="Analysis")
+        self.analysis_panel = wx.Panel(self.notebook)
+        self.notebook.AddPage(self.analysis_panel, "Analysis")
         self.setup_analysis_tab()
-        
+
         # Pestaña 2: Visualización de resultados
-        self.visualization_frame = ttk.Frame(self.notebook)
-        self.notebook.add(self.visualization_frame, text="Visualization")
+        self.visualization_panel = wx.Panel(self.notebook)
+        self.notebook.AddPage(self.visualization_panel, "Visualization")
         self.setup_visualization_tab()
-        
+
     def setup_analysis_tab(self):
-        # Frame principal de configuración
-        main_frame = ttk.Frame(self.analysis_frame)
-        main_frame.pack(fill='both', expand=True, padx=10, pady=10)
-        
-        # Configurar grid weights
-        main_frame.columnconfigure(1, weight=1)
-        
+        panel = self.analysis_panel
+        outer = wx.BoxSizer(wx.VERTICAL)
+
+        grid = wx.FlexGridSizer(cols=3, vgap=6, hgap=6)
+        grid.AddGrowableCol(1)
+
         # Selección de archivo Python
-        ttk.Label(main_frame, text="Python File:").grid(row=0, column=0, sticky=tk.W, pady=5)
-        self.file_path = tk.StringVar()
-        file_entry = ttk.Entry(main_frame, textvariable=self.file_path, width=50)
-        file_entry.grid(row=0, column=1, sticky=(tk.W, tk.E), padx=5, pady=5)
-        ttk.Button(main_frame, text="Browse", command=self.browse_python_file).grid(row=0, column=2, padx=5, pady=5)
-        
+        grid.Add(wx.StaticText(panel, label="Python File:"), 0, wx.ALIGN_CENTER_VERTICAL)
+        self.file_ctrl = wx.TextCtrl(panel)
+        grid.Add(self.file_ctrl, 1, wx.EXPAND)
+        browse_py = wx.Button(panel, label="Browse")
+        browse_py.Bind(wx.EVT_BUTTON, self.browse_python_file)
+        grid.Add(browse_py)
+
         # Selección de función
-        ttk.Label(main_frame, text="Function:").grid(row=1, column=0, sticky=tk.W, pady=5)
-        self.function_var = tk.StringVar()
-        function_combo = ttk.Combobox(main_frame, textvariable=self.function_var, state="readonly")
-        function_combo.grid(row=1, column=1, sticky=(tk.W, tk.E), padx=5, pady=5)
-        function_combo.bind('<<ComboboxSelected>>', self.on_function_selected)
-        self.function_combo = function_combo
-        
+        grid.Add(wx.StaticText(panel, label="Function:"), 0, wx.ALIGN_CENTER_VERTICAL)
+        self.function_combo = wx.Choice(panel)
+        self.function_combo.Bind(wx.EVT_CHOICE, self.on_function_selected)
+        grid.Add(self.function_combo, 1, wx.EXPAND)
+        grid.Add((0, 0))
+
+        outer.Add(grid, 0, wx.EXPAND | wx.ALL, 10)
+
         # Frame para parámetros
-        self.param_frame = ttk.LabelFrame(main_frame, text="Function Parameters", padding="10")
-        self.param_frame.grid(row=2, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=10)
-        self.param_frame.columnconfigure(1, weight=1)
-        
+        param_box = wx.StaticBoxSizer(wx.VERTICAL, panel, "Function Parameters")
+        self.param_panel = wx.Panel(param_box.GetStaticBox())
+        self.param_grid = wx.FlexGridSizer(cols=4, vgap=4, hgap=6)
+        self.param_grid.AddGrowableCol(1)
+        self.param_panel.SetSizer(self.param_grid)
+        param_box.Add(self.param_panel, 1, wx.EXPAND | wx.ALL, 5)
+        outer.Add(param_box, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 10)
+
         # Parámetros comunes
-        ttk.Label(main_frame, text="Repetitions:").grid(row=3, column=0, sticky=tk.W, pady=5)
-        self.repetitions_var = tk.IntVar(value=5)
-        ttk.Spinbox(main_frame, from_=1, to=20, textvariable=self.repetitions_var, width=10).grid(row=3, column=1, sticky=tk.W, padx=5, pady=5)
-        
-        ttk.Label(main_frame, text="Output file:").grid(row=4, column=0, sticky=tk.W, pady=5)
-        self.output_file_var = tk.StringVar(value="performance.txt")
-        ttk.Entry(main_frame, textvariable=self.output_file_var, width=50).grid(row=4, column=1, sticky=(tk.W, tk.E), padx=5, pady=5)
-        ttk.Button(main_frame, text="Browse", command=self.browse_output_file).grid(row=4, column=2, padx=5, pady=5)
-        
+        common = wx.FlexGridSizer(cols=3, vgap=6, hgap=6)
+        common.AddGrowableCol(1)
+
+        common.Add(wx.StaticText(panel, label="Repetitions:"), 0, wx.ALIGN_CENTER_VERTICAL)
+        self.repetitions_ctrl = wx.SpinCtrl(panel, min=1, max=20, initial=5, size=(80, -1))
+        common.Add(self.repetitions_ctrl)
+        common.Add((0, 0))
+
+        common.Add(wx.StaticText(panel, label="Output file:"), 0, wx.ALIGN_CENTER_VERTICAL)
+        self.output_ctrl = wx.TextCtrl(panel, value="performance.txt")
+        common.Add(self.output_ctrl, 1, wx.EXPAND)
+        browse_out = wx.Button(panel, label="Browse")
+        browse_out.Bind(wx.EVT_BUTTON, self.browse_output_file)
+        common.Add(browse_out)
+
+        outer.Add(common, 0, wx.EXPAND | wx.LEFT | wx.RIGHT, 10)
+
         # Botón de ejecución
-        self.run_button = ttk.Button(main_frame, text="Run Analysis", command=self.run_analysis, state="disabled")
-        self.run_button.grid(row=5, column=0, columnspan=3, pady=20)
-        
+        self.run_button = wx.Button(panel, label="Run Analysis")
+        self.run_button.Enable(False)
+        self.run_button.Bind(wx.EVT_BUTTON, lambda e: self.run_analysis())
+        outer.Add(self.run_button, 0, wx.ALIGN_CENTER | wx.ALL, 15)
+
         # Área de log
-        ttk.Label(main_frame, text="Execution Log:").grid(row=6, column=0, sticky=tk.W, pady=5)
-        self.log_text = tk.Text(main_frame, height=15, width=80)
-        self.log_text.grid(row=7, column=0, columnspan=3, sticky=(tk.W, tk.E, tk.N, tk.S), pady=5)
-        
-        # Scrollbar para el log
-        scrollbar = ttk.Scrollbar(main_frame, orient=tk.VERTICAL, command=self.log_text.yview)
-        scrollbar.grid(row=7, column=3, sticky=(tk.N, tk.S), pady=5)
-        self.log_text.configure(yscrollcommand=scrollbar.set)
-        
+        log_box = wx.StaticBoxSizer(wx.VERTICAL, panel, "Execution Log")
+        self.log_text = wx.TextCtrl(log_box.GetStaticBox(),
+                                    style=wx.TE_MULTILINE | wx.TE_READONLY | wx.HSCROLL)
+        log_box.Add(self.log_text, 1, wx.EXPAND | wx.ALL, 5)
+        outer.Add(log_box, 1, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 10)
+
+        panel.SetSizer(outer)
+
     def setup_visualization_tab(self):
         """Configurar la pestaña de visualización de resultados"""
-        main_frame = ttk.Frame(self.visualization_frame)
-        main_frame.pack(fill='both', expand=True, padx=10, pady=10)
-        
-        # Frame para controles
-        control_frame = ttk.Frame(main_frame)
-        control_frame.pack(fill='x', pady=10)
-        
-        # Botón para cargar archivos
-        ttk.Button(control_frame, text="Load Results Files", 
-                command=self.load_results_file).pack(side=tk.LEFT, padx=5)
-        
-        # Botón para generar gráficos (ahora lo referenciamos)
-        self.generate_btn = ttk.Button(control_frame, text="Generate Plots", 
-                                    command=self.generate_plots)
-        self.generate_btn.pack(side=tk.LEFT, padx=5)
-        
-        # Botón para limpiar archivos (nuevo)
-        self.clear_btn = ttk.Button(control_frame, text="Clear Files", 
-                                command=self.clear_loaded_files)
-        self.clear_btn.pack(side=tk.LEFT, padx=5)
-        
-        # Botón para descargar gráfico
-        self.download_btn = ttk.Button(control_frame, text="Download Plot", 
-                                    command=self.download_plot, state="disabled")
-        self.download_btn.pack(side=tk.LEFT, padx=5)
-        
+        panel = self.visualization_panel
+        outer = wx.BoxSizer(wx.VERTICAL)
+
+        # Barra de controles
+        controls = wx.BoxSizer(wx.HORIZONTAL)
+
+        load_btn = wx.Button(panel, label="Load Results Files")
+        load_btn.Bind(wx.EVT_BUTTON, self.load_results_file)
+        controls.Add(load_btn, 0, wx.RIGHT, 5)
+
+        self.generate_btn = wx.Button(panel, label="Generate Plots")
+        self.generate_btn.Bind(wx.EVT_BUTTON, lambda e: self.generate_plots())
+        controls.Add(self.generate_btn, 0, wx.RIGHT, 5)
+
+        self.clear_btn = wx.Button(panel, label="Clear Files")
+        self.clear_btn.Bind(wx.EVT_BUTTON, lambda e: self.clear_loaded_files())
+        controls.Add(self.clear_btn, 0, wx.RIGHT, 5)
+
+        self.download_btn = wx.Button(panel, label="Download Plot")
+        self.download_btn.Bind(wx.EVT_BUTTON, lambda e: self.download_plot())
+        controls.Add(self.download_btn, 0, wx.RIGHT, 10)
+
         # Label para mostrar archivos cargados
-        self.file_label = ttk.Label(control_frame, text="No files loaded", justify=tk.LEFT)
-        self.file_label.pack(side=tk.LEFT, padx=10, fill='x', expand=True)
-        
-        # Frame para gráficos
-        self.plot_frame = ttk.Frame(main_frame)
-        self.plot_frame.pack(fill='both', expand=True)
-        
+        self.file_label = wx.StaticText(panel, label="No files loaded")
+        controls.Add(self.file_label, 1, wx.ALIGN_CENTER_VERTICAL)
+
+        outer.Add(controls, 0, wx.EXPAND | wx.ALL, 10)
+
+        # Splitter: gráficos arriba, log del visualizador abajo
+        splitter = wx.SplitterWindow(panel, style=wx.SP_LIVE_UPDATE)
+        splitter.SetMinimumPaneSize(80)
+        splitter.SetSashGravity(0.75)
+
+        self.plot_panel = wx.Panel(splitter)
+        self.plot_sizer = wx.BoxSizer(wx.VERTICAL)
+        self.plot_panel.SetSizer(self.plot_sizer)
+
+        viz_log_panel = wx.Panel(splitter)
+        viz_log_sizer = wx.StaticBoxSizer(wx.VERTICAL, viz_log_panel, "Log")
+        self.viz_log_text = wx.TextCtrl(viz_log_sizer.GetStaticBox(),
+                                        style=wx.TE_MULTILINE | wx.TE_READONLY | wx.HSCROLL)
+        viz_log_sizer.Add(self.viz_log_text, 1, wx.EXPAND | wx.ALL, 5)
+        viz_log_panel.SetSizer(viz_log_sizer)
+
+        splitter.SplitHorizontally(self.plot_panel, viz_log_panel, 430)
+        outer.Add(splitter, 1, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 10)
+
+        panel.SetSizer(outer)
+
         # Inicializar estado de botones
         self.update_buttons_state()
-        
-    def browse_python_file(self):
-        filepath = filedialog.askopenfilename(
-            title="Select Python File",
-            filetypes=[("Python files", "*.py"), ("All files", "*.*")]
-        )
-        if filepath:
-            self.file_path.set(filepath)
-            self.load_functions(filepath)
-            
+
+    def browse_python_file(self, event=None):
+        with wx.FileDialog(self, "Select Python File",
+                           wildcard="Python files (*.py)|*.py|All files (*.*)|*.*",
+                           style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST) as dlg:
+            if dlg.ShowModal() != wx.ID_OK:
+                return
+            filepath = dlg.GetPath()
+        self.file_ctrl.SetValue(filepath)
+        self.load_functions(filepath)
+
     def load_functions(self, filepath):
         try:
             spec = importlib.util.spec_from_file_location("module.name", filepath)
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
             self.function_module = module
-            
+
             # Obtener todas las funciones del módulo
             functions = []
             for name, obj in inspect.getmembers(module):
                 if inspect.isfunction(obj) and obj.__module__ == module.__name__:
                     functions.append(name)
-            
-            self.function_combo['values'] = functions
+
+            self.function_combo.Set(functions)
             if functions:
-                self.function_combo.set(functions[0])
+                self.function_combo.SetSelection(0)
                 self.on_function_selected()
-                
+
         except Exception as e:
-            messagebox.showerror("Error", f"Could not load the file: {e}")
-            
+            msg_error("Error", f"Could not load the file: {e}")
+
+    def get_function_name(self):
+        return self.function_combo.GetStringSelection()
+
+    def is_function_param(self, param_name):
+        """True si el usuario marcó el parámetro como función (el parámetro de imágenes no tiene casilla)."""
+        checkbox = self.function_flags.get(param_name)
+        return bool(checkbox and checkbox.GetValue())
+
     def on_function_selected(self, event=None):
         if not self.function_module:
             return
-            
-        function_name = self.function_var.get()
+
+        function_name = self.get_function_name()
         try:
             func = getattr(self.function_module, function_name)
             sig = inspect.signature(func)
-            
-            # Limpiar frame de parámetros
-            for widget in self.param_frame.winfo_children():
-                widget.destroy()
-                
+
+            # Limpiar panel de parámetros
+            self.param_grid.Clear(True)
+
             self.function_args = {}
             self.function_flags = {}
-            row = 0
-            
+            panel = self.param_panel
+
             # Header con el nuevo orden
-            headers = ["Parameter", "Value", "", "Is it a function?"]
-            for col, header in enumerate(headers):
-                ttk.Label(self.param_frame, text=header, font=('Arial', 9, 'bold')).grid(
-                    row=row, column=col, padx=2, pady=3)
-            row += 1
-            
+            for header in ["Parameter", "Value", "", "Is it a function?"]:
+                label = wx.StaticText(panel, label=header)
+                font = label.GetFont()
+                font.SetWeight(wx.FONTWEIGHT_BOLD)
+                label.SetFont(font)
+                self.param_grid.Add(label, 0, wx.ALIGN_CENTER)
+
             # Obtener lista de parámetros
             params = list(sig.parameters.items())
-            
+
             for i, (param_name, param) in enumerate(params):
-                # Columna 0: Nombre del parámetro (PRIMERO)
-                ttk.Label(self.param_frame, text=param_name, font=('Arial', 9)).grid(
-                    row=row, column=0, sticky=tk.W, padx=2, pady=2)
-                
-                # Columna 1: Entrada de valor (SEGUNDO)
-                var = tk.StringVar(value=str(param.default) if param.default != param.empty else "")
-                entry = ttk.Entry(self.param_frame, textvariable=var, width=30)
-                entry.grid(row=row, column=1, sticky=(tk.W, tk.E), padx=2, pady=2)
-                self.function_args[param_name] = var
-                
-                # Columna 2: Botón de explorar (TERCERO - solo para algunos)
-                if param_name.lower() in ['folder', 'path', 'directory', 'image_path'] or i == 0:
-                    browse_btn = ttk.Button(self.param_frame, text="📁", width=3)
-                    browse_btn.grid(row=row, column=2, padx=2, pady=2)
-                    browse_btn.configure(command=lambda v=var: self.browse_folder(v))
+                # Columna 0: Nombre del parámetro
+                self.param_grid.Add(wx.StaticText(panel, label=param_name), 0, wx.ALIGN_CENTER_VERTICAL)
+
+                # Columna 1: Entrada de valor. El parámetro de imágenes solo se llena con el botón de carpeta.
+                default = str(param.default) if param.default != param.empty else ""
+                is_image_param = param_name.lower() in ['folder', 'path', 'directory', 'image_path'] or i == 0
+                style = wx.TE_READONLY if is_image_param else 0
+                entry = wx.TextCtrl(panel, value=default, size=(250, -1), style=style)
+                self.param_grid.Add(entry, 1, wx.EXPAND)
+                self.function_args[param_name] = entry
+
+                # Columna 2: Botón de explorar (solo para el parámetro de imágenes)
+                if is_image_param:
+                    bitmap = wx.ArtProvider.GetBitmap(wx.ART_FOLDER_OPEN, wx.ART_BUTTON)
+                    browse_btn = wx.BitmapButton(panel, bitmap=bitmap)
+                    browse_btn.SetToolTip(FOLDER_TOOLTIP)
+                    browse_btn.Bind(wx.EVT_BUTTON, lambda evt, c=entry: self.browse_folder(c))
+                    self.param_grid.Add(browse_btn, 0, wx.ALIGN_CENTER)
                 else:
-                    ttk.Label(self.param_frame, text="").grid(row=row, column=2, padx=2, pady=2)
-                
-                # Columna 3: Checkbox para función (CUARTO - ÚLTIMO)
-                is_function_var = tk.BooleanVar(value=False)
-                function_check = ttk.Checkbutton(self.param_frame, variable=is_function_var)
-                function_check.grid(row=row, column=3, padx=2, pady=2)
-                self.function_flags[param_name] = is_function_var
-                
-                row += 1
-            
-            # Ajustar pesos de columnas para mejor visualización
-            self.param_frame.columnconfigure(1, weight=1)  # La columna de valor se expande
-            
-            self.run_button.config(state="normal")
-            
+                    self.param_grid.Add((0, 0))
+
+                # Columna 3: Casilla de función; no aplica al parámetro de imágenes
+                if is_image_param:
+                    self.param_grid.Add((0, 0))
+                else:
+                    checkbox = wx.CheckBox(panel)
+                    self.param_grid.Add(checkbox, 0, wx.ALIGN_CENTER)
+                    self.function_flags[param_name] = checkbox
+
+            self.analysis_panel.Layout()
+
+            self.run_button.Enable(True)
+            self.run_item.Enable(True)
+
         except Exception as e:
-            messagebox.showerror("Error", f"Could not retrieve function information: {e}")
-            
-    def browse_output_file(self, var=None):
-        if var is None:
-            var = self.output_file_var
-        filepath = filedialog.asksaveasfilename(
-            title="Save results as",
-            defaultextension=".txt",
-            filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
-        )
-        if filepath:
-            var.set(filepath)
-            
-    def browse_folder(self, var):
-        folderpath = filedialog.askdirectory(title="Select folder")
-        if folderpath:
-            var.set(folderpath)
-            
+            msg_error("Error", f"Could not retrieve function information: {e}")
+
+    def browse_output_file(self, event=None):
+        with wx.FileDialog(self, "Save results as",
+                           wildcard="Text files (*.txt)|*.txt|All files (*.*)|*.*",
+                           style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT) as dlg:
+            if dlg.ShowModal() == wx.ID_OK:
+                self.output_ctrl.SetValue(dlg.GetPath())
+
+    def browse_folder(self, ctrl):
+        with wx.DirDialog(self, FOLDER_TOOLTIP,
+                          style=wx.DD_DEFAULT_STYLE | wx.DD_DIR_MUST_EXIST) as dlg:
+            if dlg.ShowModal() == wx.ID_OK:
+                ctrl.SetValue(dlg.GetPath())
+
     def run_analysis(self):
         if not verify_dependencies_once():
-            messagebox.showerror("Error", "Missing dependencies in WSL. Check the console.")
+            msg_error("Error", "Missing dependencies in WSL. Check the console.")
             return
             
         # Construir llamada a la función
         args_dict = {}
-        for param_name, var in self.function_args.items():
-            value = var.get()
+        for param_name, ctrl in self.function_args.items():
+            value = ctrl.GetValue()
             
             # Verificar si el usuario marcó este parámetro como función
-            is_function = self.function_flags[param_name].get()
+            is_function = self.is_function_param(param_name)
             
             if is_function:
                 # Es una función, usar el nombre directamente (sin comillas)
@@ -682,12 +775,12 @@ class PerformanceAnalyzerApp:
         func_call_parts = []
         for param_name, value in args_dict.items():
             # Si está marcado como función, no usar comillas
-            if self.function_flags[param_name].get():
+            if self.is_function_param(param_name):
                 func_call_parts.append(f"{param_name}={value}")  # Sin comillas
             else:
                 func_call_parts.append(f"{param_name}={repr(value)}")  # Con comillas si es string
         
-        original_func_call = f"{self.function_var.get()}("
+        original_func_call = f"{self.get_function_name()}("
         original_func_call += ", ".join(func_call_parts)
         original_func_call += ")"
         
@@ -700,149 +793,159 @@ class PerformanceAnalyzerApp:
         
         # Verificar que el primer parámetro es un directorio válido
         if not isinstance(first_param_value, str) or not os.path.isdir(first_param_value):
-            messagebox.showerror("Error", f"The first parameter '{first_param_name}' must be a valid directory.")
+            msg_error("Error", f"The first parameter '{first_param_name}' must be a valid directory.")
             return
         
         # Normalizar la ruta
         first_param_value = first_param_value.replace('\\', '/')
         
         # Obtener todas las subcarpetas del directorio
-        subfolders = [f for f in os.listdir(first_param_value) 
+        image_extensions = ['.png', '.jpg', '.jpeg', '.tiff', '.tif', '.bmp', '.npy']
+        subfolders = [f for f in os.listdir(first_param_value)
                     if os.path.isdir(os.path.join(first_param_value, f))]
-        
+
         if not subfolders:
-            messagebox.showerror("Error", f"The directory '{first_param_value}' does not contain subfolders.")
+            msg_error("Error", f"The directory '{first_param_value}' does not contain subfolders.")
             return
+
+        # Ordenar subcarpetas de menor a mayor tamaño de imagen
+        folder_plan = []  # (folder, dims, images)
+        for folder in subfolders:
+            folder_path = os.path.join(first_param_value, folder).replace('\\', '/')
+            images = sorted(
+                os.path.join(folder_path, f).replace('\\', '/')
+                for f in os.listdir(folder_path)
+                if os.path.isfile(os.path.join(folder_path, f))
+                and any(f.lower().endswith(ext) for ext in image_extensions)
+            )
+            dims = image_dims(images[0]) if images else None
+            folder_plan.append((folder, dims, images))
+        folder_plan.sort(key=lambda t: (t[1] is None, t[1][0] * t[1][1] if t[1] else 0, t[0]))
+        subfolders = [t[0] for t in folder_plan]
         
         # Leer el código del archivo Python una vez
         try:
-            with open(self.file_path.get(), 'r', encoding='utf-8') as f:
+            with open(self.file_ctrl.GetValue(), 'r', encoding='utf-8') as f:
                 module_code = f.read()
         except Exception as e:
-            messagebox.showerror("Error", f"Could not read the Python file: {e}")
+            msg_error("Error", f"Could not read the Python file: {e}")
             return
         
         self.log_message(f"Starting performance analysis...")
-        self.log_message(f"Function: {self.function_var.get()}")
-        self.log_message(f"Repetitions: {self.repetitions_var.get()}")
+        self.log_message(f"Function: {self.get_function_name()}")
+        self.log_message(f"Repetitions: {self.repetitions_ctrl.GetValue()}")
         self.log_message(f"Base directory: {first_param_value}")
         self.log_message(f"Subfolders found: {len(subfolders)}")
         
-        all_results = []
-        image_extensions = ['.png', '.jpg', '.jpeg', '.tiff', '.tif', '.bmp', '.npy']
-        
+        output_file = self.output_ctrl.GetValue()
+        total_items = 0
+        total_errors = 0
+        n_folders = len(folder_plan)
+
         try:
-            # Recorrer cada subcarpeta
-            for folder in subfolders:
-                folder_path = os.path.join(first_param_value, folder)
-                folder_path = folder_path.replace('\\', '/')
-                
-                self.log_message(f"Processing folder: {folder}")
-                
-                # Recorrer cada imagen en la subcarpeta
-                folder_images = []
-                for file in os.listdir(folder_path):
-                    file_path_full = os.path.join(folder_path, file)
-                    if (os.path.isfile(file_path_full) and 
-                        any(file.lower().endswith(ext) for ext in image_extensions)):
-                        folder_images.append(file_path_full.replace('\\', '/'))
-                
-                if not folder_images:
-                    self.log_message(f"  No images found in {folder}")
-                    continue
-                    
-                self.log_message(f"  Images found: {len(folder_images)}")
-                
-                # Procesar cada imagen en la subcarpeta
-                folder_results = []
-                for image_path in folder_images:
-                    self.log_message(f"    Processing: {os.path.basename(image_path)}")
-                    
-                    # Modificar SOLO el primer parámetro (directorio) por la imagen actual
-                    # CONVERTIR la ruta de Windows a WSL para que funcione en Linux
-                    image_path_wsl = convert_windows_path_to_wsl(image_path)
-                    modified_func_call = original_func_call.replace(
-                        f"{first_param_name}={repr(args_dict[first_param_name])}",
-                        f"{first_param_name}=np.array(Image.open(r'{image_path_wsl}').convert('L'), dtype=np.float32)"
-                    )
-                    
-                    # Ejecutar para esta imagen
-                    image_results = []
-                    for rep in range(self.repetitions_var.get()):
-                        result = execute_perf_measurement(module_code, modified_func_call, image_path)
-                        image_results.append(result)
-                    
-                    folder_results.append((os.path.basename(image_path), image_results))
-                
-                all_results.append((folder, folder_results))
-            
-            # Guardar resultados
-            output_file = self.output_file_var.get()
+            # Linea base de librerias (una vez): L
+            self.log_message(f"Measuring libs baseline ({perf_protocol.LIBS_REPS} runs)...")
+            libs_baseline_text = perf_protocol.measure_libs_baseline(
+                execute_perf_code, module_code,
+                convert_windows_path_to_wsl(first_param_value),
+                log=self.log_message,
+            )
+
+            # Cabecera: el archivo se va completando a medida que hay resultados
             with open(output_file, 'w', encoding='utf-8') as f:
-                f.write(f"Performance analysis - {self.function_var.get()}\n")
+                f.write(f"Performance analysis - {self.get_function_name()}\n")
                 f.write("=" * 50 + "\n\n")
                 f.write(f"Analyzed directory: {first_param_value}\n")
                 f.write(f"Original parameters: {args_dict}\n\n")
-                
-                total_items = 0
-                total_errors = 0
-                
-                for folder_name, folder_data in all_results:
-                    f.write(f"=== FOLDER: {folder_name} ===\n")
-                    
-                    for image_name, image_results in folder_data:
-                        f.write(f"--- IMAGE: {image_name} ---\n")
-                        
+                f.write("--- BASELINE L (libs without image or call) ---\n")
+                f.write(libs_baseline_text)
+                f.write("\n")
+
+            # Recorrer cada subcarpeta, de menor a mayor tamaño de imagen
+            for fi, (folder, dims, folder_images) in enumerate(folder_plan, 1):
+                dims_txt = f"{dims[0]}x{dims[1]}" if dims else "?"
+                if not folder_images:
+                    self.log_message(f"No images found in {folder}")
+                    print(f"[folder {fi}/{n_folders}] {folder}: no images", flush=True)
+                    continue
+
+                self.log_message(f"Processing folder {fi}/{n_folders}: {folder} ({dims_txt})")
+                print(f"\n[folder {fi}/{n_folders}] {folder} ({dims_txt}, "
+                      f"{len(folder_images)} images)", flush=True)
+
+                with open(output_file, 'a', encoding='utf-8') as f:
+                    f.write(f"=== FOLDER: {folder} ===\n")
+
+                for ii, image_path in enumerate(folder_images, 1):
+                    self.log_message(f"    Processing: {os.path.basename(image_path)}")
+                    print(f"  [image {ii}/{len(folder_images)}] {os.path.basename(image_path)}", flush=True)
+
+                    image_path_wsl = convert_windows_path_to_wsl(image_path)
+
+                    # Protocolo v2: LI / L1 / LK por imagen (ver perf_protocol.py)
+                    image_expr = f"np.array(Image.open(r'{image_path_wsl}').convert('L'), dtype=np.float32)"
+                    call_template = original_func_call.replace(
+                        f"{first_param_name}={repr(args_dict[first_param_name])}",
+                        f"{first_param_name}=_img"
+                    )
+                    image_results = [perf_protocol.measure_image(
+                        execute_perf_code, module_code,
+                        convert_windows_path_to_wsl(os.path.dirname(image_path).replace('\\', '/')),
+                        image_path_wsl, image_expr, call_template,
+                        self.repetitions_ctrl.GetValue(), log=self.log_message,
+                    )]
+
+                    # Guardar de inmediato el resultado de esta imagen
+                    with open(output_file, 'a', encoding='utf-8') as f:
+                        f.write(f"--- IMAGE: {os.path.basename(image_path)} ---\n")
                         for i, result in enumerate(image_results, 1):
                             f.write(f"  Repetition {i}:\n")
                             f.write(result)
                             f.write("\n")
-                            
-                            # Contar errores
                             if "Error:" in result or "Traceback" in result:
                                 total_errors += 1
                             total_items += 1
-                        
                         f.write("\n")
-                    
+                        f.flush()
+                        os.fsync(f.fileno())
+
+                with open(output_file, 'a', encoding='utf-8') as f:
                     f.write("\n")
-                
-                # Resumen estadístico
-                if total_items > 0:
+
+            # Resumen estadístico
+            if total_items > 0:
+                with open(output_file, 'a', encoding='utf-8') as f:
                     f.write(f"=== SUMMARY  ===\n")
                     f.write(f"Total runs: {total_items}\n")
                     f.write(f"Errors found: {total_errors}\n")
                     f.write(f"Success rate: {(total_items - total_errors) / total_items * 100:.2f}%\n")
-            
+
             self.log_message(f"Analysis completed. Results saved in: {output_file}")
-            messagebox.showinfo("Success", f"Analysis completed. Results in: {output_file}")
+            msg_info("Success", f"Analysis completed. Results in: {output_file}")
             
         except Exception as e:
             self.log_message(f"Error during analysis: {e}")
-            messagebox.showerror("Error", f"Error during execution: {e}")
+            msg_error("Error", f"Error during execution: {e}")
             
-    def log_to_console(self, message):
-        self.log_text.insert(tk.END, message + "\n")
-        self.log_text.see(tk.END)
-        self.root.update_idletasks()
-        
-    def load_results_file(self):
+    def load_results_file(self, event=None):
         """Cargar archivo de resultados a la lista"""
-        filepaths = filedialog.askopenfilenames(
-            title="Select results files",
-            filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
-        )
-        
-        if filepaths:
-            for filepath in filepaths:
-                if filepath not in self.loaded_txt_files:
-                    self.loaded_txt_files.append(filepath)
-                    self.log_message(f"Loaded: {os.path.basename(filepath)}")
-                    
-            self.update_file_list_display()
-            
-            # Habilitar botones que requieren archivos
-            self.update_buttons_state()
+        with wx.FileDialog(self, "Select results files",
+                           wildcard="Text files (*.txt)|*.txt|All files (*.*)|*.*",
+                           style=wx.FD_OPEN | wx.FD_MULTIPLE | wx.FD_FILE_MUST_EXIST) as dlg:
+            if dlg.ShowModal() != wx.ID_OK:
+                return
+            filepaths = dlg.GetPaths()
+
+        for filepath in filepaths:
+            if filepath not in self.loaded_txt_files:
+                self.loaded_txt_files.append(filepath)
+                self.viz_log_message(f"Loaded: {os.path.basename(filepath)}")
+
+        self.update_file_list_display()
+
+        # Habilitar botones que requieren archivos
+        self.update_buttons_state()
+        self.notebook.SetSelection(1)
 
     def clear_loaded_files(self):
         """Limpiar lista de archivos cargados"""
@@ -850,664 +953,183 @@ class PerformanceAnalyzerApp:
             file_list = ", ".join([os.path.basename(f) for f in self.loaded_txt_files])
             self.loaded_txt_files.clear()
             self.update_file_list_display()
-            self.update_buttons_state()
-            
+
             # Limpiar también el área de gráficos
-            for widget in self.plot_frame.winfo_children():
-                widget.destroy()
-                
+            self.plot_sizer.Clear(True)
+            self.plot_panel.Layout()
+
             self.current_figure = None
-            self.current_fit_data = None
-            
-            self.log_message(f"Cleared files: {file_list}")
+            self.current_fit_data = {}
+            self.update_buttons_state()
+
+            self.viz_log_message(f"Cleared files: {file_list}")
         else:
-            self.log_message("No files to clear")
+            self.viz_log_message("No files to clear")
 
     def update_file_list_display(self):
         """Actualizar display de archivos cargados"""
         if self.loaded_txt_files:
             file_list = "\n".join([f"• {os.path.basename(f)}" for f in self.loaded_txt_files])
-            self.file_label.config(text=f"Files loaded: {len(self.loaded_txt_files)}\n{file_list}")
+            self.file_label.SetLabel(f"Files loaded: {len(self.loaded_txt_files)}\n{file_list}")
         else:
-            self.file_label.config(text="No files loaded")
+            self.file_label.SetLabel("No files loaded")
+        self.SetStatusText(f"{len(self.loaded_txt_files)} results file(s) loaded")
+        self.visualization_panel.Layout()
 
     def update_buttons_state(self):
         """Actualizar estado de los botones según los archivos cargados"""
         has_files = len(self.loaded_txt_files) > 0
-        
+
         # Botón de generar gráficos - solo habilitado si hay archivos
-        self.generate_btn.config(state="normal" if has_files else "disabled")
-        
+        self.generate_btn.Enable(has_files)
+
         # Botón de descarga - solo habilitado si hay un gráfico actual
         has_plot = hasattr(self, 'current_figure') and self.current_figure is not None
-        self.download_btn.config(state="normal" if has_plot else "disabled")
-        
-        # Botón de limpiar - siempre habilitado, pero podría cambiar
-        self.clear_btn.config(state="normal")
-    def detect_file_type(self, filepath):
-        """Detecta si el archivo es de performance o de bytecodes"""
-        try:
-            with open(filepath, 'r', encoding='utf-8') as f:
-                first_lines = [f.readline().strip() for _ in range(5)]
-                
-            # Buscar patrones característicos
-            for line in first_lines:
-                if "BYTECODE ANALYSIS" in line:
-                    return "bytecodes"
-                if "Performance counter stats" in line:
-                    return "performance"
-                if "cycles" in line and "instructions" in line:
-                    return "performance"
-                if "Function:" in line and "Executed lines" in line:
-                    return "bytecodes"
-                    
-            # Si no encuentra patrones claros, intentar por estructura
-            with open(filepath, 'r', encoding='utf-8') as f:
-                content = f.read()
-                
-            if "Executed lines" in content and "Estimated bytecodes" in content:
-                return "bytecodes"
-            if "cycles" in content and "cache-misses" in content:
-                return "performance"
-                
-            return "desconocido"
-            
-        except Exception as e:
-            self.log_message(f"Error detecting file type: {e}")
-            return "unknown"
-    def reload_create_performance_plots(self):
-        """Recarga solo la función create_performance_plots del archivo actual"""
-        try:
-            # Leer el archivo actual
-            current_file = __file__
-            with open(current_file, 'r', encoding='utf-8') as f:
-                current_code = f.read()
-            
-            # Extraer y recompilar la función
-            function_code = self.extract_single_function(current_code, 'create_performance_plots')
-            
-            if function_code:
-                # Crear un nuevo contexto de ejecución
-                context = {}
-                exec(function_code, context)
-                
-                # Reemplazar la función en la instancia actual
-                self.create_performance_plots = types.MethodType(
-                    context['create_performance_plots'], 
-                    self
-                )
-                self.log_message("Función create_performance_plots recargada exitosamente")
-                
-        except Exception as e:
-            self.log_message(f"Error recargando función: {e}")
-    
-    def extract_single_function(self, full_code, function_name):
-        """Extrae el código de una función específica del archivo"""
-        lines = full_code.split('\n')
-        function_lines = []
-        in_function = False
-        base_indent = 0
-        
-        for i, line in enumerate(lines):
-            # Buscar el inicio de la función
-            if line.strip().startswith(f'def {function_name}('):
-                in_function = True
-                function_lines.append(line)
-                base_indent = len(line) - len(line.lstrip())
-                continue
-            
-            if in_function:
-                # Si encontramos otra función al mismo nivel, terminar
-                if (line.strip() and 
-                    not line.strip().startswith('#') and 
-                    not line.strip().startswith('@') and
-                    len(line) - len(line.lstrip()) == base_indent and
-                    line.strip().startswith('def ')):
-                    break
-                
-                # Si encontramos el final de la clase o otro elemento importante
-                if (line.strip().startswith('class ') or 
-                    (line.strip() and len(line) - len(line.lstrip()) < base_indent)):
-                    break
-                
-                function_lines.append(line)
-        
-        return '\n'.join(function_lines) if function_lines else None
-    
+        self.download_btn.Enable(has_plot)
+
+        # Botón de limpiar - siempre habilitado
+        self.clear_btn.Enable(True)
+
+    def show_figure(self, fig):
+        """Mostrar una figura de matplotlib (con barra de navegación) en el panel de gráficos"""
+        self.plot_sizer.Clear(True)
+        canvas = FigureCanvas(self.plot_panel, -1, fig)
+        toolbar = NavigationToolbar(canvas)
+        toolbar.Realize()
+        self.plot_sizer.Add(canvas, 1, wx.EXPAND)
+        self.plot_sizer.Add(toolbar, 0, wx.EXPAND)
+        self.plot_panel.Layout()
+
+        # La figura siempre ocupa el espacio del panel: al cambiar el tamaño
+        # (ventana, divisor del log) se reacomodan ejes, leyendas y márgenes.
+        def refit(event):
+            event.Skip()  # el canvas ajusta el tamaño de la figura primero
+            def relayout():
+                try:
+                    fig.tight_layout()
+                    canvas.draw_idle()
+                except Exception:
+                    pass  # panel demasiado chico: se reintenta en el próximo resize
+            wx.CallAfter(relayout)
+        canvas.Bind(wx.EVT_SIZE, refit)
+
+        canvas.draw()
+
     def generate_plots(self):
-        """Generar gráficos a partir de los archivos de resultados cargados"""
+        """Analizar los archivos de resultados cargados con complexity_fit y graficar"""
         if not self.loaded_txt_files:
-            messagebox.showerror("Error", "You must load at least one results file first")
+            msg_error("Error", "You must load at least one results file first")
             return
-            
+
+        shape_filter = ShapeFilter.NONE  # sin filtros: se usan todos los puntos
+
         try:
-            # Limpiar área de gráficos
-            for widget in self.plot_frame.winfo_children():
-                widget.destroy()
-            
-            # Lista para almacenar resultados de análisis
+            self.plot_sizer.Clear(True)
+
             analysis_results = []
-            
-            # Analizar cada archivo cargado
+            parse_errors = []
             for txt_file in self.loaded_txt_files:
-                # Detectar tipo de archivo
-                file_type = self.detect_file_type(txt_file)
-                
-                if file_type == "performance":
-                    # Usar la nueva función de análisis
-                    analysis_data = self.analyze_performance_data(txt_file)
-                    analysis_results.append(analysis_data)
-                    self.log_message(f"Analyzed: {os.path.basename(txt_file)}")
-                else:
-                    self.log_message(f"Unrecognized file type for {os.path.basename(txt_file)}")
+                result = analyze_file(txt_file, shape_filter)
+                if "parse_error" in result:
+                    self.viz_log_message(f"\n=== {result['filename']}: ERROR ===")
+                    self.viz_log_message(f"  {result['parse_error']}")
+                    parse_errors.append(f"{result['filename']}:\n  {result['parse_error']}")
                     continue
-            
+                analysis_results.append(result)
+                self.viz_log_message(f"\n=== Analyzed: {result['filename']} "
+                                     f"(strategy={shape_filter.value}) ===")
+                for field_name, _ in METRICS:
+                    m = result["metrics"][field_name]
+                    self.viz_log_message(format_verdict_report(result["filename"], m["label"], m["verdict"]))
+
+            if parse_errors:
+                msg_warning("Files without usable data", "\n\n".join(parse_errors))
+
             if not analysis_results:
-                messagebox.showerror("Error", "No valid performance data found in loaded files")
+                if not parse_errors:
+                    msg_error("Error", "No valid performance data found in loaded files")
                 return
-            
-            # Crear gráficos combinados usando la nueva función
-            fig, fit_data = self.create_performance_plots(analysis_results)
-            
-            if fig is None:
-                messagebox.showerror("Error", "Could not generate plots from the analyzed data")
-                return
-                
-            # Mostrar en la interfaz
-            canvas = FigureCanvasTkAgg(fig, master=self.plot_frame)
-            canvas.draw()
-            canvas.get_tk_widget().pack(fill='both', expand=True)
-            
-            # Agregar toolbar de navegación
-            toolbar = NavigationToolbar2Tk(canvas, self.plot_frame)
-            toolbar.update()
-            
-            # Guardar referencia para posible descarga
+
+            fig = create_plots_v2(analysis_results)
+            self.show_figure(fig)
+
             self.current_figure = fig
-            self.current_fit_data = fit_data  # Esto ahora contiene todos los analysis_results
-            
-            # Habilitar botón de descarga
-            self.download_btn.config(state="normal")
-            
-            # Mostrar resumen en el log
-            num_files = len(analysis_results)
-            file_types = "performance"
-            self.log_message(f"{file_types} plots generated for {num_files} files successfully")
-            
+            self.current_fit_data = analysis_results
+            self.update_buttons_state()
+            self.visualization_panel.Layout()
+            self.viz_log_message(f"\nPlots generated for {len(analysis_results)} file(s).")
+
         except Exception as e:
             error_msg = f"Error generating plots: {str(e)}"
-            self.log_message(error_msg)
-            messagebox.showerror("Error", error_msg)
+            self.viz_log_message(error_msg)
+            msg_error("Error", error_msg)
 
     def download_plot(self):
         """Descargar la figura actual"""
         if self.current_figure is None:
-            messagebox.showwarning("Warning", "No plot available to download.")
+            msg_warning("Warning", "No plot available to download.")
             return
-        
+
         try:
             # Sugerir nombre por defecto basado en el archivo TXT
             if self.current_txt_file:
                 default_name = os.path.splitext(self.current_txt_file)[0] + "_performance_plot.png"
             else:
                 default_name = "performance_plot.png"
-            
-            file_path = filedialog.asksaveasfilename(
-                defaultextension=".png",
-                initialfile=os.path.basename(default_name),
-                filetypes=[
-                    ("PNG files", "*.png"),
-                    ("PDF files", "*.pdf"), 
-                    ("SVG files", "*.svg"),
-                    ("JPEG files", "*.jpg"),
-                    ("All files", "*.*")
-                ]
+
+            wildcard = ("PNG files (*.png)|*.png|PDF files (*.pdf)|*.pdf|SVG files (*.svg)|*.svg|"
+                        "JPEG files (*.jpg)|*.jpg|All files (*.*)|*.*")
+            with wx.FileDialog(self, "Save plot", defaultFile=os.path.basename(default_name),
+                               wildcard=wildcard,
+                               style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT) as dlg:
+                if dlg.ShowModal() != wx.ID_OK:
+                    return
+                file_path = dlg.GetPath()
+
+            # Determinar formato basado en extensión
+            format_map = {
+                '.png': 'png',
+                '.pdf': 'pdf',
+                '.svg': 'svg',
+                '.jpg': 'jpeg',
+                '.jpeg': 'jpeg'
+            }
+            ext = os.path.splitext(file_path)[1].lower()
+            file_format = format_map.get(ext, 'png')
+
+            # Guardar con alta calidad
+            self.current_figure.savefig(
+                file_path,
+                format=file_format,
+                dpi=300,
+                bbox_inches='tight',
+                facecolor='white'
             )
-            
-            if file_path:
-                # Determinar formato basado en extensión
-                format_map = {
-                    '.png': 'png',
-                    '.pdf': 'pdf', 
-                    '.svg': 'svg',
-                    '.jpg': 'jpeg',
-                    '.jpeg': 'jpeg'
-                }
-                ext = os.path.splitext(file_path)[1].lower()
-                file_format = format_map.get(ext, 'png')
-                
-                # Guardar con alta calidad
-                self.current_figure.savefig(
-                    file_path, 
-                    format=file_format, 
-                    dpi=300, 
-                    bbox_inches='tight',
-                    facecolor='white'
-                )
-                
-                messagebox.showinfo("Success", f"Plot saved successfully as:\n{file_path}")
-                
+
+            msg_info("Success", f"Plot saved successfully as:\n{file_path}")
+
         except Exception as e:
-            messagebox.showerror("Error", f"Error saving plot: {str(e)}")
-    
+            msg_error("Error", f"Error saving plot: {str(e)}")
+
+    def viz_log_message(self, message):
+        """Mensaje de log para la pestaña Visualization"""
+        self.viz_log_text.AppendText(message + "\n")
+        self.SetStatusText(message.strip().splitlines()[-1][:120] if message.strip() else "")
+        wx.SafeYield(None, True)
 
     def log_message(self, message):
         """Mensaje de log para la pestaña principal"""
-        self.log_text.insert(tk.END, message + "\n")
-        self.log_text.see(tk.END)
-        self.root.update_idletasks()
-        
-    def analyze_performance_data(self, txt_file, save_path=None):
-        """Crear gráficos de performance a partir de archivo TXT - Versión mejorada"""
-        # Orden deseado de carpetas (resoluciones)
-        resol_order = [
-            "128x128", "256x256", "512x512", "640x480",
-            "800x600", "1024x768", "1024x1024", "1280x960","1600x1200","1920x1440", "2048x2048", "2560x1920","3840x2880", "4096x4096"
-        ]
+        self.log_text.AppendText(message + "\n")
+        self.SetStatusText(message.strip()[:120])
+        wx.SafeYield(None, True)
 
-        # Calcular pixeles totales por resolución
-        resol_to_pixels = {}
-        for r in resol_order:
-            w, h = map(int, r.split("x"))
-            resol_to_pixels[r] = w * h
-        # Diccionarios para almacenar los datos
-        data_cycles = defaultdict(list)
-        data_instructions = defaultdict(list)
-        data_cache_refs = defaultdict(list)
-        data_cache_misses = defaultdict(list)
-        data_time = defaultdict(list)
-        data_dimensions = defaultdict(list)
-        # Expresiones regulares
-        patterns = {
-            'cycles': r'^\s*(\d+,\d+|\d+)\s+cycles:u',
-            'instructions': r'^\s*(\d+,\d+|\d+)\s+instructions:u',
-            'cache_refs': r'^\s*(\d+,\d+|\d+)\s+cache-references:u', 
-            'cache_misses': r'^\s*(\d+,\d+|\d+)\s+cache-misses:u',
-            'time': r'^\s*([0-9]*\.[0-9]+)\s+seconds time elapsed',
-            'dimensions': r'^IMAGE_DIMENSIONS:\s+(\d+)x(\d+)'  
-        }
-        def parse_perf_line(line):
-            """Parse una línea de output de perf y extrae las métricas"""
-            metrics = {}
-            for key, pattern in patterns.items():
-                match = re.search(pattern, line)
-                if match:
-                    if key == 'dimensions':
-                        # Para dimensiones, capturamos dos grupos
-                        metrics['width'] = int(match.group(1))
-                        metrics['height'] = int(match.group(2))
-                    elif key == 'time':
-                        val_str = match.group(1).replace(',', '')
-                        metrics[key] = float(val_str)
-                    else:
-                        val_str = match.group(1).replace(',', '')
-                        metrics[key] = float(val_str)
-            return metrics
-
-        # Leer y procesar el archivo
-        with open(txt_file, "r", encoding="utf-8") as f:
-            lines = f.readlines()
-
-        current_folder = None
-        current_image = None
-        current_rep_data = {}
-        in_perf_block = False
-
-        for line in lines:
-            line = line.strip()
-            
-            if "=== FOLDER:" in line:
-                folder_match = re.search(r'=== FOLDER:\s+([^\n]+)', line)
-                if folder_match:
-                    current_folder = folder_match.group(1)
-                    current_image = None
-                    in_perf_block = False
-            
-            elif "--- IMAGE:" in line:
-                image_match = re.search(r'--- IMAGE:\s+([^\n]+)', line)
-                if image_match and current_folder:
-                    current_image = image_match.group(1)
-                    in_perf_block = False
-            
-            elif "Performance counter stats for" in line:
-                in_perf_block = True
-                current_rep_data = {}
-            
-            elif in_perf_block and "seconds time elapsed" in line:
-                metrics = parse_perf_line(line)
-                if 'time' in metrics and current_folder:
-                    data_time[current_folder].append(metrics['time'])
-                in_perf_block = False
-            
-            # NUEVO: Capturar dimensiones (puede estar fuera del bloque perf)
-            elif "IMAGE_DIMENSIONS:" in line and current_folder:
-                metrics = parse_perf_line(line)
-                if 'width' in metrics and 'height' in metrics:
-                    data_dimensions[current_folder].append((metrics['width'], metrics['height']))
-            
-            elif in_perf_block and current_folder:
-                metrics = parse_perf_line(line)
-                if metrics:
-                    if 'cycles' in metrics:
-                        data_cycles[current_folder].append(metrics['cycles'])
-                    if 'instructions' in metrics:
-                        data_instructions[current_folder].append(metrics['instructions'])
-                    if 'cache_refs' in metrics:
-                        data_cache_refs[current_folder].append(metrics['cache_refs'])
-                    if 'cache_misses' in metrics:
-                        data_cache_misses[current_folder].append(metrics['cache_misses'])
-                    
-        
-        # Calcular pixeles totales por carpeta usando dimensiones REALES
-        folder_to_pixels = {}
-        cleaned_folder_names = {}  # Para mapear nombres limpios
-        
-        for folder in data_dimensions:
-            if data_dimensions[folder]:
-                # Limpiar el nombre de la carpeta
-                clean_name = folder.replace(' ===', '')
-                cleaned_folder_names[folder] = clean_name
-                
-                # Usar el promedio de dimensiones para esta carpeta
-                widths = [dim[0] for dim in data_dimensions[folder]]
-                heights = [dim[1] for dim in data_dimensions[folder]]
-                avg_width = np.mean(widths)
-                avg_height = np.mean(heights)
-                total_pixels = int(avg_width * avg_height)
-                folder_to_pixels[clean_name] = total_pixels  # Usar nombre limpio
-
-        # Si no hay dimensiones reales, usar las predefinidas como fallback
-        if not folder_to_pixels:
-            for r in resol_order:
-                w, h = map(int, r.split("x"))
-                folder_to_pixels[r] = w * h
-
-        # Calcular promedios por carpeta (no por resolución predefinida)
-        def calculate_stats(data_dict):
-            means = {}
-            stds = {}
-            for folder in data_dict:  # Cambiar: iterar sobre carpetas reales
-                if folder in data_dict and data_dict[folder]:
-                    means[folder] = np.mean(data_dict[folder])
-                    stds[folder] = np.std(data_dict[folder])
-            return means, stds
-
-        # Limpiar los nombres de las carpetas
-        def clean_folder_name(name):
-            if name.endswith(' ==='):
-                return name[:-4]
-            return name
-
-        #cleaned_data_cycles = {clean_folder_name(k): v for k, v in data_cycles.items()}
-        cleaned_data_instructions = {clean_folder_name(k): v for k, v in data_instructions.items()}
-        #cleaned_data_cache_refs = {clean_folder_name(k): v for k, v in data_cache_refs.items()}
-        #cleaned_data_cache_misses = {clean_folder_name(k): v for k, v in data_cache_misses.items()}
-        cleaned_data_time = {clean_folder_name(k): v for k, v in data_time.items()}
-
-        # Usar los datos limpios
-        #cycles_means, cycles_stds = calculate_stats(cleaned_data_cycles)
-        instructions_means, instructions_stds = calculate_stats(cleaned_data_instructions)
-        time_means, time_stds = calculate_stats(cleaned_data_time)
-
-        # Determinar carpetas disponibles (todas las que tienen datos)
-        available_folders = list(time_means.keys())
-
-        if not available_folders:
-            available_folders = list(folder_to_pixels.keys())
-
-        # Preparar datos para ajuste de complejidad - USAR DIMENSIONES REALES
-        x_fit = np.array([folder_to_pixels[folder] for folder in available_folders])
-        y_time_fit = np.array([time_means[folder] for folder in available_folders])
-        y_instructions_fit = np.array([instructions_means[folder] for folder in available_folders])
-
-        def f_nlogn_2d(total_pixels, widths, heights, a, b):
-            # O(N×M × log(N)) para FFT 2D
-            # widths y heights son arrays con las dimensiones de cada imagen
-            N = widths  # Usamos el ancho como N
-            return a * total_pixels * np.log(N) + b
-
-
-        # Función para encontrar solo el mejor ajuste (el de mayor orden válido)
-        def find_best_fit_only(x, y, is_it_time, widths=None, heights=None):
-            """Encuentra solo el mejor ajuste (mayor orden válido) con umbrales específicos por orden"""
-            best_order = 0
-            best_equation = ""
-            best_r2 = 0
-            best_func = None
-            best_params = None
-            if is_it_time:
-                # Umbrales específicos para cada orden
-                thresholds = {
-                    4: 1e-24,  # O(N⁴) 
-                    3: 1e-20,  # O(N³) 
-                    2: 5e-32,   # O(N²)
-                    1: 1e-32,   # O(N) - más permisivo
-                    -1: 1e-32,  # O(N log N) simple
-                    -2: 1e-32   # O(N×M log N) para FFT 2D
-                }
-            else:
-                thresholds = {
-                    4: 1e-13,  # O(N⁴) 
-                    3: 9e-11,  # O(N³) 
-                    2: 5e-7,   # O(N²)
-                    1: 1e-31,   # O(N) - más permisivo
-                    -1: 1e-31,  # O(N log N) simple
-                    -2: 1e-31   # O(N×M log N) para FFT 2D
-                }
-            # 1. Probar polinomios de mayor a menor orden
-            for order in range(4, 0, -1):
-                try:
-                    # Ajustar polinomio del orden específico
-                    coeffs = np.polyfit(x, y, order)
-                    
-                    # Verificar si el coeficiente principal es significativo usando el umbral específico
-                    threshold = thresholds.get(order, 1e-10)
-                    if abs(coeffs[0]) > threshold:
-                        poly_func = np.poly1d(coeffs)
-                        y_pred = poly_func(x)
-                        
-                        # Calcular R²
-                        ss_res = np.sum((y - y_pred) ** 2)
-                        ss_tot = np.sum((y - np.mean(y)) ** 2)
-                        r_squared = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
-                        
-                        # Generar ecuación
-                        equation_parts = []
-                        for i, coef in enumerate(coeffs):
-                            power = order - i
-                            if abs(coef) > threshold:
-                                if power == 0:
-                                    equation_parts.append(f"({coef:.2e})")
-                                elif power == 1:
-                                    equation_parts.append(f"({coef:.2e})·N")
-                                else:
-                                    equation_parts.append(f"({coef:.2e})·N^{power}")
-                        
-                        if equation_parts:
-                            equation = "y = " + " + ".join(equation_parts)
-                        else:
-                            equation = "y = 0"
-                        
-                        best_order = order
-                        best_equation = equation
-                        best_r2 = r_squared
-                        best_func = poly_func
-                        best_params = coeffs
-                        break  # Nos quedamos con el mayor orden válido
-                        
-                except Exception as e:
-                    continue
-            
-            # 2. Si tenemos dimensiones, probar O(N×M log N) para FFT 2D
-            if best_order == 0 and widths is not None and heights is not None:
-                try:
-                    if len(x) >= 2:
-                        # Para FFT 2D: O(N×M × log(N)) donde N es el ancho
-                        popt, pcov = curve_fit(lambda N, a, b: f_nlogn_2d(N, widths, heights, a, b), x, y, maxfev=5000)
-                        
-                        threshold = thresholds.get(-2, 1e-6)
-                        if abs(popt[0]) > threshold:
-                            y_pred = f_nlogn_2d(x, widths, heights, *popt)
-                            
-                            ss_res = np.sum((y - y_pred) ** 2)
-                            ss_tot = np.sum((y - np.mean(y)) ** 2)
-                            r_squared = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
-                            
-                            best_equation = f"y = ({popt[0]:.2e})·(N×M)·log(N) + {popt[1]:.2e}"
-                            best_r2 = r_squared
-                            best_order = -2  # Indicador para O(N×M log N)
-                            best_func = lambda N: f_nlogn_2d(N, widths, heights, *popt)
-                            best_params = popt
-                except:
-                    pass
-            
-            return best_order, best_equation, best_r2, best_func, best_params
-
-        # Preparar arrays de dimensiones (widths y heights)
-        widths = np.array([])
-        heights = np.array([])
-
-        # Llenar los arrays con las dimensiones de cada carpeta en el mismo orden que x_fit
-        for folder in available_folders:
-            if folder in data_dimensions and data_dimensions[folder]:
-                # Tomar la primera dimensión de cada carpeta (deberían ser todas iguales)
-                width, height = data_dimensions[folder][0]
-                widths = np.append(widths, width)
-                heights = np.append(heights, height)
-            else:
-                # Fallback si no hay dimensiones
-                widths = np.append(widths, np.sqrt(folder_to_pixels[folder]))  # Asume cuadrado
-                heights = np.append(heights, np.sqrt(folder_to_pixels[folder]))
-
-        # Encontrar mejores ajustes con dimensiones
-        best_order_time, best_equation_time, best_r2_time, best_func_time, best_params_time = find_best_fit_only(
-            x_fit, y_time_fit,True, widths, heights
-        )
-        best_order_instructions, best_equation_instructions, best_r2_instructions, best_func_instructions, best_params_instructions = find_best_fit_only(
-            x_fit, y_instructions_fit,False, widths, heights
-        )
-        analysis_result = {
-            'filename': os.path.basename(txt_file),
-            'filepath': txt_file,
-            'time_fit': {
-                'order': best_order_time,
-                'equation': best_equation_time,
-                'r2': best_r2_time,
-                'function': best_func_time,
-                'params': best_params_time
-            },
-            'instructions_fit': {
-                'order': best_order_instructions,
-                'equation': best_equation_instructions,
-                'r2': best_r2_instructions,
-                'function': best_func_instructions,
-                'params': best_params_instructions
-            },
-            'raw_data': {
-                'resolutions': available_folders,
-                'x_fit': x_fit,
-                'y_time_fit': y_time_fit,
-                'y_instructions_fit': y_instructions_fit,
-                'widths': widths,
-                'heights': heights
-            },
-            'metadata': {
-                'folder_to_pixels': folder_to_pixels,
-                'time_means': time_means,
-                'instructions_means': instructions_means,
-                'num_resolutions': len(available_folders)
-            }}
-        return analysis_result
-    def create_performance_plots(self, analysis_results, save_path=None):
-        """Crear gráficos de performance a partir de datos analizados"""
-        # analysis_results puede ser un solo dict o una lista de dicts
-        
-        # Si es un solo archivo, lo convertimos a lista
-        if isinstance(analysis_results, dict):
-            analysis_results = [analysis_results]
-        
-        # Crear figura
-        fig, axes = plt.subplots(2, 1)
-        
-        # Colores para diferentes archivos
-        file_colors = ['blue', 'red', 'green', 'orange', 'purple', 'brown']
-        
-        # Colores para tipos de ajuste (si queremos mantener la lógica original)
-        fit_colors = {
-            1: 'blue', 
-            -1: 'orange',
-            2: 'green', 
-            3: 'red', 
-            4: 'brown'
-        }
-        
-        # Para cada archivo analizado
-        for idx, analysis_data in enumerate(analysis_results):
-            color = file_colors[idx % len(file_colors)]
-            filename = analysis_data['filename']
-            raw_data = analysis_data['raw_data']
-            time_fit = analysis_data['time_fit']
-            instructions_fit = analysis_data['instructions_fit']
-            
-            x_fit = raw_data['x_fit']
-            y_time_fit = raw_data['y_time_fit']
-            y_instructions_fit = raw_data['y_instructions_fit']
-            
-            # 1. Gráfico de instrucciones (subplot superior)
-            # Puntos reales
-            axes[0].scatter(x_fit, y_instructions_fit, color=color, s=50, alpha=0.7, label=filename)
-            
-            # Línea de ajuste
-            if instructions_fit['order'] != 0 and instructions_fit['function'] is not None:
-                xx = np.linspace(min(x_fit), max(x_fit), 500)
-                y_fit = instructions_fit['function'](xx)
-                fit_color = fit_colors.get(instructions_fit['order'], color)
-                axes[0].plot(xx, y_fit, '--', color=fit_color, linewidth=2, alpha=0.8)
-            
-            # 2. Gráfico de tiempo (subplot inferior)
-            # Puntos reales
-            axes[1].scatter(x_fit, y_time_fit, color=color, s=50, alpha=0.7, label=filename)
-            
-            # Línea de ajuste
-            if time_fit['order'] != 0 and time_fit['function'] is not None:
-                xx = np.linspace(min(x_fit), max(x_fit), 500)
-                y_fit = time_fit['function'](xx)
-                fit_color = fit_colors.get(time_fit['order'], color)
-                axes[1].plot(xx, y_fit, '--', color=fit_color, linewidth=2, alpha=0.8)
-        
-        # Configuración de los gráficos
-        axes[0].set_xlabel('Number of pixels (N)')
-        axes[0].set_ylabel('Instructions')
-        axes[0].set_title('Computational complexity fit')
-        axes[0].grid(True, linestyle='--', alpha=0.6)
-        axes[0].legend()
-        
-        axes[1].set_xlabel('Number of pixels (N)')
-        axes[1].set_ylabel('Time (s)')
-        axes[1].set_title('Time complexity fit')
-        axes[1].grid(True, linestyle='--', alpha=0.6)
-        axes[1].legend()
-        
-        plt.tight_layout()
-        
-        # Guardado automático si se proporciona save_path
-        if save_path:
-            try:
-                plt.savefig(save_path, dpi=300, bbox_inches='tight')
-                self.log_message(f"Gráfico guardado automáticamente en: {save_path}")
-            except Exception as e:
-                self.log_message(f"Error al guardar automáticamente: {e}")
-        
-        return fig, analysis_results
-
-
-    def on_closing(self):
-        self.root.destroy()
 
 def main():
-    root = tk.Tk()
-    app = PerformanceAnalyzerApp(root)
-    root.mainloop()
+    app = wx.App(False)
+    frame = PerformanceAnalyzerApp(None)
+    frame.Show()
+    app.MainLoop()
+
 
 if __name__ == "__main__":
     main()

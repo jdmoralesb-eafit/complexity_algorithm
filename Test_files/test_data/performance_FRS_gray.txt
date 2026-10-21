@@ -1,0 +1,4112 @@
+Performance analysis - FRS
+==================================================
+
+Analyzed directory: .../imagenes_grises
+Original parameters: {'inp': '.../imagenes_grises', 'upper': 'True', 'wavelength': 0.633, 'dx': 3.75, 'dy': 3.75, 's': 2, 'step': 10}
+
+=== FOLDER: 1024x1024 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2556877411      cycles:u                                                              
+        3299368659      instructions:u                   #    1.29  insn per cycle            
+         177093783      cache-references:u                                                    
+          18180480      cache-misses:u                   #   10.27% of all cache refs         
+
+       1.553493500 seconds time elapsed
+
+       0.607610000 seconds user
+       0.300474000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2478333944      cycles:u                                                              
+        3300861363      instructions:u                   #    1.33  insn per cycle            
+         176712877      cache-references:u                                                    
+          16504740      cache-misses:u                   #    9.34% of all cache refs         
+
+       0.762138500 seconds time elapsed
+
+       0.571871000 seconds user
+       0.128967000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2704325298      cycles:u                                                              
+        3301458601      instructions:u                   #    1.22  insn per cycle            
+         183417490      cache-references:u                                                    
+          24333794      cache-misses:u                   #   13.27% of all cache refs         
+
+       0.834493200 seconds time elapsed
+
+       0.658249000 seconds user
+       0.130139000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2931355500      cycles:u                                                              
+        3301963307      instructions:u                   #    1.13  insn per cycle            
+         170321884      cache-references:u                                                    
+          28501384      cache-misses:u                   #   16.73% of all cache refs         
+
+       0.920436000 seconds time elapsed
+
+       0.745409000 seconds user
+       0.101493000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3034290954      cycles:u                                                              
+        3299240422      instructions:u                   #    1.09  insn per cycle            
+         170124603      cache-references:u                                                    
+          26999101      cache-misses:u                   #   15.87% of all cache refs         
+
+       0.930475700 seconds time elapsed
+
+       0.740691000 seconds user
+       0.131390000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3223312054      cycles:u                                                              
+        3281545829      instructions:u                   #    1.02  insn per cycle            
+         174606868      cache-references:u                                                    
+          28989191      cache-misses:u                   #   16.60% of all cache refs         
+
+       1.016053500 seconds time elapsed
+
+       0.844111000 seconds user
+       0.108018000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3163210610      cycles:u                                                              
+        3283675554      instructions:u                   #    1.04  insn per cycle            
+         178628776      cache-references:u                                                    
+          28810253      cache-misses:u                   #   16.13% of all cache refs         
+
+       0.966686700 seconds time elapsed
+
+       0.821694000 seconds user
+       0.088586000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2723459850      cycles:u                                                              
+        3282762240      instructions:u                   #    1.21  insn per cycle            
+         180686970      cache-references:u                                                    
+          26289693      cache-misses:u                   #   14.55% of all cache refs         
+
+       0.840529400 seconds time elapsed
+
+       0.697908000 seconds user
+       0.088515000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2603714395      cycles:u                                                              
+        3284055268      instructions:u                   #    1.26  insn per cycle            
+         180765356      cache-references:u                                                    
+          22372503      cache-misses:u                   #   12.38% of all cache refs         
+
+       0.785740800 seconds time elapsed
+
+       0.640043000 seconds user
+       0.088989000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2829086449      cycles:u                                                              
+        3281024114      instructions:u                   #    1.16  insn per cycle            
+         176328553      cache-references:u                                                    
+          23660194      cache-misses:u                   #   13.42% of all cache refs         
+
+       0.882800500 seconds time elapsed
+
+       0.697856000 seconds user
+       0.123593000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2598210643      cycles:u                                                              
+        3282259192      instructions:u                   #    1.26  insn per cycle            
+         179834859      cache-references:u                                                    
+          21634607      cache-misses:u                   #   12.03% of all cache refs         
+
+       0.803062600 seconds time elapsed
+
+       0.625723000 seconds user
+       0.123557000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2598826961      cycles:u                                                              
+        3281866146      instructions:u                   #    1.26  insn per cycle            
+         179823057      cache-references:u                                                    
+          21917755      cache-misses:u                   #   12.19% of all cache refs         
+
+       0.780563300 seconds time elapsed
+
+       0.621139000 seconds user
+       0.101972000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2605691788      cycles:u                                                              
+        3282908191      instructions:u                   #    1.26  insn per cycle            
+         177457593      cache-references:u                                                    
+          21916577      cache-misses:u                   #   12.35% of all cache refs         
+
+       0.790882000 seconds time elapsed
+
+       0.648198000 seconds user
+       0.098169000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2588252231      cycles:u                                                              
+        3284476480      instructions:u                   #    1.27  insn per cycle            
+         179151592      cache-references:u                                                    
+          21339856      cache-misses:u                   #   11.91% of all cache refs         
+
+       0.767250900 seconds time elapsed
+
+       0.650295000 seconds user
+       0.067632000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1024x1024
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2601093994      cycles:u                                                              
+        3285066873      instructions:u                   #    1.26  insn per cycle            
+         176685751      cache-references:u                                                    
+          21551446      cache-misses:u                   #   12.20% of all cache refs         
+
+       0.789334000 seconds time elapsed
+
+       0.645083000 seconds user
+       0.098366000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 1024x768 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2709219341      cycles:u                                                              
+        3250472466      instructions:u                   #    1.20  insn per cycle            
+         175156198      cache-references:u                                                    
+          24514621      cache-misses:u                   #   14.00% of all cache refs         
+
+       0.811725300 seconds time elapsed
+
+       0.633694000 seconds user
+       0.126388000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2905293194      cycles:u                                                              
+        3255552282      instructions:u                   #    1.12  insn per cycle            
+         182817089      cache-references:u                                                    
+          26978709      cache-misses:u                   #   14.76% of all cache refs         
+
+       0.867878000 seconds time elapsed
+
+       0.736467000 seconds user
+       0.099420000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3311448798      cycles:u                                                              
+        3250857099      instructions:u                   #    0.98  insn per cycle            
+         174873351      cache-references:u                                                    
+          36945208      cache-misses:u                   #   21.13% of all cache refs         
+
+       1.023468800 seconds time elapsed
+
+       0.820784000 seconds user
+       0.137958000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3256644406      cycles:u                                                              
+        3249713496      instructions:u                   #    1.00  insn per cycle            
+         181232846      cache-references:u                                                    
+          39711648      cache-misses:u                   #   21.91% of all cache refs         
+
+       0.994538897 seconds time elapsed
+
+       0.791816000 seconds user
+       0.146064000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3006817064      cycles:u                                                              
+        3251792465      instructions:u                   #    1.08  insn per cycle            
+         181040132      cache-references:u                                                    
+          31603045      cache-misses:u                   #   17.46% of all cache refs         
+
+       0.915964208 seconds time elapsed
+
+       0.726449000 seconds user
+       0.136081000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2913759559      cycles:u                                                              
+        3255561756      instructions:u                   #    1.12  insn per cycle            
+         177457228      cache-references:u                                                    
+          29515477      cache-misses:u                   #   16.63% of all cache refs         
+
+       0.872911093 seconds time elapsed
+
+       0.711915000 seconds user
+       0.109026000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2595704373      cycles:u                                                              
+        3254643254      instructions:u                   #    1.25  insn per cycle            
+         181307954      cache-references:u                                                    
+          21888004      cache-misses:u                   #   12.07% of all cache refs         
+
+       0.795206166 seconds time elapsed
+
+       0.651921000 seconds user
+       0.090788000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3285714676      cycles:u                                                              
+        3256774381      instructions:u                   #    0.99  insn per cycle            
+         177438300      cache-references:u                                                    
+          40828125      cache-misses:u                   #   23.01% of all cache refs         
+
+       1.000919236 seconds time elapsed
+
+       0.782864000 seconds user
+       0.155725000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2565841076      cycles:u                                                              
+        3252418979      instructions:u                   #    1.27  insn per cycle            
+         173801297      cache-references:u                                                    
+          19379763      cache-misses:u                   #   11.15% of all cache refs         
+
+       0.770308559 seconds time elapsed
+
+       0.622461000 seconds user
+       0.097119000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2553742083      cycles:u                                                              
+        3253632721      instructions:u                   #    1.27  insn per cycle            
+         178226116      cache-references:u                                                    
+          19060349      cache-misses:u                   #   10.69% of all cache refs         
+
+       0.791828966 seconds time elapsed
+
+       0.626043000 seconds user
+       0.114216000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2785523496      cycles:u                                                              
+        3263203525      instructions:u                   #    1.17  insn per cycle            
+         181507541      cache-references:u                                                    
+          24904360      cache-misses:u                   #   13.72% of all cache refs         
+
+       0.872780192 seconds time elapsed
+
+       0.709326000 seconds user
+       0.106720000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2622535192      cycles:u                                                              
+        3264816094      instructions:u                   #    1.24  insn per cycle            
+         181202780      cache-references:u                                                    
+          22295218      cache-misses:u                   #   12.30% of all cache refs         
+
+       0.801681669 seconds time elapsed
+
+       0.636120000 seconds user
+       0.120893000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2543428549      cycles:u                                                              
+        3264640388      instructions:u                   #    1.28  insn per cycle            
+         184215698      cache-references:u                                                    
+          18562300      cache-misses:u                   #   10.08% of all cache refs         
+
+       0.760563955 seconds time elapsed
+
+       0.617456000 seconds user
+       0.092326000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2580476578      cycles:u                                                              
+        3263151491      instructions:u                   #    1.26  insn per cycle            
+         171404206      cache-references:u                                                    
+          20340165      cache-misses:u                   #   11.87% of all cache refs         
+
+       0.780316062 seconds time elapsed
+
+       0.619836000 seconds user
+       0.120658000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1024x768
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2530070290      cycles:u                                                              
+        3263664883      instructions:u                   #    1.29  insn per cycle            
+         182226576      cache-references:u                                                    
+          18678301      cache-misses:u                   #   10.25% of all cache refs         
+
+       0.749799251 seconds time elapsed
+
+       0.604245000 seconds user
+       0.102735000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 1280x960 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2550882086      cycles:u                                                              
+        3363169119      instructions:u                   #    1.32  insn per cycle            
+         186428312      cache-references:u                                                    
+          17192204      cache-misses:u                   #    9.22% of all cache refs         
+
+       0.791594166 seconds time elapsed
+
+       0.623729000 seconds user
+       0.111261000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2506215374      cycles:u                                                              
+        3365222270      instructions:u                   #    1.34  insn per cycle            
+         178371672      cache-references:u                                                    
+          16383755      cache-misses:u                   #    9.19% of all cache refs         
+
+       0.752431853 seconds time elapsed
+
+       0.587764000 seconds user
+       0.109698000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2571147198      cycles:u                                                              
+        3363637643      instructions:u                   #    1.31  insn per cycle            
+         182191745      cache-references:u                                                    
+          18127440      cache-misses:u                   #    9.95% of all cache refs         
+
+       0.807835971 seconds time elapsed
+
+       0.617610000 seconds user
+       0.126019000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2503417941      cycles:u                                                              
+        3364079162      instructions:u                   #    1.34  insn per cycle            
+         178899748      cache-references:u                                                    
+          16951007      cache-misses:u                   #    9.48% of all cache refs         
+
+       0.779081562 seconds time elapsed
+
+       0.607868000 seconds user
+       0.113856000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2506476567      cycles:u                                                              
+        3365503939      instructions:u                   #    1.34  insn per cycle            
+         177593399      cache-references:u                                                    
+          16604080      cache-misses:u                   #    9.35% of all cache refs         
+
+       0.771306759 seconds time elapsed
+
+       0.590304000 seconds user
+       0.131148000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2502629840      cycles:u                                                              
+        3363397732      instructions:u                   #    1.34  insn per cycle            
+         178511266      cache-references:u                                                    
+          16189482      cache-misses:u                   #    9.07% of all cache refs         
+
+       0.750607752 seconds time elapsed
+
+       0.625470000 seconds user
+       0.069599000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2539739973      cycles:u                                                              
+        3363603293      instructions:u                   #    1.32  insn per cycle            
+         182132640      cache-references:u                                                    
+          16669100      cache-misses:u                   #    9.15% of all cache refs         
+
+       0.790260365 seconds time elapsed
+
+       0.591119000 seconds user
+       0.140877000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2517444334      cycles:u                                                              
+        3362004726      instructions:u                   #    1.34  insn per cycle            
+         171542250      cache-references:u                                                    
+          16613124      cache-misses:u                   #    9.68% of all cache refs         
+
+       0.761280455 seconds time elapsed
+
+       0.599768000 seconds user
+       0.103221000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2498258590      cycles:u                                                              
+        3364796567      instructions:u                   #    1.35  insn per cycle            
+         172433843      cache-references:u                                                    
+          16810613      cache-misses:u                   #    9.75% of all cache refs         
+
+       0.771232259 seconds time elapsed
+
+       0.582947000 seconds user
+       0.136359000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2524751697      cycles:u                                                              
+        3367126490      instructions:u                   #    1.33  insn per cycle            
+         183647021      cache-references:u                                                    
+          16611455      cache-misses:u                   #    9.05% of all cache refs         
+
+       0.756015354 seconds time elapsed
+
+       0.607870000 seconds user
+       0.090306000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2504262295      cycles:u                                                              
+        3337639972      instructions:u                   #    1.33  insn per cycle            
+         173473919      cache-references:u                                                    
+          16807694      cache-misses:u                   #    9.69% of all cache refs         
+
+       0.785422564 seconds time elapsed
+
+       0.568385000 seconds user
+       0.156395000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2493645658      cycles:u                                                              
+        3337124225      instructions:u                   #    1.34  insn per cycle            
+         178274911      cache-references:u                                                    
+          16524440      cache-misses:u                   #    9.27% of all cache refs         
+
+       0.749684051 seconds time elapsed
+
+       0.599395000 seconds user
+       0.093312000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2523972876      cycles:u                                                              
+        3337442339      instructions:u                   #    1.32  insn per cycle            
+         174026174      cache-references:u                                                    
+          16682446      cache-misses:u                   #    9.59% of all cache refs         
+
+       0.784475663 seconds time elapsed
+
+       0.624910000 seconds user
+       0.100898000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2482378298      cycles:u                                                              
+        3337646848      instructions:u                   #    1.34  insn per cycle            
+         180785627      cache-references:u                                                    
+          16628715      cache-misses:u                   #    9.20% of all cache refs         
+
+       0.730484245 seconds time elapsed
+
+       0.612690000 seconds user
+       0.077178000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1280x960
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2515911619      cycles:u                                                              
+        3337626109      instructions:u                   #    1.33  insn per cycle            
+         185223090      cache-references:u                                                    
+          17159229      cache-misses:u                   #    9.26% of all cache refs         
+
+       0.778865561 seconds time elapsed
+
+       0.583650000 seconds user
+       0.139081000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 128x128 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2409952348      cycles:u                                                              
+        3104681803      instructions:u                   #    1.29  insn per cycle            
+         171533890      cache-references:u                                                    
+          15296102      cache-misses:u                   #    8.92% of all cache refs         
+
+       0.718341941 seconds time elapsed
+
+       0.562290000 seconds user
+       0.108777000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2391564263      cycles:u                                                              
+        3102954717      instructions:u                   #    1.30  insn per cycle            
+         172712058      cache-references:u                                                    
+          15242668      cache-misses:u                   #    8.83% of all cache refs         
+
+       0.724388843 seconds time elapsed
+
+       0.543898000 seconds user
+       0.131425000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2654782763      cycles:u                                                              
+        3106377687      instructions:u                   #    1.17  insn per cycle            
+         167625923      cache-references:u                                                    
+          22049313      cache-misses:u                   #   13.15% of all cache refs         
+
+       0.794328066 seconds time elapsed
+
+       0.651473000 seconds user
+       0.086642000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2421357723      cycles:u                                                              
+        3105482644      instructions:u                   #    1.28  insn per cycle            
+         177542062      cache-references:u                                                    
+          15232890      cache-misses:u                   #    8.58% of all cache refs         
+
+       0.737137847 seconds time elapsed
+
+       0.608805000 seconds user
+       0.080007000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2472790288      cycles:u                                                              
+        3106533779      instructions:u                   #    1.26  insn per cycle            
+         171517702      cache-references:u                                                    
+          18645253      cache-misses:u                   #   10.87% of all cache refs         
+
+       0.737539448 seconds time elapsed
+
+       0.595924000 seconds user
+       0.091465000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2944147887      cycles:u                                                              
+        3106883702      instructions:u                   #    1.06  insn per cycle            
+         173517369      cache-references:u                                                    
+          31319031      cache-misses:u                   #   18.05% of all cache refs         
+
+       0.885970197 seconds time elapsed
+
+       0.731734000 seconds user
+       0.108409000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2627364664      cycles:u                                                              
+        3105538832      instructions:u                   #    1.18  insn per cycle            
+         176976688      cache-references:u                                                    
+          24374509      cache-misses:u                   #   13.77% of all cache refs         
+
+       0.782179662 seconds time elapsed
+
+       0.642669000 seconds user
+       0.097437000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2408775847      cycles:u                                                              
+        3103270163      instructions:u                   #    1.29  insn per cycle            
+         168796365      cache-references:u                                                    
+          14680690      cache-misses:u                   #    8.70% of all cache refs         
+
+       0.716929841 seconds time elapsed
+
+       0.603669000 seconds user
+       0.063620000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2620208798      cycles:u                                                              
+        3105351812      instructions:u                   #    1.19  insn per cycle            
+         172343722      cache-references:u                                                    
+          18365497      cache-misses:u                   #   10.66% of all cache refs         
+
+       0.772024059 seconds time elapsed
+
+       0.639780000 seconds user
+       0.084052000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2469387311      cycles:u                                                              
+        3104962309      instructions:u                   #    1.26  insn per cycle            
+         170219889      cache-references:u                                                    
+          19409630      cache-misses:u                   #   11.40% of all cache refs         
+
+       0.760276930 seconds time elapsed
+
+       0.608434000 seconds user
+       0.081736000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2495501424      cycles:u                                                              
+        3105754992      instructions:u                   #    1.24  insn per cycle            
+         172176850      cache-references:u                                                    
+          18869911      cache-misses:u                   #   10.96% of all cache refs         
+
+       0.813525214 seconds time elapsed
+
+       0.629567000 seconds user
+       0.070817000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2408232927      cycles:u                                                              
+        3103569602      instructions:u                   #    1.29  insn per cycle            
+         170783051      cache-references:u                                                    
+          16790232      cache-misses:u                   #    9.83% of all cache refs         
+
+       0.778144403 seconds time elapsed
+
+       0.548120000 seconds user
+       0.123133000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2432030459      cycles:u                                                              
+        3104885865      instructions:u                   #    1.28  insn per cycle            
+         172221675      cache-references:u                                                    
+          16390816      cache-misses:u                   #    9.52% of all cache refs         
+
+       0.794295067 seconds time elapsed
+
+       0.605340000 seconds user
+       0.076626000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2388819001      cycles:u                                                              
+        3106152048      instructions:u                   #    1.30  insn per cycle            
+         165298758      cache-references:u                                                    
+          14632135      cache-misses:u                   #    8.85% of all cache refs         
+
+       0.770280266 seconds time elapsed
+
+       0.555490000 seconds user
+       0.110083000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 128x128
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2403969446      cycles:u                                                              
+        3105706033      instructions:u                   #    1.29  insn per cycle            
+         171199268      cache-references:u                                                    
+          15021560      cache-misses:u                   #    8.77% of all cache refs         
+
+       0.778018411 seconds time elapsed
+
+       0.597234000 seconds user
+       0.081971000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 1600x1200 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2562323551      cycles:u                                                              
+        3464203951      instructions:u                   #    1.35  insn per cycle            
+         177680831      cache-references:u                                                    
+          19979408      cache-misses:u                   #   11.24% of all cache refs         
+
+       0.859025771 seconds time elapsed
+
+       0.633305000 seconds user
+       0.101285000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2658190471      cycles:u                                                              
+        3460997198      instructions:u                   #    1.30  insn per cycle            
+         189285642      cache-references:u                                                    
+          21064042      cache-misses:u                   #   11.13% of all cache refs         
+
+       0.905332762 seconds time elapsed
+
+       0.691755000 seconds user
+       0.081446000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2591888388      cycles:u                                                              
+        3462593392      instructions:u                   #    1.34  insn per cycle            
+         180729924      cache-references:u                                                    
+          19487906      cache-misses:u                   #   10.78% of all cache refs         
+
+       0.850499069 seconds time elapsed
+
+       0.638598000 seconds user
+       0.084472000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2591264531      cycles:u                                                              
+        3460073065      instructions:u                   #    1.34  insn per cycle            
+         189972026      cache-references:u                                                    
+          19411403      cache-misses:u                   #   10.22% of all cache refs         
+
+       0.886596072 seconds time elapsed
+
+       0.662334000 seconds user
+       0.096302000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2693027859      cycles:u                                                              
+        3463223283      instructions:u                   #    1.29  insn per cycle            
+         187875949      cache-references:u                                                    
+          20954507      cache-misses:u                   #   11.15% of all cache refs         
+
+       0.883406630 seconds time elapsed
+
+       0.664646000 seconds user
+       0.089138000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2647160471      cycles:u                                                              
+        3465717969      instructions:u                   #    1.31  insn per cycle            
+         190298420      cache-references:u                                                    
+          21306253      cache-misses:u                   #   11.20% of all cache refs         
+
+       0.899148768 seconds time elapsed
+
+       0.651908000 seconds user
+       0.119792000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2591434226      cycles:u                                                              
+        3466097038      instructions:u                   #    1.34  insn per cycle            
+         188822019      cache-references:u                                                    
+          19669218      cache-misses:u                   #   10.42% of all cache refs         
+
+       0.880294428 seconds time elapsed
+
+       0.622862000 seconds user
+       0.127871000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2585951779      cycles:u                                                              
+        3466565024      instructions:u                   #    1.34  insn per cycle            
+         179991667      cache-references:u                                                    
+          20089527      cache-misses:u                   #   11.16% of all cache refs         
+
+       0.833132688 seconds time elapsed
+
+       0.647291000 seconds user
+       0.073503000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2670238119      cycles:u                                                              
+        3467516107      instructions:u                   #    1.30  insn per cycle            
+         186540755      cache-references:u                                                    
+          21753273      cache-misses:u                   #   11.66% of all cache refs         
+
+       0.908535096 seconds time elapsed
+
+       0.644155000 seconds user
+       0.137323000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2614625551      cycles:u                                                              
+        3465304111      instructions:u                   #    1.33  insn per cycle            
+         180633543      cache-references:u                                                    
+          20005940      cache-misses:u                   #   11.08% of all cache refs         
+
+       0.861553080 seconds time elapsed
+
+       0.658341000 seconds user
+       0.073896000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2584285280      cycles:u                                                              
+        3513367334      instructions:u                   #    1.36  insn per cycle            
+         184090713      cache-references:u                                                    
+          19641108      cache-misses:u                   #   10.67% of all cache refs         
+
+       0.884984289 seconds time elapsed
+
+       0.647051000 seconds user
+       0.108733000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2608153229      cycles:u                                                              
+        3513337828      instructions:u                   #    1.35  insn per cycle            
+         185136713      cache-references:u                                                    
+          19921960      cache-misses:u                   #   10.76% of all cache refs         
+
+       0.841933799 seconds time elapsed
+
+       0.620461000 seconds user
+       0.103459000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2612303480      cycles:u                                                              
+        3515771286      instructions:u                   #    1.35  insn per cycle            
+         183737609      cache-references:u                                                    
+          20058016      cache-misses:u                   #   10.92% of all cache refs         
+
+       0.886500739 seconds time elapsed
+
+       0.630855000 seconds user
+       0.128025000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2585883085      cycles:u                                                              
+        3514690304      instructions:u                   #    1.36  insn per cycle            
+         184459246      cache-references:u                                                    
+          19289960      cache-misses:u                   #   10.46% of all cache refs         
+
+       0.832184879 seconds time elapsed
+
+       0.593901000 seconds user
+       0.126470000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1600x1200
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2629474744      cycles:u                                                              
+        3514534355      instructions:u                   #    1.34  insn per cycle            
+         189438051      cache-references:u                                                    
+          20220830      cache-misses:u                   #   10.67% of all cache refs         
+
+       0.860705156 seconds time elapsed
+
+       0.669902000 seconds user
+       0.062209000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 1920x1440 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2826378937      cycles:u                                                              
+        3703326737      instructions:u                   #    1.31  insn per cycle            
+         191017348      cache-references:u                                                    
+          25234575      cache-misses:u                   #   13.21% of all cache refs         
+
+       0.963996799 seconds time elapsed
+
+       0.687149000 seconds user
+       0.142200000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2704933714      cycles:u                                                              
+        3703906648      instructions:u                   #    1.37  insn per cycle            
+         191720485      cache-references:u                                                    
+          22613165      cache-misses:u                   #   11.79% of all cache refs         
+
+       0.871235376 seconds time elapsed
+
+       0.653221000 seconds user
+       0.099157000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2702416057      cycles:u                                                              
+        3704662869      instructions:u                   #    1.37  insn per cycle            
+         191345746      cache-references:u                                                    
+          22213109      cache-misses:u                   #   11.61% of all cache refs         
+
+       0.935084464 seconds time elapsed
+
+       0.644062000 seconds user
+       0.155705000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2821247328      cycles:u                                                              
+        3705235285      instructions:u                   #    1.31  insn per cycle            
+         191732075      cache-references:u                                                    
+          26334597      cache-misses:u                   #   13.74% of all cache refs         
+
+       0.925401302 seconds time elapsed
+
+       0.707997000 seconds user
+       0.077772000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2773063765      cycles:u                                                              
+        3705331029      instructions:u                   #    1.34  insn per cycle            
+         184622257      cache-references:u                                                    
+          23228978      cache-misses:u                   #   12.58% of all cache refs         
+
+       0.934387772 seconds time elapsed
+
+       0.679210000 seconds user
+       0.136914000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2711556623      cycles:u                                                              
+        3690698436      instructions:u                   #    1.36  insn per cycle            
+         189129765      cache-references:u                                                    
+          22731728      cache-misses:u                   #   12.02% of all cache refs         
+
+       0.915879557 seconds time elapsed
+
+       0.639472000 seconds user
+       0.153966000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2700853530      cycles:u                                                              
+        3689004483      instructions:u                   #    1.37  insn per cycle            
+         187345936      cache-references:u                                                    
+          22273229      cache-misses:u                   #   11.89% of all cache refs         
+
+       0.883174905 seconds time elapsed
+
+       0.658285000 seconds user
+       0.093056000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2675761635      cycles:u                                                              
+        3689328328      instructions:u                   #    1.38  insn per cycle            
+         189126518      cache-references:u                                                    
+          21615128      cache-misses:u                   #   11.43% of all cache refs         
+
+       0.905940729 seconds time elapsed
+
+       0.629326000 seconds user
+       0.156279000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2731668140      cycles:u                                                              
+        3691651409      instructions:u                   #    1.35  insn per cycle            
+         188367893      cache-references:u                                                    
+          23543360      cache-misses:u                   #   12.50% of all cache refs         
+
+       0.901401344 seconds time elapsed
+
+       0.647610000 seconds user
+       0.120303000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2760420406      cycles:u                                                              
+        3689510362      instructions:u                   #    1.34  insn per cycle            
+         195354299      cache-references:u                                                    
+          24857507      cache-misses:u                   #   12.72% of all cache refs         
+
+       0.951748844 seconds time elapsed
+
+       0.720421000 seconds user
+       0.091476000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2637014433      cycles:u                                                              
+        3630415219      instructions:u                   #    1.38  insn per cycle            
+         188432150      cache-references:u                                                    
+          20522758      cache-misses:u                   #   10.89% of all cache refs         
+
+       0.891295682 seconds time elapsed
+
+       0.612331000 seconds user
+       0.152599000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2759152258      cycles:u                                                              
+        3634077297      instructions:u                   #    1.32  insn per cycle            
+         185820950      cache-references:u                                                    
+          21827994      cache-misses:u                   #   11.75% of all cache refs         
+
+       0.908616996 seconds time elapsed
+
+       0.679106000 seconds user
+       0.094970000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2694375101      cycles:u                                                              
+        3629558062      instructions:u                   #    1.35  insn per cycle            
+         189203664      cache-references:u                                                    
+          21600907      cache-misses:u                   #   11.42% of all cache refs         
+
+       0.919161517 seconds time elapsed
+
+       0.671416000 seconds user
+       0.121127000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2645911428      cycles:u                                                              
+        3633992177      instructions:u                   #    1.37  insn per cycle            
+         191653724      cache-references:u                                                    
+          20387197      cache-misses:u                   #   10.64% of all cache refs         
+
+       0.872828309 seconds time elapsed
+
+       0.673245000 seconds user
+       0.066191000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 1920x1440
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2665219297      cycles:u                                                              
+        3630863791      instructions:u                   #    1.36  insn per cycle            
+         191145056      cache-references:u                                                    
+          20871083      cache-misses:u                   #   10.92% of all cache refs         
+
+       0.924192952 seconds time elapsed
+
+       0.625327000 seconds user
+       0.158238000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 2048x2048 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2828855844      cycles:u                                                              
+        3943578984      instructions:u                   #    1.39  insn per cycle            
+         207186913      cache-references:u                                                    
+          25065523      cache-misses:u                   #   12.10% of all cache refs         
+
+       0.948851902 seconds time elapsed
+
+       0.650660000 seconds user
+       0.155091000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2808501645      cycles:u                                                              
+        3939806527      instructions:u                   #    1.40  insn per cycle            
+         201122338      cache-references:u                                                    
+          24572983      cache-misses:u                   #   12.22% of all cache refs         
+
+       0.966687690 seconds time elapsed
+
+       0.692868000 seconds user
+       0.131550000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2840922806      cycles:u                                                              
+        3940521906      instructions:u                   #    1.39  insn per cycle            
+         201948137      cache-references:u                                                    
+          24795204      cache-misses:u                   #   12.28% of all cache refs         
+
+       1.002381911 seconds time elapsed
+
+       0.729533000 seconds user
+       0.122904000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2795780816      cycles:u                                                              
+        3940787907      instructions:u                   #    1.41  insn per cycle            
+         202920437      cache-references:u                                                    
+          23948281      cache-misses:u                   #   11.80% of all cache refs         
+
+       0.906499621 seconds time elapsed
+
+       0.659618000 seconds user
+       0.122398000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2833069519      cycles:u                                                              
+        3939230550      instructions:u                   #    1.39  insn per cycle            
+         199467210      cache-references:u                                                    
+          24974216      cache-misses:u                   #   12.52% of all cache refs         
+
+       1.000492252 seconds time elapsed
+
+       0.673025000 seconds user
+       0.173424000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2825536355      cycles:u                                                              
+        3945714962      instructions:u                   #    1.40  insn per cycle            
+         201309423      cache-references:u                                                    
+          24142520      cache-misses:u                   #   11.99% of all cache refs         
+
+       0.918377291 seconds time elapsed
+
+       0.664539000 seconds user
+       0.126031000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2824095209      cycles:u                                                              
+        3946261864      instructions:u                   #    1.40  insn per cycle            
+         200551653      cache-references:u                                                    
+          24327885      cache-misses:u                   #   12.13% of all cache refs         
+
+       0.982332654 seconds time elapsed
+
+       0.693631000 seconds user
+       0.140477000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2824739681      cycles:u                                                              
+        3947220824      instructions:u                   #    1.40  insn per cycle            
+         201418875      cache-references:u                                                    
+          24835864      cache-misses:u                   #   12.33% of all cache refs         
+
+       0.992380466 seconds time elapsed
+
+       0.660377000 seconds user
+       0.195633000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2814270587      cycles:u                                                              
+        3945745529      instructions:u                   #    1.40  insn per cycle            
+         201887803      cache-references:u                                                    
+          24560118      cache-misses:u                   #   12.17% of all cache refs         
+
+       0.915264982 seconds time elapsed
+
+       0.718857000 seconds user
+       0.068152000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2835220328      cycles:u                                                              
+        3948758825      instructions:u                   #    1.39  insn per cycle            
+         206493923      cache-references:u                                                    
+          24655194      cache-misses:u                   #   11.94% of all cache refs         
+
+       1.001791492 seconds time elapsed
+
+       0.693506000 seconds user
+       0.161203000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2812714335      cycles:u                                                              
+        3947372406      instructions:u                   #    1.40  insn per cycle            
+         199023463      cache-references:u                                                    
+          24172856      cache-misses:u                   #   12.15% of all cache refs         
+
+       0.926224546 seconds time elapsed
+
+       0.692575000 seconds user
+       0.107142000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2821234438      cycles:u                                                              
+        3947709386      instructions:u                   #    1.40  insn per cycle            
+         201474176      cache-references:u                                                    
+          24786274      cache-misses:u                   #   12.30% of all cache refs         
+
+       0.922483781 seconds time elapsed
+
+       0.694567000 seconds user
+       0.104739000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2879644913      cycles:u                                                              
+        3947400799      instructions:u                   #    1.37  insn per cycle            
+         207831419      cache-references:u                                                    
+          26731106      cache-misses:u                   #   12.86% of all cache refs         
+
+       1.015868420 seconds time elapsed
+
+       0.691640000 seconds user
+       0.181367000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2794876648      cycles:u                                                              
+        3947716929      instructions:u                   #    1.41  insn per cycle            
+         194156816      cache-references:u                                                    
+          24229532      cache-misses:u                   #   12.48% of all cache refs         
+
+       0.925721079 seconds time elapsed
+
+       0.673662000 seconds user
+       0.112364000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 2048x2048
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2802638548      cycles:u                                                              
+        3949594313      instructions:u                   #    1.41  insn per cycle            
+         195653376      cache-references:u                                                    
+          24401759      cache-misses:u                   #   12.47% of all cache refs         
+
+       0.990928477 seconds time elapsed
+
+       0.713510000 seconds user
+       0.131698000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 2560x1920 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2955755751      cycles:u                                                              
+        4154602829      instructions:u                   #    1.41  insn per cycle            
+         206983416      cache-references:u                                                    
+          27917016      cache-misses:u                   #   13.49% of all cache refs         
+
+       1.041968103 seconds time elapsed
+
+       0.729058000 seconds user
+       0.156022000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2942669861      cycles:u                                                              
+        4154189248      instructions:u                   #    1.41  insn per cycle            
+         199709427      cache-references:u                                                    
+          27176156      cache-misses:u                   #   13.61% of all cache refs         
+
+       1.044552684 seconds time elapsed
+
+       0.742484000 seconds user
+       0.164253000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2898075116      cycles:u                                                              
+        4155648827      instructions:u                   #    1.43  insn per cycle            
+         206352091      cache-references:u                                                    
+          25901743      cache-misses:u                   #   12.55% of all cache refs         
+
+       0.965635552 seconds time elapsed
+
+       0.711053000 seconds user
+       0.153823000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2913217410      cycles:u                                                              
+        4153748659      instructions:u                   #    1.43  insn per cycle            
+         204568809      cache-references:u                                                    
+          26293889      cache-misses:u                   #   12.85% of all cache refs         
+
+       0.908571928 seconds time elapsed
+
+       0.716412000 seconds user
+       0.104155000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2920053642      cycles:u                                                              
+        4155832435      instructions:u                   #    1.42  insn per cycle            
+         207862090      cache-references:u                                                    
+          27161114      cache-misses:u                   #   13.07% of all cache refs         
+
+       0.957629510 seconds time elapsed
+
+       0.717340000 seconds user
+       0.157324000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2931858271      cycles:u                                                              
+        4090099851      instructions:u                   #    1.40  insn per cycle            
+         206066754      cache-references:u                                                    
+          26394626      cache-misses:u                   #   12.81% of all cache refs         
+
+       0.950089871 seconds time elapsed
+
+       0.721142000 seconds user
+       0.158733000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2930489425      cycles:u                                                              
+        4087516301      instructions:u                   #    1.39  insn per cycle            
+         204584349      cache-references:u                                                    
+          27830064      cache-misses:u                   #   13.60% of all cache refs         
+
+       0.906068847 seconds time elapsed
+
+       0.715167000 seconds user
+       0.105985000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3013258941      cycles:u                                                              
+        4089838062      instructions:u                   #    1.36  insn per cycle            
+         209691240      cache-references:u                                                    
+          29329517      cache-misses:u                   #   13.99% of all cache refs         
+
+       1.015099829 seconds time elapsed
+
+       0.745906000 seconds user
+       0.178753000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2966927484      cycles:u                                                              
+        4091151576      instructions:u                   #    1.38  insn per cycle            
+         210427159      cache-references:u                                                    
+          30038297      cache-misses:u                   #   14.27% of all cache refs         
+
+       0.957448468 seconds time elapsed
+
+       0.753931000 seconds user
+       0.121802000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2978883152      cycles:u                                                              
+        4089896393      instructions:u                   #    1.37  insn per cycle            
+         206910640      cache-references:u                                                    
+          31234113      cache-misses:u                   #   15.10% of all cache refs         
+
+       1.039861855 seconds time elapsed
+
+       0.731567000 seconds user
+       0.175627000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3010689833      cycles:u                                                              
+        4146664137      instructions:u                   #    1.38  insn per cycle            
+         202808654      cache-references:u                                                    
+          28671434      cache-misses:u                   #   14.14% of all cache refs         
+
+       1.062677832 seconds time elapsed
+
+       0.721609000 seconds user
+       0.198428000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2985141410      cycles:u                                                              
+        4146105060      instructions:u                   #    1.39  insn per cycle            
+         204805160      cache-references:u                                                    
+          28134060      cache-misses:u                   #   13.74% of all cache refs         
+
+       0.979604150 seconds time elapsed
+
+       0.739463000 seconds user
+       0.102863000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2926678516      cycles:u                                                              
+        4149142319      instructions:u                   #    1.42  insn per cycle            
+         204136324      cache-references:u                                                    
+          27018985      cache-misses:u                   #   13.24% of all cache refs         
+
+       1.028614913 seconds time elapsed
+
+       0.694105000 seconds user
+       0.190271000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2937694001      cycles:u                                                              
+        4146075932      instructions:u                   #    1.41  insn per cycle            
+         205659132      cache-references:u                                                    
+          26997309      cache-misses:u                   #   13.13% of all cache refs         
+
+       0.963758978 seconds time elapsed
+
+       0.704396000 seconds user
+       0.121401000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 2560x1920
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2909965791      cycles:u                                                              
+        4147652174      instructions:u                   #    1.43  insn per cycle            
+         204547708      cache-references:u                                                    
+          26785337      cache-misses:u                   #   13.09% of all cache refs         
+
+       0.943543910 seconds time elapsed
+
+       0.706324000 seconds user
+       0.115585000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 256x256 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2472178951      cycles:u                                                              
+        3120170092      instructions:u                   #    1.26  insn per cycle            
+         178360341      cache-references:u                                                    
+          17026440      cache-misses:u                   #    9.55% of all cache refs         
+
+       0.792238085 seconds time elapsed
+
+       0.564813000 seconds user
+       0.133500000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2444097629      cycles:u                                                              
+        3116422771      instructions:u                   #    1.28  insn per cycle            
+         181148322      cache-references:u                                                    
+          16693588      cache-misses:u                   #    9.22% of all cache refs         
+
+       0.769923014 seconds time elapsed
+
+       0.562857000 seconds user
+       0.117976000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2437700306      cycles:u                                                              
+        3116503369      instructions:u                   #    1.28  insn per cycle            
+         174658748      cache-references:u                                                    
+          15434581      cache-misses:u                   #    8.84% of all cache refs         
+
+       0.785456621 seconds time elapsed
+
+       0.579307000 seconds user
+       0.107783000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2409419211      cycles:u                                                              
+        3115814132      instructions:u                   #    1.29  insn per cycle            
+         176097423      cache-references:u                                                    
+          16223393      cache-misses:u                   #    9.21% of all cache refs         
+
+       0.767391586 seconds time elapsed
+
+       0.582323000 seconds user
+       0.092230000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2451289726      cycles:u                                                              
+        3114450999      instructions:u                   #    1.27  insn per cycle            
+         177202531      cache-references:u                                                    
+          16474954      cache-misses:u                   #    9.30% of all cache refs         
+
+       0.788691211 seconds time elapsed
+
+       0.622345000 seconds user
+       0.067951000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2446647833      cycles:u                                                              
+        3117746665      instructions:u                   #    1.27  insn per cycle            
+         174731199      cache-references:u                                                    
+          15666290      cache-misses:u                   #    8.97% of all cache refs         
+
+       0.780840062 seconds time elapsed
+
+       0.617341000 seconds user
+       0.064378000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2431326281      cycles:u                                                              
+        3114954158      instructions:u                   #    1.28  insn per cycle            
+         175383791      cache-references:u                                                    
+          15938133      cache-misses:u                   #    9.09% of all cache refs         
+
+       0.788423284 seconds time elapsed
+
+       0.578352000 seconds user
+       0.111650000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2424340443      cycles:u                                                              
+        3116865345      instructions:u                   #    1.29  insn per cycle            
+         175673557      cache-references:u                                                    
+          15593223      cache-misses:u                   #    8.88% of all cache refs         
+
+       0.776143945 seconds time elapsed
+
+       0.583344000 seconds user
+       0.091815000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2450369297      cycles:u                                                              
+        3118997518      instructions:u                   #    1.27  insn per cycle            
+         173610417      cache-references:u                                                    
+          16312516      cache-misses:u                   #    9.40% of all cache refs         
+
+       0.788604313 seconds time elapsed
+
+       0.578250000 seconds user
+       0.114278000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2423986269      cycles:u                                                              
+        3114743163      instructions:u                   #    1.28  insn per cycle            
+         175131198      cache-references:u                                                    
+          15814799      cache-misses:u                   #    9.03% of all cache refs         
+
+       0.775846874 seconds time elapsed
+
+       0.615418000 seconds user
+       0.061381000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2437617339      cycles:u                                                              
+        3114501418      instructions:u                   #    1.28  insn per cycle            
+         173052804      cache-references:u                                                    
+          15523976      cache-misses:u                   #    8.97% of all cache refs         
+
+       0.782235224 seconds time elapsed
+
+       0.566567000 seconds user
+       0.120381000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2463728734      cycles:u                                                              
+        3119268988      instructions:u                   #    1.27  insn per cycle            
+         173616947      cache-references:u                                                    
+          15567632      cache-misses:u                   #    8.97% of all cache refs         
+
+       0.792441702 seconds time elapsed
+
+       0.607464000 seconds user
+       0.087844000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2489739366      cycles:u                                                              
+        3119024344      instructions:u                   #    1.25  insn per cycle            
+         175192632      cache-references:u                                                    
+          16078823      cache-misses:u                   #    9.18% of all cache refs         
+
+       0.791982108 seconds time elapsed
+
+       0.616485000 seconds user
+       0.084588000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2444406650      cycles:u                                                              
+        3117546785      instructions:u                   #    1.28  insn per cycle            
+         172677073      cache-references:u                                                    
+          16137588      cache-misses:u                   #    9.35% of all cache refs         
+
+       0.769618402 seconds time elapsed
+
+       0.590397000 seconds user
+       0.087070000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 256x256
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2493186504      cycles:u                                                              
+        3115897822      instructions:u                   #    1.25  insn per cycle            
+         168063346      cache-references:u                                                    
+          17710750      cache-misses:u                   #   10.54% of all cache refs         
+
+       0.801422279 seconds time elapsed
+
+       0.616740000 seconds user
+       0.088705000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 3840x2880 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3883743772      cycles:u                                                              
+        5517262674      instructions:u                   #    1.42  insn per cycle            
+         261402535      cache-references:u                                                    
+          45698584      cache-misses:u                   #   17.48% of all cache refs         
+
+       1.401916974 seconds time elapsed
+
+       0.960796000 seconds user
+       0.267453000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3709949022      cycles:u                                                              
+        5513255346      instructions:u                   #    1.49  insn per cycle            
+         265361435      cache-references:u                                                    
+          43271559      cache-misses:u                   #   16.31% of all cache refs         
+
+       1.319018653 seconds time elapsed
+
+       0.926376000 seconds user
+       0.226119000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3646806885      cycles:u                                                              
+        5514812231      instructions:u                   #    1.51  insn per cycle            
+         256117854      cache-references:u                                                    
+          41549316      cache-misses:u                   #   16.22% of all cache refs         
+
+       1.331313113 seconds time elapsed
+
+       0.865018000 seconds user
+       0.263680000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3663665242      cycles:u                                                              
+        5515354476      instructions:u                   #    1.51  insn per cycle            
+         258017509      cache-references:u                                                    
+          42135106      cache-misses:u                   #   16.33% of all cache refs         
+
+       1.368697659 seconds time elapsed
+
+       0.899394000 seconds user
+       0.289288000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3667747353      cycles:u                                                              
+        5514307524      instructions:u                   #    1.50  insn per cycle            
+         261804161      cache-references:u                                                    
+          41535795      cache-misses:u                   #   15.87% of all cache refs         
+
+       1.370619059 seconds time elapsed
+
+       0.874678000 seconds user
+       0.293596000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3705129777      cycles:u                                                              
+        5498827335      instructions:u                   #    1.48  insn per cycle            
+         260943849      cache-references:u                                                    
+          45897134      cache-misses:u                   #   17.59% of all cache refs         
+
+       1.306143480 seconds time elapsed
+
+       0.896989000 seconds user
+       0.211248000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3619349190      cycles:u                                                              
+        5498747490      instructions:u                   #    1.52  insn per cycle            
+         252348839      cache-references:u                                                    
+          41620286      cache-misses:u                   #   16.49% of all cache refs         
+
+       1.213237540 seconds time elapsed
+
+       0.867399000 seconds user
+       0.154165000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3666029181      cycles:u                                                              
+        5499214072      instructions:u                   #    1.50  insn per cycle            
+         261918385      cache-references:u                                                    
+          41881510      cache-misses:u                   #   15.99% of all cache refs         
+
+       1.354316036 seconds time elapsed
+
+       0.864102000 seconds user
+       0.311875000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3775532709      cycles:u                                                              
+        5498585400      instructions:u                   #    1.46  insn per cycle            
+         257421767      cache-references:u                                                    
+          46141224      cache-misses:u                   #   17.92% of all cache refs         
+
+       1.359653898 seconds time elapsed
+
+       0.926520000 seconds user
+       0.270072000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3655588991      cycles:u                                                              
+        5497843243      instructions:u                   #    1.50  insn per cycle            
+         254819208      cache-references:u                                                    
+          42631764      cache-misses:u                   #   16.73% of all cache refs         
+
+       1.275806902 seconds time elapsed
+
+       0.865540000 seconds user
+       0.230690000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3684735350      cycles:u                                                              
+        5532050358      instructions:u                   #    1.50  insn per cycle            
+         264738810      cache-references:u                                                    
+          42939556      cache-misses:u                   #   16.22% of all cache refs         
+
+       1.224918747 seconds time elapsed
+
+       0.901480000 seconds user
+       0.150881000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3709499709      cycles:u                                                              
+        5532649023      instructions:u                   #    1.49  insn per cycle            
+         263009066      cache-references:u                                                    
+          43584183      cache-misses:u                   #   16.57% of all cache refs         
+
+       1.373727102 seconds time elapsed
+
+       0.866926000 seconds user
+       0.326559000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3833228137      cycles:u                                                              
+        5534519393      instructions:u                   #    1.44  insn per cycle            
+         262966399      cache-references:u                                                    
+          47203636      cache-misses:u                   #   17.95% of all cache refs         
+
+       1.448053315 seconds time elapsed
+
+       0.941118000 seconds user
+       0.278440000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3641287178      cycles:u                                                              
+        5532156204      instructions:u                   #    1.52  insn per cycle            
+         257449854      cache-references:u                                                    
+          42593426      cache-misses:u                   #   16.54% of all cache refs         
+
+       1.365253671 seconds time elapsed
+
+       0.900982000 seconds user
+       0.283017000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 3840x2880
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3627135391      cycles:u                                                              
+        5532879307      instructions:u                   #    1.53  insn per cycle            
+         257878124      cache-references:u                                                    
+          43420429      cache-misses:u                   #   16.84% of all cache refs         
+
+       1.195426603 seconds time elapsed
+
+       0.824352000 seconds user
+       0.201549000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 4096x4096 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4494140277      cycles:u                                                              
+        6611917685      instructions:u                   #    1.47  insn per cycle            
+         289831190      cache-references:u                                                    
+          69905939      cache-misses:u                   #   24.12% of all cache refs         
+
+       1.685587691 seconds time elapsed
+
+       1.058564000 seconds user
+       0.447232000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4354393734      cycles:u                                                              
+        6609247270      instructions:u                   #    1.52  insn per cycle            
+         290954903      cache-references:u                                                    
+          65377673      cache-misses:u                   #   22.47% of all cache refs         
+
+       1.671953176 seconds time elapsed
+
+       1.042942000 seconds user
+       0.436018000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4364300125      cycles:u                                                              
+        6608288676      instructions:u                   #    1.51  insn per cycle            
+         293248213      cache-references:u                                                    
+          66115720      cache-misses:u                   #   22.55% of all cache refs         
+
+       1.675690392 seconds time elapsed
+
+       1.076483000 seconds user
+       0.394966000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4558080352      cycles:u                                                              
+        6608535433      instructions:u                   #    1.45  insn per cycle            
+         297305271      cache-references:u                                                    
+          73187718      cache-misses:u                   #   24.62% of all cache refs         
+
+       1.667613887 seconds time elapsed
+
+       1.098465000 seconds user
+       0.404028000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        5363054706      cycles:u                                                              
+        6610121469      instructions:u                   #    1.23  insn per cycle            
+         297535743      cache-references:u                                                    
+          80130662      cache-misses:u                   #   26.93% of all cache refs         
+
+       1.966332220 seconds time elapsed
+
+       1.383235000 seconds user
+       0.478734000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        5488778398      cycles:u                                                              
+        6606530655      instructions:u                   #    1.20  insn per cycle            
+         291161089      cache-references:u                                                    
+          87495714      cache-misses:u                   #   30.05% of all cache refs         
+
+       2.083112454 seconds time elapsed
+
+       1.365453000 seconds user
+       0.487574000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4339266980      cycles:u                                                              
+        6603409216      instructions:u                   #    1.52  insn per cycle            
+         298560613      cache-references:u                                                    
+          63512775      cache-misses:u                   #   21.27% of all cache refs         
+
+       1.454774075 seconds time elapsed
+
+       1.035421000 seconds user
+       0.259949000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4530490416      cycles:u                                                              
+        6604641369      instructions:u                   #    1.46  insn per cycle            
+         298035978      cache-references:u                                                    
+          69163878      cache-misses:u                   #   23.21% of all cache refs         
+
+       1.722983961 seconds time elapsed
+
+       1.051869000 seconds user
+       0.468636000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4441270366      cycles:u                                                              
+        6605735943      instructions:u                   #    1.49  insn per cycle            
+         300093473      cache-references:u                                                    
+          69559573      cache-misses:u                   #   23.18% of all cache refs         
+
+       1.721128969 seconds time elapsed
+
+       1.068556000 seconds user
+       0.430695000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4548535080      cycles:u                                                              
+        6605694029      instructions:u                   #    1.45  insn per cycle            
+         296933897      cache-references:u                                                    
+          68526379      cache-misses:u                   #   23.08% of all cache refs         
+
+       1.754735172 seconds time elapsed
+
+       1.073187000 seconds user
+       0.446726000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4622433636      cycles:u                                                              
+        6596820216      instructions:u                   #    1.43  insn per cycle            
+         309431873      cache-references:u                                                    
+          72674599      cache-misses:u                   #   23.49% of all cache refs         
+
+       1.785941790 seconds time elapsed
+
+       1.178511000 seconds user
+       0.392404000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4455821804      cycles:u                                                              
+        6596917035      instructions:u                   #    1.48  insn per cycle            
+         294886039      cache-references:u                                                    
+          66590435      cache-misses:u                   #   22.58% of all cache refs         
+
+       1.676343484 seconds time elapsed
+
+       1.094517000 seconds user
+       0.434232000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4549005559      cycles:u                                                              
+        6595337568      instructions:u                   #    1.45  insn per cycle            
+         299729996      cache-references:u                                                    
+          67896031      cache-misses:u                   #   22.65% of all cache refs         
+
+       1.729500290 seconds time elapsed
+
+       1.139123000 seconds user
+       0.416655000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4364894543      cycles:u                                                              
+        6596121928      instructions:u                   #    1.51  insn per cycle            
+         300946902      cache-references:u                                                    
+          65084801      cache-misses:u                   #   21.63% of all cache refs         
+
+       1.675397035 seconds time elapsed
+
+       1.033027000 seconds user
+       0.441307000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 4096x4096
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        4510495245      cycles:u                                                              
+        6598306208      instructions:u                   #    1.46  insn per cycle            
+         293893225      cache-references:u                                                    
+          67561809      cache-misses:u                   #   22.99% of all cache refs         
+
+       1.727992986 seconds time elapsed
+
+       1.112488000 seconds user
+       0.401123000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 512x512 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2436019026      cycles:u                                                              
+        3157763772      instructions:u                   #    1.30  insn per cycle            
+         175435080      cache-references:u                                                    
+          15874089      cache-misses:u                   #    9.05% of all cache refs         
+
+       0.788274898 seconds time elapsed
+
+       0.602941000 seconds user
+       0.085673000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2529612718      cycles:u                                                              
+        3159924496      instructions:u                   #    1.25  insn per cycle            
+         181158969      cache-references:u                                                    
+          19311187      cache-misses:u                   #   10.66% of all cache refs         
+
+       0.800677575 seconds time elapsed
+
+       0.621948000 seconds user
+       0.082998000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2421469217      cycles:u                                                              
+        3158647117      instructions:u                   #    1.30  insn per cycle            
+         174514148      cache-references:u                                                    
+          15315562      cache-misses:u                   #    8.78% of all cache refs         
+
+       0.778912880 seconds time elapsed
+
+       0.585097000 seconds user
+       0.094458000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2419803227      cycles:u                                                              
+        3157619006      instructions:u                   #    1.30  insn per cycle            
+         177176723      cache-references:u                                                    
+          14938424      cache-misses:u                   #    8.43% of all cache refs         
+
+       0.774086678 seconds time elapsed
+
+       0.585527000 seconds user
+       0.088590000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2546983075      cycles:u                                                              
+        3157789612      instructions:u                   #    1.24  insn per cycle            
+         178161185      cache-references:u                                                    
+          20213856      cache-misses:u                   #   11.35% of all cache refs         
+
+       0.814271214 seconds time elapsed
+
+       0.638387000 seconds user
+       0.078914000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2415497448      cycles:u                                                              
+        3158144815      instructions:u                   #    1.31  insn per cycle            
+         171186981      cache-references:u                                                    
+          14776004      cache-misses:u                   #    8.63% of all cache refs         
+
+       0.756709701 seconds time elapsed
+
+       0.581723000 seconds user
+       0.085875000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2419758358      cycles:u                                                              
+        3157580306      instructions:u                   #    1.30  insn per cycle            
+         171932634      cache-references:u                                                    
+          14713698      cache-misses:u                   #    8.56% of all cache refs         
+
+       0.767883678 seconds time elapsed
+
+       0.543181000 seconds user
+       0.134031000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2450367877      cycles:u                                                              
+        3159962494      instructions:u                   #    1.29  insn per cycle            
+         178715152      cache-references:u                                                    
+          16171093      cache-misses:u                   #    9.05% of all cache refs         
+
+       0.778068879 seconds time elapsed
+
+       0.572613000 seconds user
+       0.108938000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2605972745      cycles:u                                                              
+        3158691609      instructions:u                   #    1.21  insn per cycle            
+         179366562      cache-references:u                                                    
+          19249997      cache-misses:u                   #   10.73% of all cache refs         
+
+       0.834743715 seconds time elapsed
+
+       0.667827000 seconds user
+       0.064923000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2429065674      cycles:u                                                              
+        3157151825      instructions:u                   #    1.30  insn per cycle            
+         181132865      cache-references:u                                                    
+          15003512      cache-misses:u                   #    8.28% of all cache refs         
+
+       0.780467204 seconds time elapsed
+
+       0.595765000 seconds user
+       0.081749000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2410915735      cycles:u                                                              
+        3151521790      instructions:u                   #    1.31  insn per cycle            
+         173673655      cache-references:u                                                    
+          14813896      cache-misses:u                   #    8.53% of all cache refs         
+
+       0.750957761 seconds time elapsed
+
+       0.597374000 seconds user
+       0.076530000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2420772219      cycles:u                                                              
+        3150467326      instructions:u                   #    1.30  insn per cycle            
+         164558108      cache-references:u                                                    
+          15056220      cache-misses:u                   #    9.15% of all cache refs         
+
+       0.761620392 seconds time elapsed
+
+       0.574150000 seconds user
+       0.098958000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2584704119      cycles:u                                                              
+        3150880648      instructions:u                   #    1.22  insn per cycle            
+         175522225      cache-references:u                                                    
+          21771784      cache-misses:u                   #   12.40% of all cache refs         
+
+       0.798299740 seconds time elapsed
+
+       0.603964000 seconds user
+       0.123773000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2464835544      cycles:u                                                              
+        3150283515      instructions:u                   #    1.28  insn per cycle            
+         173398199      cache-references:u                                                    
+          16631359      cache-misses:u                   #    9.59% of all cache refs         
+
+       0.766716967 seconds time elapsed
+
+       0.599936000 seconds user
+       0.084571000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 512x512
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2443941867      cycles:u                                                              
+        3153713485      instructions:u                   #    1.29  insn per cycle            
+         171050060      cache-references:u                                                    
+          16202376      cache-misses:u                   #    9.47% of all cache refs         
+
+       0.761528924 seconds time elapsed
+
+       0.595368000 seconds user
+       0.088838000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 640x480 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2472580516      cycles:u                                                              
+        3170362451      instructions:u                   #    1.28  insn per cycle            
+         180363332      cache-references:u                                                    
+          16572630      cache-misses:u                   #    9.19% of all cache refs         
+
+       0.775421509 seconds time elapsed
+
+       0.619499000 seconds user
+       0.068879000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2450692147      cycles:u                                                              
+        3169501136      instructions:u                   #    1.29  insn per cycle            
+         172935144      cache-references:u                                                    
+          16325235      cache-misses:u                   #    9.44% of all cache refs         
+
+       0.768513363 seconds time elapsed
+
+       0.570172000 seconds user
+       0.114824000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2539779213      cycles:u                                                              
+        3169803707      instructions:u                   #    1.25  insn per cycle            
+         180240664      cache-references:u                                                    
+          18981303      cache-misses:u                   #   10.53% of all cache refs         
+
+       0.815540927 seconds time elapsed
+
+       0.614155000 seconds user
+       0.103254000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2528415178      cycles:u                                                              
+        3170870648      instructions:u                   #    1.25  insn per cycle            
+         174543047      cache-references:u                                                    
+          19645806      cache-misses:u                   #   11.26% of all cache refs         
+
+       0.797448759 seconds time elapsed
+
+       0.615401000 seconds user
+       0.085841000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2522026169      cycles:u                                                              
+        3168979388      instructions:u                   #    1.26  insn per cycle            
+         176586994      cache-references:u                                                    
+          19561766      cache-misses:u                   #   11.08% of all cache refs         
+
+       0.810527197 seconds time elapsed
+
+       0.602635000 seconds user
+       0.106660000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2558509987      cycles:u                                                              
+        3164000110      instructions:u                   #    1.24  insn per cycle            
+         175694371      cache-references:u                                                    
+          21116891      cache-misses:u                   #   12.02% of all cache refs         
+
+       0.824651485 seconds time elapsed
+
+       0.611842000 seconds user
+       0.098674000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2564054928      cycles:u                                                              
+        3164177582      instructions:u                   #    1.23  insn per cycle            
+         180007854      cache-references:u                                                    
+          19904441      cache-misses:u                   #   11.06% of all cache refs         
+
+       0.838818781 seconds time elapsed
+
+       0.652568000 seconds user
+       0.071690000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2526140945      cycles:u                                                              
+        3166228639      instructions:u                   #    1.25  insn per cycle            
+         174418114      cache-references:u                                                    
+          19765475      cache-misses:u                   #   11.33% of all cache refs         
+
+       0.808268229 seconds time elapsed
+
+       0.589249000 seconds user
+       0.114676000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2565514522      cycles:u                                                              
+        3164137445      instructions:u                   #    1.23  insn per cycle            
+         173068071      cache-references:u                                                    
+          20194543      cache-misses:u                   #   11.67% of all cache refs         
+
+       0.835966039 seconds time elapsed
+
+       0.626831000 seconds user
+       0.095054000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2549162451      cycles:u                                                              
+        3165907309      instructions:u                   #    1.24  insn per cycle            
+         175648732      cache-references:u                                                    
+          19799353      cache-misses:u                   #   11.27% of all cache refs         
+
+       0.819580617 seconds time elapsed
+
+       0.611074000 seconds user
+       0.099168000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2548299144      cycles:u                                                              
+        3168877429      instructions:u                   #    1.24  insn per cycle            
+         178833250      cache-references:u                                                    
+          20415710      cache-misses:u                   #   11.42% of all cache refs         
+
+       0.797220353 seconds time elapsed
+
+       0.619721000 seconds user
+       0.091926000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2585370731      cycles:u                                                              
+        3169986246      instructions:u                   #    1.23  insn per cycle            
+         175194917      cache-references:u                                                    
+          20934820      cache-misses:u                   #   11.95% of all cache refs         
+
+       0.818124814 seconds time elapsed
+
+       0.619535000 seconds user
+       0.100235000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2568713899      cycles:u                                                              
+        3171160771      instructions:u                   #    1.23  insn per cycle            
+         179333785      cache-references:u                                                    
+          20798968      cache-misses:u                   #   11.60% of all cache refs         
+
+       0.795463501 seconds time elapsed
+
+       0.613497000 seconds user
+       0.093614000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2556249677      cycles:u                                                              
+        3169009339      instructions:u                   #    1.24  insn per cycle            
+         177643952      cache-references:u                                                    
+          19954209      cache-misses:u                   #   11.23% of all cache refs         
+
+       0.815819099 seconds time elapsed
+
+       0.644809000 seconds user
+       0.074559000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 640x480
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2535678966      cycles:u                                                              
+        3171520336      instructions:u                   #    1.25  insn per cycle            
+         178041058      cache-references:u                                                    
+          19933003      cache-misses:u                   #   11.20% of all cache refs         
+
+       0.800291404 seconds time elapsed
+
+       0.628592000 seconds user
+       0.081055000 seconds sys
+
+
+
+
+
+
+=== FOLDER: 800x600 ===
+--- IMAGE: img1.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2546939024      cycles:u                                                              
+        3194846505      instructions:u                   #    1.25  insn per cycle            
+         173396747      cache-references:u                                                    
+          20304470      cache-misses:u                   #   11.71% of all cache refs         
+
+       0.821528042 seconds time elapsed
+
+       0.632303000 seconds user
+       0.088539000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2576897743      cycles:u                                                              
+        3196812481      instructions:u                   #    1.24  insn per cycle            
+         179387087      cache-references:u                                                    
+          20642932      cache-misses:u                   #   11.51% of all cache refs         
+
+       0.821599915 seconds time elapsed
+
+       0.612572000 seconds user
+       0.108505000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2813328204      cycles:u                                                              
+        3193399808      instructions:u                   #    1.14  insn per cycle            
+         163747318      cache-references:u                                                    
+          21548037      cache-misses:u                   #   13.16% of all cache refs         
+
+       0.922619178 seconds time elapsed
+
+       0.724268000 seconds user
+       0.093484000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2568238601      cycles:u                                                              
+        3192991550      instructions:u                   #    1.24  insn per cycle            
+         182639953      cache-references:u                                                    
+          20537662      cache-misses:u                   #   11.24% of all cache refs         
+
+       0.819811284 seconds time elapsed
+
+       0.628224000 seconds user
+       0.089836000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3395046198      cycles:u                                                              
+        3196029241      instructions:u                   #    0.94  insn per cycle            
+         182011896      cache-references:u                                                    
+          38662117      cache-misses:u                   #   21.24% of all cache refs         
+
+       1.096234290 seconds time elapsed
+
+       0.857843000 seconds user
+       0.124429000 seconds sys
+
+
+
+
+
+--- IMAGE: img2.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        3205232951      cycles:u                                                              
+        3210233936      instructions:u                   #    1.00  insn per cycle            
+         179630156      cache-references:u                                                    
+          37683437      cache-misses:u                   #   20.98% of all cache refs         
+
+       1.020158694 seconds time elapsed
+
+       0.805822000 seconds user
+       0.114286000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2632200689      cycles:u                                                              
+        3207653634      instructions:u                   #    1.22  insn per cycle            
+         175926953      cache-references:u                                                    
+          22028423      cache-misses:u                   #   12.52% of all cache refs         
+
+       0.823938830 seconds time elapsed
+
+       0.661968000 seconds user
+       0.072756000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2602309344      cycles:u                                                              
+        3207938505      instructions:u                   #    1.23  insn per cycle            
+         186210012      cache-references:u                                                    
+          19630460      cache-misses:u                   #   10.54% of all cache refs         
+
+       0.831744382 seconds time elapsed
+
+       0.638744000 seconds user
+       0.105929000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2488861527      cycles:u                                                              
+        3211588286      instructions:u                   #    1.29  insn per cycle            
+         165194918      cache-references:u                                                    
+          17682592      cache-misses:u                   #   10.70% of all cache refs         
+
+       0.784243362 seconds time elapsed
+
+       0.617852000 seconds user
+       0.076120000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2573343361      cycles:u                                                              
+        3208255288      instructions:u                   #    1.25  insn per cycle            
+         178710512      cache-references:u                                                    
+          21087017      cache-misses:u                   #   11.80% of all cache refs         
+
+       0.813053805 seconds time elapsed
+
+       0.615147000 seconds user
+       0.114050000 seconds sys
+
+
+
+
+
+--- IMAGE: img3.png ---
+  Repetition 1:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2444520162      cycles:u                                                              
+        3209076864      instructions:u                   #    1.31  insn per cycle            
+         185799105      cache-references:u                                                    
+          15137781      cache-misses:u                   #    8.15% of all cache refs         
+
+       0.766812207 seconds time elapsed
+
+       0.610643000 seconds user
+       0.069670000 seconds sys
+
+
+
+
+  Repetition 2:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2446075650      cycles:u                                                              
+        3208700987      instructions:u                   #    1.31  insn per cycle            
+         176126435      cache-references:u                                                    
+          15318030      cache-misses:u                   #    8.70% of all cache refs         
+
+       0.796234480 seconds time elapsed
+
+       0.607317000 seconds user
+       0.082556000 seconds sys
+
+
+
+
+  Repetition 3:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2487593566      cycles:u                                                              
+        3210350626      instructions:u                   #    1.29  insn per cycle            
+         175004142      cache-references:u                                                    
+          16417838      cache-misses:u                   #    9.38% of all cache refs         
+
+       0.792437907 seconds time elapsed
+
+       0.603204000 seconds user
+       0.086263000 seconds sys
+
+
+
+
+  Repetition 4:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2459248794      cycles:u                                                              
+        3210032961      instructions:u                   #    1.31  insn per cycle            
+         181006585      cache-references:u                                                    
+          14852314      cache-misses:u                   #    8.21% of all cache refs         
+
+       0.814626531 seconds time elapsed
+
+       0.596203000 seconds user
+       0.098348000 seconds sys
+
+
+
+
+  Repetition 5:
+IMAGE_DIMENSIONS: 800x600
+FRS algorithm requires off-axis holograms
+
+ Performance counter stats for 'python3 /tmp/temp_perf_8912.py':
+
+        2432839447      cycles:u                                                              
+        3208893685      instructions:u                   #    1.32  insn per cycle            
+         172481482      cache-references:u                                                    
+          16128086      cache-misses:u                   #    9.35% of all cache refs         
+
+       0.789922082 seconds time elapsed
+
+       0.603239000 seconds user
+       0.076829000 seconds sys
+
+
+
+
+
+
+=== SUMMARY  ===
+Total runs: 210
+Errors found: 0
+Success rate: 100.00%

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.7z
+*.zip
+.pytest_cache/
+~$*
